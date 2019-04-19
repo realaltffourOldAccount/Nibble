@@ -7,22 +7,25 @@ int __main(int argc, char* argv[]);
 #if (__OS__ == __OS_WIN64__) || (__OS__ == __OS_WIN32__)
 #if defined(__DEBUG__)
 #include <Windows.h>
-INT WinMain(HINSTANCE, HINSTANCE, PSTR, INT) {
-    __main(0, nullptr);
-    return 0;
-}
+INT WinMain(HINSTANCE, HINSTANCE, PSTR, INT) { return __main(0, nullptr); }
 #else
-int main(int argc, char* argv[]) {
-    __main(argc, argv);
-    return 0;
-}
+int main(int argc, char* argv[]) { return __main(argc, argv); }
 #endif
 
 #else
-int main(int argc, char* argv[]) {
-    __main(argc, argv);
-    return 0;
-}
+int main(int argc, char* argv[]) { return __main(argc, argv); }
 #endif
 
-int __main(int argc, char* argv[]) { return 0; }
+#include "Log.h"
+#include "game.h"
+
+int __main(int argc, char* argv[]) {
+    Log::Init();
+    Log::info("Detected OS: " + std::string(os_to_str(__OS__)));
+
+    Game game;
+    game.Init();
+    game.Start();
+
+    return 0;
+}

@@ -40,7 +40,7 @@ add_subdirectory("deps/GLFW/")
 add_subdirectory("deps/GLAD/")
 
 # vmmlib
-include_directories("CHesser/deps/vmmlib/")
+include_directories("deps/vmmlib/")
 
 # spdlog
 add_subdirectory("deps/spdlog/")
