@@ -1,0 +1,23 @@
+- Add Game Window
+- Add Error Reporting
+- Add Texture
+- Add PieceRenderer
+- Add BoardRenderer
+- Fix MoveMaker
+- Add Scope System
+- Add Checking for Checks/CheckMates
+- Add Castling
+- Fix En passent same move only
+- Fix Castling first king move only
+- Fix Castling don't cross over checks
+- Fix Castling in check
+- Add Widget support
+- Add Events
+- Add Pane
+- Add Text
+- Add Button
+- Add Image
+- Add UIRenderer
+- Add Lobby
+- Add Networking
+- Add Android Port
