@@ -9,13 +9,13 @@
 #include <ostream>
 
 namespace Log {
-#ifndef __RELEASE__
+#if !defined(__RELEASE__)
 static std::shared_ptr<spdlog::logger> console;
 #endif
 static std::shared_ptr<spdlog::logger> file_log;
 
 static void Init() {
-#ifndef __RELEASE__
+#if !defined(__RELEASE__)
     console = spdlog::stdout_color_mt("Console");
 #endif
     std::ofstream log("Log.txt");
@@ -23,7 +23,7 @@ static void Init() {
     log.close();
 
     file_log = spdlog::basic_logger_mt("File_Log", "Log.txt");
-#ifndef __RELEASE__
+#if !defined(__RELEASE__)
     spdlog::get("Console")->set_pattern(
         "[%H:%M:%S %z] [%n] [%^---%L---%$] [thread %t] %v");
 #endif
@@ -32,7 +32,7 @@ static void Init() {
 }
 
 static void error(std::string msg) {
-#ifndef __RELEASE__
+#if !defined(__RELEASE__)
     spdlog::get("Console")->error(msg.c_str());
 #endif
     spdlog::get("File_Log")->error(msg.c_str());
@@ -40,7 +40,7 @@ static void error(std::string msg) {
 }
 
 static void info(std::string msg) {
-#ifndef __RELEASE__
+#if !defined(__RELEASE__)
     spdlog::get("Console")->info(msg.c_str());
 #endif
     spdlog::get("File_Log")->info(msg.c_str());
@@ -48,7 +48,7 @@ static void info(std::string msg) {
 }
 
 static void warn(std::string msg) {
-#ifndef __RELEASE__
+#if !defined(__RELEASE__)
     spdlog::get("Console")->warn(msg.c_str());
 #endif
     spdlog::get("File_Log")->warn(msg.c_str());
@@ -56,7 +56,7 @@ static void warn(std::string msg) {
 }
 
 static void trace(std::string msg) {
-#ifndef __RELEASE__
+#if !defined(__RELEASE__)
     spdlog::get("Console")->trace(msg.c_str());
 #endif
     spdlog::get("File_Log")->trace(msg.c_str());

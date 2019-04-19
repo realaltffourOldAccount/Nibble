@@ -1,6 +1,19 @@
 #ifndef CHSR_API
 #define CHSR_API
 #include "univ_includes.h"
+#include "macros.h"
+#include "defs.h"
+
+/*
+        OS Specific Includes
+*/
+
+#if (__OS__ == __OS_WIN32__) || (__OS__ == __OS_WIN64__)
+#include <Windows.h>
+#elif (__OS__ == __OS_LINUX__)
+#include <unistd.h>
+#endif
+
 /*
     Api Includes
 */

@@ -24,4 +24,7 @@
 #include <istream>
 #include <ostream>
 
+#include <chrono>
+#include <thread>
+
 using namespace std;
