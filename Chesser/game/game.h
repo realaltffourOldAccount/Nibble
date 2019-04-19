@@ -7,9 +7,6 @@ struct GameState {
     int win_width;
     int win_height;
     bool mouse_in = false;
-
-    // Game state
-    bool error = false;
 };
 
 class Game {
@@ -35,6 +32,7 @@ class Game {
     void Tick();
     void Render();
     void __loop();
+    void __err_check();
 };
 
 static void error_callback(int error, const char* description) {}

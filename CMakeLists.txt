@@ -37,10 +37,12 @@ set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 add_subdirectory("deps/GLFW/")
 
 # GLAD
+set(GLM_QUIET OFF CACHE BOOL "" FORCE)
+set(GLM_TEST_ENABLE OFF CACHE BOOL "" FORCE)
 add_subdirectory("deps/GLAD/")
 
-# vmmlib
-include_directories("deps/vmmlib/")
+# GLM
+add_subdirectory("deps/GLM/")
 
 # spdlog
 add_subdirectory("deps/spdlog/")
@@ -63,4 +65,4 @@ add_executable(
     ${chesser_srcs}
     ${chesser_hdrs}
 )
-target_link_libraries("Chesser" glfw ${GLFW_LIBRARIES} glad)
+target_link_libraries("Chesser" glm glfw ${GLFW_LIBRARIES} glad)

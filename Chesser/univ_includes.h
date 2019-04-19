@@ -8,7 +8,7 @@
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/sinks/basic_file_sink.h>
-#include <vmmlib/vmmlib.hpp>
+#include <glm/glm.hpp>
 
 /*
         STL Includes
@@ -18,6 +18,7 @@
 #include <map>
 #include <stack>
 #include <string>
+#include <sstream>
 #include <vector>
 
 #include <fstream>

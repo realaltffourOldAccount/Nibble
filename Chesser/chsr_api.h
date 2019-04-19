@@ -1,8 +1,10 @@
 #ifndef CHSR_API
 #define CHSR_API
+#include "Log.h"
 #include "univ_includes.h"
 #include "macros.h"
 #include "defs.h"
+#include "initiator.h"
 
 /*
         OS Specific Includes
@@ -17,16 +19,15 @@
 /*
     Api Includes
 */
-#include "Log.h"
 
-#include "Board.h"
-#include "pieces/Bishop.h"
-#include "pieces/King.h"
-#include "pieces/Knight.h"
-#include "pieces/Pawn.h"
-#include "pieces/Piece.h"
-#include "pieces/Queen.h"
-#include "pieces/Rook.h"
+#include "game/Board.h"
+#include "game/pieces/Bishop.h"
+#include "game/pieces/King.h"
+#include "game/pieces/Knight.h"
+#include "game/pieces/Pawn.h"
+#include "game/pieces/Piece.h"
+#include "game/pieces/Queen.h"
+#include "game/pieces/Rook.h"
 /*
     Api Defines
 */
@@ -49,7 +50,7 @@
 /*
     Api Functions
 */
-#include "move/Move.h"
+#include "game/move/Move.h"
 static Loc xy2loc(int x, int y) {
     Loc res;
     res.file = x;

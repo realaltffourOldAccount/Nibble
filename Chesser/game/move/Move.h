@@ -2,7 +2,7 @@
 #define MOVE_H
 #pragma once
 
-#include "../utils.h"
+#include "../../utils.h"
 #include "Cords.h"
 
 class Move {

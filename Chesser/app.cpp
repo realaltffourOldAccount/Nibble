@@ -1,4 +1,4 @@
-#include "defs.h"
+#include "chsr_api.h"
 
 // Our Main Function
 int __main(int argc, char* argv[]);
@@ -16,11 +16,10 @@ int main(int argc, char* argv[]) { return __main(argc, argv); }
 int main(int argc, char* argv[]) { return __main(argc, argv); }
 #endif
 
-#include "Log.h"
-#include "game.h"
+#include "game/game.h"
 
 int __main(int argc, char* argv[]) {
-    Log::Init();
+    init_app();
     Log::info("Detected OS: " + std::string(os_to_str(__OS__)));
 
     Game game;
