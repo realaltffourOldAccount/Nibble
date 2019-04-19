@@ -1,0 +1,9 @@
+[submodule "deps/vmmlib"]
+	path = deps/vmmlib
+	url = https://github.com/VMML/vmmlib
+[submodule "deps/spdlog"]
+	path = deps/spdlog
+	url = https://github.com/gabime/spdlog
+[submodule "deps/GLFW"]
+	path = deps/GLFW
+	url = https://github.com/glfw/glfw
