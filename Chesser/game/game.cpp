@@ -57,7 +57,8 @@ void Game::__err_check() {
         Log::warn("Info Logged to log/Log.txt");
 #else
 #if (__OS__ == __OS_WIN32__) || (__OS__ == __OS_WIN64__)
-        MessageBox(NULL, L"Error Occured. \n Info Logged to log/Log.txt");
+        MessageBox(NULL, "Error Occured. \n Info Logged to log/Log.txt",
+                   "Error", 0);
 #elif (__OS__ == __OS_LINUX__)
         int res = system(
             "xmessage -center \"Error Occured. \n Info Logged to "

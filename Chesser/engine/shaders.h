@@ -1,7 +1,15 @@
 #ifndef SHADERS_H
 #define SHADERS_H
 
-#include "chsr_api.h"
+#define GLFW_INCLUDE_NONE
+#include <glad/glad.h>
+#include <glm/glm.hpp>
+
+
+// Shaders standard for uniform attributes
+#define SHADER_ATTRIB_POS 0 
+#define SHADER_ATTRIB_COLOR 1
+#define SHADER_ATTRIB_TEXCOORD 2 // if needed
 
 namespace Shaders {
 

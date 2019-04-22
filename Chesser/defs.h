@@ -41,6 +41,7 @@ static const char* os_to_str(int id) {
         // unkown
         return "Unknown OS";
     }
+    return "Unknown OS";
 }
 
 #endif

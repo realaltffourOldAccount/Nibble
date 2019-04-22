@@ -1,7 +1,10 @@
 #ifndef TEXTURE_H
 #define TEXTURE_H
 
-#include "chsr_api.h"
+#define GLFW_INCLUDE_NONE
+#include <glad/glad.h>
+#include <glm/glm.hpp>
+#include "univ_includes.h"
 #include "vendor/stb_image.h"
 
 #include "Rect.h"
@@ -9,8 +12,13 @@
 namespace Textures {
 
 static unsigned int last_tex_id = 0;
+static vector<Texture*> textures;
 
-static void init_texs() {}
+static Texture* create_texture(std::string file, Rect border) {
+    Texture* tex = new Texture(file, border, last_tex_id++);
+    textures.push_back(tex);
+    return tex;
+}
 
 class Texture {
    public:
