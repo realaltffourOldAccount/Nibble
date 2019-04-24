@@ -1,6 +1,8 @@
 #include "game.h"
 #include "Log.h"
 
+#include "../engine/textures.h"
+
 void Game::Init() {
     mState = new GameState();
 
@@ -30,6 +32,7 @@ void Game::Init() {
 }
 
 void Game::Start() {
+    Textures::Texture* tex = Textures::create_texture("assets/board.png"); 
     // Start Loop thread
     __loop();
 }

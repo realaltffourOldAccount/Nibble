@@ -10,20 +10,6 @@
 
 namespace VAOs {
 
-struct ShaderAttrib() {
-    int index;
-    GLsizei size;
-    GLsizei stride;
-    void* offset;
-    GLenum type;
-    bool isNorm = false;
-    bool isEnable = true;
-}
-
-static std::map<std::string, VAO*> vao;
-
-static void createVAO(std::string name, BufferObject* vbo);
-
 class VAO {
 public:
     VAO(BufferObject* vbo, vector<ShaderAttrib*> attribs) {
@@ -59,6 +45,22 @@ private:
     BufferObject* _ibo;
     vector<ShaderAttrib*> _attribs;
 };
+
+
+
+struct ShaderAttrib() {
+    int index;
+    GLsizei size;
+    GLsizei stride;
+    void* offset;
+    GLenum type;
+    bool isNorm = false;
+    bool isEnable = true;
+}
+
+static std::map<std::string, VAO*> vao;
+
+static void createVAO(std::string name, BufferObject* vbo);
 
 }  // namespace VAOs
 
