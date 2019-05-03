@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.1)
+cmake_minimum_required(VERSION 3.5)
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
@@ -66,3 +66,7 @@ add_executable(
     ${chesser_hdrs}
 )
 target_link_libraries("Chesser" glm glfw ${GLFW_LIBRARIES} glad)
+
+# Copy files
+file(COPY assets DESTINATION bin)
+file(COPY Chesser/engine/glsl DESTINATION bin)

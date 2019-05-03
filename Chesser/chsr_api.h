@@ -1,10 +1,10 @@
 #ifndef CHSR_API
 #define CHSR_API
 #include "Log.h"
-#include "univ_includes.h"
-#include "macros.h"
 #include "defs.h"
 #include "initiator.h"
+#include "macros.h"
+#include "univ_includes.h"
 
 /*
         OS Specific Includes
@@ -15,6 +15,11 @@
 #elif (__OS__ == __OS_LINUX__)
 #include <unistd.h>
 #endif
+
+/*
+    Api Graphics Engine
+*/
+#include "engine/engine.h"
 
 /*
     Api Includes
@@ -47,15 +52,22 @@
 #define BLACK_CHECKMATES_WHITE 4
 #define NO_CHECKS 5
 
+struct GameState {
+  // GLFW state
+  int win_width = DEFAULT_WIN_WIDTH;
+  int win_height = DEFAULT_WIN_HEIGHT;
+  bool mouse_in = false;
+};
+
 /*
     Api Functions
 */
 #include "game/move/Move.h"
 static Loc xy2loc(int x, int y) {
-    Loc res;
-    res.file = x;
-    res.rank = y;
-    return res;
+  Loc res;
+  res.file = x;
+  res.rank = y;
+  return res;
 }
 // static Loc vec2Loc(sf::Vector2i xy) {
 //    Loc res;

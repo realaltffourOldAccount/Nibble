@@ -5,7 +5,6 @@
 #include <glad/glad.h>
 #include <glm/glm.hpp>
 
-
 // Shaders standard for uniform attributes
 #define SHADER_ATTRIB_POS 0 
 #define SHADER_ATTRIB_COLOR 1
@@ -28,14 +27,14 @@ static void CreateProgram(const std::string& shaderName,
         THROW_ERROR(state,
                     "Error Occured Reading Vertex Shader File: " + vsFileName);
     } else
-        Log::trace("Read Vertex Shader File: " + vsFileName);
+        Log::info("Read Vertex Shader File: " + vsFileName);
 
     fShaderFile.open(fsFileName);
     if (fShaderFile.is_open() == false) {
         THROW_ERROR(
             state, "Error Occured Reading Fragment Shader File: " + fsFileName);
     } else
-        Log::trace("Read Fragment Shader File: " + fsFileName);
+        Log::info("Read Fragment Shader File: " + fsFileName);
 
     std::stringstream vstream, fstream;
     vstream << vShaderFile.rdbuf();
@@ -60,23 +59,23 @@ static void CreateProgram(const std::string& shaderName,
     glGetShaderiv(vertex, GL_COMPILE_STATUS, &success);
     if (!success) {
         glGetShaderInfoLog(vertex, 512, NULL, infoLog);
-        THROW_ERROR(state, "Vertex Shader for Program: " + shaderName +
+        THROW_ERROR(state, "Compilation of Vertex Shader for Program: " + shaderName +
                                " failed.\n" + std::string(infoLog));
     } else
-        Log::trace("Vertex Shader for Program: " + shaderName + " succeeded.");
+        Log::info("Compilation of Vertex Shader for Program: " + shaderName + " succeeded.");
 
     // fragment shader
-    fragment = glCreateShader(GL_VERTEX_SHADER);
+    fragment = glCreateShader(GL_FRAGMENT_SHADER);
     glShaderSource(fragment, 1, &fShaderCode, NULL);
     glCompileShader(fragment);
 
     glGetShaderiv(fragment, GL_COMPILE_STATUS, &success);
     if (!success) {
         glGetShaderInfoLog(fragment, 512, NULL, infoLog);
-        THROW_ERROR(state, "Fragment Shader for Program: " + shaderName +
+        THROW_ERROR(state, "Compilation of Fragment Shader for Program: " + shaderName +
                                " failed.\n" + std::string(infoLog));
     } else
-        Log::trace("Fragment Shader for Program: " + shaderName +
+        Log::info("Compilation of Fragment Shader for Program: " + shaderName +
                    " succeeded.");
 
     // shader program
@@ -88,10 +87,10 @@ static void CreateProgram(const std::string& shaderName,
     glGetProgramiv(program, GL_LINK_STATUS, &success);
     if (!success) {
         glGetProgramInfoLog(program, 512, NULL, infoLog);
-        THROW_ERROR(state, "Compilation for Program: " + shaderName +
+        THROW_ERROR(state, "Linking for Program: " + shaderName +
                                " failed.\n" + std::string(infoLog));
     } else
-        Log::trace("Compilation for Program: " + shaderName + " succeeded.");
+        Log::info("Linking for Program: " + shaderName + " succeeded.");
 
     glDeleteShader(vertex);
     glDeleteShader(fragment);
@@ -99,7 +98,7 @@ static void CreateProgram(const std::string& shaderName,
     mShaderPrograms[shaderName] = program;
 }
 
-static const GLuint get(const std::string& name) { mShaderPrograms.at(name); }
+static const GLuint get(const std::string& name) { return mShaderPrograms.at(name); }
 
 static void clean() {
     std::map<std::string, GLuint>::iterator i;

@@ -13,6 +13,14 @@ struct Rect {
         if (x + width < other.x || x > other.x + other.width) return false;
         return true;
     }
+
+    Rect() {}
+    Rect(int _x, int _y, int _w, int _h) {
+        x = _x;
+        y = _y;
+        width = _w;
+        height = _h;
+    }
 };
 
 #endif

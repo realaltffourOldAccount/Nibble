@@ -7,81 +7,90 @@
 
 #include "univ_includes.h"
 
-namespace MVP {
-struct mvp {
+struct MVPInfo {
   glm::mat4 model;
   glm::mat4 view;
   glm::mat4 proj;
-  glm::mat4 _mvp;
+  glm::mat4 mvp;
 };
 
-std::map<std::string, mvp*> mvps;
+class MVP {
+public:
+MVP() {}
 
-static void newMVP(std::string name, glm::mat4 model, glm::mat4 view, 
+std::map<std::string, MVPInfo*> mvps;
+MVPInfo* makeMVP(glm::mat4 model, glm::mat4 view, 
     glm::mat4 projection) {
-    mvp new_mvp = makeMVP(model, view, projection);
-    mvps[name] = new_mvp;
-}
-
-static mvp makeMVP(glm::mat4 model, glm::mat4 view, 
-    glm::mat4 projection) {
-    mvp res;
-    res.model = model;
-    res.view = view;
-    res.proj = projection;
-    res.mvp = projection * view * model; 
+    MVPInfo* res = new MVPInfo();
+    res->model = model;
+    res->view = view;
+    res->proj = projection;
+    res->mvp = projection * view * model; 
     return res;
 }
 
-// this assumes that program is already bound
-static void bindMVP(std::string name, GLuint program) {
-  auto _mvp = mvps[name];
-  GLuint mvpID = glGetUniformLocation(program, "MVP");
-  if (mvpID == -1) {//error
-    THROW_ERROR("Could not find MVP matrix.");
-  }
-  glUniformMatrix4fv(mvpID, 1, GL_FALSE, &_mvp._mvp)
+
+void newMVP(std::string name, glm::mat4 model, glm::mat4 view, 
+    glm::mat4 projection) {
+    MVPInfo* new_mvp = makeMVP(model, view, projection);
+    mvps[name] = new_mvp;
 }
 
-static void clean() {
-    std::map<std::string, mvp*>::iterator it;
+void calcMVP(std::string name) {
+  MVPInfo* calcd_mvp = mvps[name];
+  calcd_mvp->mvp = calcd_mvp->proj * calcd_mvp->view * calcd_mvp->model;
+}
+
+// this assumes that program is already bound
+void bindMVP(std::string name, GLuint program) {
+  MVPInfo* _mvp = mvps[name];
+  GLuint mvpID = glGetUniformLocation(program, "MVP");
+  if (mvpID == -1) {//error
+    THROW_ERROR(state, "Could not find MVP matrix.");
+  }
+  glm::mat4 mvp = _mvp->mvp;
+  glUniformMatrix4fv(mvpID, 1, GL_FALSE, &mvp[0][0]);
+}
+
+void clean() {
+    std::map<std::string, MVPInfo*>::iterator it;
     for (it = mvps.begin(); it != mvps.end(); it++){
       delete it->second;
     }
 }
 
-static mvp* getMVP(std::string name) {
+MVPInfo* getMVP(std::string name) {
   return mvps[name];
 }
 
-static glm::mat4 getModel(std::string name) {
-  return mvps[name].model;
+glm::mat4 getModel(std::string name) {
+  return mvps[name]->model;
 }
 
-static glm::mat4 getView(std::string name) {
-  return mvps[name].view;
+glm::mat4 getView(std::string name) {
+  return mvps[name]->view;
 }
 
-static glm::mat4 getProj(std::string name) {
-  return mvps[name].proj;
+glm::mat4 getProj(std::string name) {
+  return mvps[name]->proj;
 }
 
-static void setMVP(std::string name, mvp _mvp) {
+void setMVP(std::string name, MVPInfo *_mvp) {
   mvps[name] = _mvp;
 }
 
-static void setModel(std::string name, glm::mat4 model) {
-  mvps[name].model = model;
+void setModel(std::string name, glm::mat4 model) {
+  mvps[name]->model = model;
 }
 
-static void getView(std::string name, glm::mat4 view) {
-  mvps[name].view = view;
+void setView(std::string name, glm::mat4 view) {
+  mvps[name]->view = view;
 }
 
-static void getProj(std::string name, glm::mat4 proj) {
-   mvps[name].proj = proj;
+void setProj(std::string name, glm::mat4 proj) {
+   mvps[name]->proj = proj;
 }
 
-}
+};
 
 #endif

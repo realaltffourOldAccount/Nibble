@@ -1,11 +1,11 @@
-//#ifndef MOVEMAKER_H
-//#define MOVEMAKER_H
-//#pragma once
-////#include "BoardRenderer.h"
-//#include "Board.h"
-//#include "ResourceManager.h"
-//#include "chsr_api.h"
-//
+#ifndef MOVEMAKER_H
+#define MOVEMAKER_H
+#pragma once
+//#include "BoardRenderer.h"
+#include "Board.h"
+#include "ResourceManager.h"
+#include "chsr_api.h"
+
 // struct ChoosenPiece {
 //    Piece* pce;
 //    sf::Sprite* sprite;
@@ -23,7 +23,7 @@
 //    Loc loc;
 //};
 //
-// class MoveMaker {
+class MoveMaker {
 //   public:
 //    void Init();
 //    void SetBoard(Board* board);
@@ -150,6 +150,6 @@
 //                             sf::Vector2i dest);
 //    bool HandlePawnMoveBlack(Piece* pce_dest, sf::Vector2i orig,
 //                             sf::Vector2i dest);
-//};
-//
-//#endif
+};
+
+#endif

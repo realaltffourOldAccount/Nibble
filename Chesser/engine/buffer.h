@@ -7,29 +7,35 @@
 
 class BufferObject {
 public:
-    BufferObject(int target, int usage, void* data, 
+    BufferObject(int targ, int use, void* dat, 
         size_t size) {
         glGenBuffers(1, &id);
-        glBindBuffer(target, id);
-        glBufferData(target, size, data, usage);
+        glBindBuffer(targ, id);
+        glBufferData(targ, size, dat, use);
+        
+        target = targ;
+        usage = use;
+        data = dat;
+        bf_size = size;
     }
 
     void bind() {
-      glBindBuffer(id);
+      glBindBuffer(target, id);
     }
 
     void unbind() {
-      glBindBubber(0);
+      glBindBuffer(target,0);
     }
 
     void clean() {
         glDeleteBuffers(1, &id);
-        delete data;
+        data = nullptr;
         bf_size = 0;
         usage = -1;
     };
 
     unsigned int id = -1;
+    int target;
     void* data = nullptr;
     size_t bf_size;
     int usage;

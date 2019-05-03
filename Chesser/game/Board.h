@@ -1,16 +1,16 @@
-//#ifndef BOARDDEF_H
-//#define BOARDDEF_H
-//#pragma once
-//
-//#include <iostream>
-//#include "move/MoveSet.h"
-//#include "pieces/Pieces.h"
-//#include "univ_includes.h"
-//
-// using namespace std;
-//
-// class Board {
-//   public:
+#ifndef BOARDDEF_H
+#define BOARDDEF_H
+#pragma once
+
+#include <iostream>
+#include "move/MoveSet.h"
+#include "pieces/Pieces.h"
+#include "univ_includes.h"
+
+ using namespace std;
+
+class Board {
+  public:
 //    void Init();
 //
 //    void ApplyMove(Move move);
@@ -77,6 +77,6 @@
 //    vector<vector<Piece*>> m_Board;
 //    MoveSet m_Moves;
 //    bool isWhite = true;
-//};
-//
-//#endif
+};
+
+#endif

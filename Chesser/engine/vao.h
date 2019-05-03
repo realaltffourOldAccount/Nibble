@@ -10,6 +10,16 @@
 
 namespace VAOs {
 
+struct ShaderAttrib {
+    int index;
+    GLsizei size;
+    GLsizei stride;
+    void* offset;
+    GLenum type;
+    bool isNorm = false;
+    bool isEnable = true;
+};
+
 class VAO {
 public:
     VAO(BufferObject* vbo, vector<ShaderAttrib*> attribs) {
@@ -18,7 +28,7 @@ public:
         vbo->bind();
         for (int i = 0; i < attribs.size(); i++)
           this->enableAttrib(attribs[i]);
-        glBindVertexArray(ID);
+        glBindVertexArray(0);
     }
 
     void bind() {
@@ -31,12 +41,10 @@ public:
 
 private:
     void enableAttrib(ShaderAttrib* attrib) {
-        glBindVertexArray(ID);
         glEnableVertexAttribArray(attrib->index);
         glVertexAttribPointer(attrib->index, attrib->size, 
             attrib->type, 
             attrib->isNorm, attrib->stride, attrib->offset);
-        glBindVertexArray(0);
     }
 
 private:
@@ -47,20 +55,12 @@ private:
 };
 
 
-
-struct ShaderAttrib() {
-    int index;
-    GLsizei size;
-    GLsizei stride;
-    void* offset;
-    GLenum type;
-    bool isNorm = false;
-    bool isEnable = true;
-}
-
 static std::map<std::string, VAO*> vao;
 
-static void createVAO(std::string name, BufferObject* vbo);
+static void createVAO(std::string name,BufferObject* vbo , vector<ShaderAttrib*> attribs) {
+    VAO* new_vao = new VAO(vbo, attribs);
+    vao.insert(std::pair<std::string, VAO*>(name, new_vao));
+}
 
 }  // namespace VAOs
 

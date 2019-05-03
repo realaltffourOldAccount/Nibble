@@ -1,5 +1,4 @@
-#include "chsr_api.h"
-
+#include "defs.h"
 // Our Main Function
 int __main(int argc, char* argv[]);
 
@@ -33,5 +32,4 @@ int __main(int argc, char* argv[]) {
     game.Start();
     return 0;
 }
-
 
