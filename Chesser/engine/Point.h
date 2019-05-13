@@ -1,12 +1,18 @@
 #ifndef POINT_H
 #define POINT_H
+#pragma once
+#include <math.h>
 
-struct Point {
-    float x;
-    float y;
-
-    Point() {}
-    Point(int _x, int _y) {x = _x; y = _y;}
-};
-
-#endif //POINT_H
+namespace GEngine {
+    struct Point {
+        float x, y;
+        
+        Point() {}
+        Point(float _x, float _y) {x=_x; y=_y;}
+    
+        float dist(const Point& pnt) const {
+            return sqrt(pow(pnt.x-this->x, 2)+pow((pnt.y-this->y), 2));
+        }
+    };
+}
+#endif

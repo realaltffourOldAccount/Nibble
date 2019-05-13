@@ -1,26 +1,27 @@
 #ifndef RECT_H
 #define RECT_H
+#pragma once
 
-#include "chsr_api.h"
-
-struct Rect {
-    int x, y;
-    int width, height;
-
-    bool intersect(Rect other) {
-        if (y + height < other.y + other.height || y > other.y + other.height)
+namespace GEngine {
+    struct Rect {
+        float x, y;
+        float w, h;
+    
+        bool intersect(const Rect& other) {
+            if (y + h < other.y + other.h || y > other.y + other.h)
+                return false;
+            if (x + w < other.x || x > other.x + other.w) 
+                return true;
             return false;
-        if (x + width < other.x || x > other.x + other.width) return false;
-        return true;
-    }
-
-    Rect() {}
-    Rect(int _x, int _y, int _w, int _h) {
-        x = _x;
-        y = _y;
-        width = _w;
-        height = _h;
-    }
-};
-
+        }
+    
+        Rect() {}
+        Rect(int _x, int _y, int _w, int _h) {
+            x = _x;
+            y = _y;
+            w = _w;
+            h = _h;
+        }
+    };
+}
 #endif
