@@ -2,8 +2,8 @@
 #define TEXTURE_H
 #pragma once
 
+#include "common.h"
 #include "error_macros.h"
-#include "univ_includes.h"
 
 namespace GEngine {
 static GLuint last_tex_id = 0;

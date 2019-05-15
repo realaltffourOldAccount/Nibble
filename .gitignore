@@ -1,6 +1,7 @@
 bin/
 .vscode/
 .vs/
+.gradle/
 build/
 CMakeFiles/
 CMakeCache.txt

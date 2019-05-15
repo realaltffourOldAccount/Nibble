@@ -33,12 +33,18 @@ extern "C" {
 
 #endif
 
+#ifndef __EMSCRIPTEN__
+#ifdef __WINDOWS__
+#define GLOG_NO_ABBREVIATED_SEVERITIES
+#include <windows.h>
+#endif
+#include <gflags/gflags.h>
+#include <glog/logging.h>
+#endif
+
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/transform.hpp>
-#include <spdlog/sinks/basic_file_sink.h>
-#include <spdlog/sinks/stdout_color_sinks.h>
-#include <spdlog/spdlog.h>
 
 /*
         Universal files
@@ -54,6 +60,7 @@ extern "C" {
 */
 #include <algorithm>
 #include <deque>
+#include <functional>
 #include <map>
 #include <set>
 #include <sstream>

@@ -1,7 +1,7 @@
 #ifndef __INIT_H
 #define __INIT_H
 
-#include "univ_includes.h"
+#include "common.h"
 
 #ifndef __ANDROID__
 static void error_callback(int error, const char* description) {}
@@ -31,8 +31,8 @@ static void initGLAD(void) {
 }
 #endif
 
-static void initApp(void) {
-    Log::Init();
+static void initApp(int argc, char* argv[]) {
+    Log::Init(argc, argv);
     Log::info("Detected OS: " + std::string(os_to_str(__OS__)));
 #ifndef __ANDROID__
     initGLFW();

@@ -4,8 +4,8 @@
 
 #include "BufferObject.h"
 #include "VBO.h"
+#include "common.h"
 #include "error_macros.h"
-#include "univ_includes.h"
 
 namespace GEngine {
 struct ShaderAttrib {

@@ -14,6 +14,10 @@ GEngine::Window::Window(bool auto_size, int width, int height,
 
 GEngine::Window::~Window(void) { this->destroy(); }
 
+void GEngine::Window::setEventHandler(const EventCallbackFn& callback) {
+    EventCallback = callback;
+}
+
 GEngine::WindowState GEngine::Window::getState(void) const {
     return this->_state;
 }
@@ -55,13 +59,14 @@ void GEngine::Window::__init(int w, int h, std::string str) { // Create window
     glfwSetMouseButtonCallback(this->_window, mouse_button_callback);
     // Cap fps
     glfwSwapInterval(0);
-    // Set up mvp
-    this->_mvp = new GEngine::MVP();
-    this->__update_mvp();
 
     // Set up state
     glfwGetFramebufferSize(this->_window, &(this->_state._win_width),
                            &(this->_state._win_height));
+
+    // Set up mvp
+    this->_mvp = new GEngine::MVP();
+    this->__update_mvp();
 }
 void GEngine::Window::__loop(void) {
     Log::info("Started Game Loop.");
@@ -78,6 +83,7 @@ void GEngine::Window::__iter(void) {
     glfwPollEvents();
     this->tick();
 }
+void GEngine::Window::__underhood_tick(void) {}
 
 void GEngine::Window::__update_mvp(void) {
     this->_projection =
@@ -89,10 +95,59 @@ void GEngine::Window::OnResize(int width, int height) {
     this->_state._win_width = width;
     this->_state._win_height = height;
     this->__update_mvp();
+
+    GEngine::WindowResizeEvent event(width, height);
+    this->EventCallback(event);
 }
 void GEngine::Window::OnMousePos(double xpos, double ypos) {
     this->_state._mouse_pos_x = xpos;
     this->_state._mouse_pos_y = ypos;
+
+    GEngine::MouseMovedEvent event(xpos, ypos);
+    this->EventCallback(event);
 }
-void GEngine::Window::OnCursorEntered(void) { this->_state._isMouseIn = true; }
-void GEngine::Window::OnCursorExit(void) { this->_state._isMouseIn = false; }
+void GEngine::Window::OnCursorEntered(void) {
+    this->_state._isMouseIn = true;
+
+    GEngine::MouseEnteredEvent event;
+    this->EventCallback(event);
+}
+void GEngine::Window::OnCursorExit(void) {
+    this->_state._isMouseIn = false;
+
+    GEngine::MouseExitedEvent event;
+    this->EventCallback(event);
+}
+
+void GEngine::Window::OnKey(int key, int scancode, int action, int mods) {
+    switch (action) {
+    case GLFW_PRESS: {
+        GEngine::KeyPressedEvent event(key, 0);
+        this->EventCallback(event);
+        break;
+    }
+    case GLFW_RELEASE: {
+        GEngine::KeyReleasedEvent event(key);
+        this->EventCallback(event);
+        break;
+    }
+    case GLFW_REPEAT: {
+        GEngine::KeyPressedEvent event(key, 1);
+        this->EventCallback(event);
+    }
+    }
+}
+void GEngine::Window::OnMouseButton(int button, int action, int mods) {
+    switch (action) {
+    case GLFW_PRESS: {
+        GEngine::MouseButtonPressedEvent event(button);
+        this->EventCallback(event);
+        break;
+    }
+    case GLFW_RELEASE: {
+        GEngine::MouseButtonReleasedEvent event(button);
+        this->EventCallback(event);
+        break;
+    }
+    }
+}

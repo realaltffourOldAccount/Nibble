@@ -1,6 +1,6 @@
 #ifndef ERROR_MACROS_h
 #define ERROR_MACROS_h
-#include "univ_includes.h"
+#include "common.h"
 
 static void __err_check(void) {
     // error occured

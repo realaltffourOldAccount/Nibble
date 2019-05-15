@@ -2,7 +2,7 @@
 #define OBJECT_H
 #pragma once
 
-#include "univ_includes.h"
+#include "common.h"
 
 #include "engine/Point.h"
 #include "engine/Rect.h"

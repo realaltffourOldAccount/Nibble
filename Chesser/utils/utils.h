@@ -3,6 +3,7 @@
 #pragma once
 #include <set>
 #include <string>
+#include <vector>
 using namespace std;
 
 static std::string read_file(std::string filename) {

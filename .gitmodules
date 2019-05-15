@@ -4,3 +4,12 @@
 [submodule "deps/GLM"]
 	path = deps/GLM
 	url = https://github.com/g-truc/glm
+[submodule "deps/glog"]
+	path = deps/glog
+	url = https://github.com/google/glog.git
+[submodule "deps/gflags"]
+	path = deps/gflags
+	url = https://github.com/gflags/gflags.git
+[submodule "deps/GLFM"]
+	path = deps/GLFM
+	url = https://github.com/brackeen/glfm.git

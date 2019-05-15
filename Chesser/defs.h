@@ -26,7 +26,7 @@
 #define __OS_STR_UNKOWN__ "Unkown OS"
 
 #if defined(_WIN32)
-#ifdef defined(_WIN64)
+#if defined(_WIN64)
 #define __OS__ __OS_WIN64__
 #define __OS_STR__ __OS_STR_WIN64__
 #else
@@ -63,10 +63,14 @@ static const char* os_to_str(int id) {
     } else if (id == 4) {
         // apple
         return __OS_STR_APPLE__;
-    } else if (id == 5) {
-        // unkown
+    } else if (id == 6) {
+        // browser
         return __OS_STR_BROWSER__;
+    } else if (id == 5) {
+        // android
+        return __OS_STR_ANDROID__;
     } else
+        // unkown
         return __OS_STR_UNKOWN__;
 }
 

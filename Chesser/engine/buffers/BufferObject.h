@@ -2,8 +2,8 @@
 #define BUFFER_OBJ_H
 #pragma once
 
+#include "common.h"
 #include "error_macros.h"
-#include "univ_includes.h"
 
 namespace GEngine {
 class BufferObject {

@@ -7,8 +7,8 @@
 #define SHADER_ATTRIB_COLOR 1
 #define SHADER_ATTRIB_TEXCOORD 2 // if needed
 
+#include "common.h"
 #include "error_macros.h"
-#include "univ_includes.h"
 
 namespace GEngine {
 class Shader {

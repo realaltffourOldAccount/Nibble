@@ -6,6 +6,7 @@ include(cotire)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+set(CMAKE_SKIP_INSTALL_RULES ON)
 
 message("${CMAKE_CXX_COMPILER_ID}")
 
@@ -60,8 +61,19 @@ set(GLM_QUIET OFF CACHE BOOL "" FORCE)
 set(GLM_TEST_ENABLE OFF CACHE BOOL "" FORCE)
 add_subdirectory("deps/GLM/")
 
-# spdlog
-add_subdirectory("deps/spdlog/")
+if (NOT EMSCRIPTEN)
+# Options of google's libraries
+set(BUILD_TESTING OFF CACHE BOOL "" FORCE)
+
+set(BUILD_STATIC_LIBS ON CACHE BOOL "" FORCE)
+set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
+
+# GLOG
+add_subdirectory("deps/glog")
+
+# GFLAGS
+add_subdirectory("deps/gflags")
+endif()
 
 # Chesser
 if (NOT EMSCRIPTEN)
@@ -74,9 +86,8 @@ include_directories("Chesser/")
 include_directories("deps/GLFW/include")
 include_directories("deps/GLAD/include")
 include_directories("deps/GLM/")
-include_directories("deps/spdlog/include/")
-include_directories("deps/freeimage/")
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D static_link")
 
 add_executable(
     "Chesser"
@@ -85,7 +96,7 @@ add_executable(
     ${chesser_hdrs}
 )
 
-target_link_libraries("Chesser" glm glfw ${GLFW_LIBRARIES} glad)
+target_link_libraries("Chesser" glfw ${GLFW_LIBRARIES} glad glm glog::glog gflags::gflags) 
 cotire("Chesser")
 endif()
 
@@ -93,6 +104,8 @@ endif()
 if (EMSCRIPTEN)
 
 project ("Chesser_EMCC")
+
+add_definitions(-D__EMSCRIPTEN__)
 
 include_directories("Chesser/")
 include_directories("deps/GLFW/include")
@@ -109,7 +122,7 @@ add_executable(
     ${chesser_srcs}
     ${chesser_hdrs}
 )
-# Link non 3rd-party deps
+# Link 3rd-party deps
 target_link_libraries("Chesser_EMCC" glm)
 
 # Use WebGL3 And GLFW3 and stb_image
@@ -122,7 +135,7 @@ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O1 -g -s ASSERTIONS=2")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3 ")
 
 # Set Secondary Options
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 --emrun --preload-file ${CMAKE_SOURCE_DIR}/assets@/assets --preload-file ${CMAKE_SOURCE_DIR}/Chesser/engine/glsl@/glsl")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 --emrun --preload-file ${CMAKE_SOURCE_DIR}/assets@/assets --preload-file ${CMAKE_SOURCE_DIR}/Chesser/engine/glsl@/glsl")
 
 # Generate HTML
 set(CMAKE_EXECUTABLE_SUFFIX ".html")

@@ -2,9 +2,10 @@
 #define WINDOW_H
 #pragma once
 
+#include "common.h"
 #include "error_macros.h"
-#include "univ_includes.h"
 
+#include <engine/events/events.h>
 #include <engine/mvp/MVP.h>
 
 #include "__init.h"
@@ -19,8 +20,12 @@ struct WindowState {
 // This window is used for desktop/Browser
 class Window {
   public:
+    using EventCallbackFn = std::function<void(GEngine::Event& e)>;
+
     Window(bool auto_size, int width, int height, std::string title);
     ~Window(void);
+
+    void setEventHandler(const EventCallbackFn& callback);
 
     void start(void);
     void destroy(void);
@@ -28,10 +33,6 @@ class Window {
     WindowState getState(void) const;
     GEngine::MVP* getMVP(void) const;
     glm::mat4 getProj(void) const;
-
-  public: // GLFW Events
-    virtual void OnKey(int key, int scancode, int action, int mods) = 0;
-    virtual void OnMouseButton(int button, int action, int mods) = 0;
 
   protected: // Custom Events
     virtual void tick(void) = 0;
@@ -43,13 +44,18 @@ class Window {
     GEngine::MVP* _mvp = nullptr;
     glm::mat4 _projection = glm::mat4(1.0f);
 
+    EventCallbackFn EventCallback;
+
   public: // Funcs
     void __init(int w, int h, std::string str);
     void __loop(void);
     void __iter(void);
+    void __underhood_tick(void);
     void __update_mvp(void);
 
   public: // GLFW Events Funcs
+    void OnKey(int key, int scancode, int action, int mods);
+    void OnMouseButton(int button, int action, int mods);
     void OnResize(int width, int height);
     void OnMousePos(double xpos, double ypos);
     void OnCursorEntered(void);

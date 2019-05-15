@@ -6,7 +6,7 @@
 */
 #include "defs.h"
 #if (__OS__ == __OS_WIN32__) || (__OS__ == __OS_WIN64__)
-#include <Windows.h>
+#include <windows.h>
 #elif (__OS__ == __OS_LINUX__)
 #include <unistd.h>
 #endif
@@ -15,10 +15,10 @@
     Api Includes
 */
 #include "__init.h"
+#include "common.h"
 #include "error_macros.h"
 #include "globals.h"
 #include "macros.h"
-#include "univ_includes.h"
 
 /*
     Api Graphics Engine
