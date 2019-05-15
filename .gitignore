@@ -1,7 +1,6 @@
 bin/
 .vscode/
 .vs/
-.gradle/
 build/
 CMakeFiles/
 CMakeCache.txt
@@ -33,3 +32,11 @@ CMakeDoxyfile.in
 *.rar
 *.tar
 *.zip
+
+# Android #
+###########
+.gradle/
+.idea/
+gradle/
+*.iml
+local.properties
