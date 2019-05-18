@@ -32,7 +32,7 @@ static void Init(int argc, char* argv[]) {
 #endif
 }
 
-static void error(std::string msg) {
+static inline void error(std::string msg) {
 #ifndef __EMSCRIPTEN__
     LOG(ERROR) << msg;
 #else
@@ -40,7 +40,7 @@ static void error(std::string msg) {
 #endif
 }
 
-static void info(std::string msg) {
+static inline void info(std::string msg) {
 #ifndef __EMSCRIPTEN__
     LOG(INFO) << msg;
 #else
@@ -48,7 +48,7 @@ static void info(std::string msg) {
 #endif
 }
 
-static void warn(std::string msg) {
+static inline void warn(std::string msg) {
 #ifndef __EMSCRIPTEN__
     LOG(INFO) << msg;
 #else
@@ -56,7 +56,7 @@ static void warn(std::string msg) {
 #endif
 }
 
-static void trace(std::string msg) {
+static inline void trace(std::string msg) {
 #ifndef __EMSCRIPTEN__
     LOG(INFO) << msg;
 #else
