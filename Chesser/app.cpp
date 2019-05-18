@@ -1,6 +1,10 @@
-#include "defs.h"
-// Our Main Function
+#include "common.h"
+// Main Function
+#ifdef __ANDROID__
+int __main(GLFMDisplay* display);
+#else
 int __main(int argc, char* argv[]);
+#endif
 
 // Cross-Platform Main Function
 #if (__OS__ == __OS_WIN64__) || (__OS__ == __OS_WIN32__)
@@ -10,6 +14,8 @@ INT WinMain(HINSTANCE, HINSTANCE, PSTR, INT) { return __main(0, nullptr); }
 #else
 int main(int argc, char* argv[]) { return __main(argc, argv); }
 #endif
+#elif defined(__ANDROID__)
+void glfmMain(GLFMDisplay* display) { __main(display); }
 #else
 int main(int argc, char* argv[]) { return __main(argc, argv); }
 #endif
@@ -29,22 +35,10 @@ class App : public GEngine::Window {
   public:
 #ifndef __ANDROID__
     App(void) : Window(false, WINDOW_WIDTH, WINDOW_HEIGHT, "Chesser") {
+        this->__init();
 #else
-    App(void) : Window() {
-#endif
-        this->setEventHandler(eventHandle);
-        object = new GEngine::Object("assets/awesomeface.png",
-                                     GEngine::Rect(50, 50, 100, 100));
-        mvp = new GEngine::MVP();
-        proj = glm::ortho(0.0f, float(this->getState()._win_width), 0.0f,
-                          float(this->getState()._win_height));
-        mvp->updateProj(proj);
-
-#if !defined(__EMSCRIPTEN__) && !defined(__ANDROID__)
-        shader = new GEngine::Shader("glsl/tex_vs.glsl", "glsl/tex_fs.glsl");
-#else
-        shader =
-            new GEngine::Shader("glsl/tex_vs_es.glsl", "glsl/tex_fs_es.glsl");
+    App(GLFMDisplay* display)
+        : Window(display){
 #endif
     };
     ~App(void) {}
@@ -53,28 +47,64 @@ class App : public GEngine::Window {
     void OnKey(int key, int scancode, int action, int mods) {}
     void OnMouseButton(int button, int action, int mods) {}
 
-    void eventHandler(GEngine::Event& evt) {}
+    void eventHandler(GEngine::Event& evt) { Log::info(evt.ToString()); }
 
   public:
-    void tick(void) {}
-    void render(void) {
+    void tick(void) override {}
+    void render(void) override {
         shader->bind();
         mvp->bind(shader->getProgId());
         object->bind(0);
 
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+        GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0));
     }
-};
-static App* app = nullptr;
-void eventHandle(GEngine::Event& evt) { /*app->eventHandler(evt);*/
-}
 
+  private:
+    bool inited = false;
+#ifndef __ANDROID__
+    void __init(void){
+#else
+    void init(void) override {
+#endif
+        this->setEventHandler(eventHandle);
+    object = new GEngine::Object("assets/awesomeface.png",
+                                 GEngine::Rect(100, 100, 50, 50));
+    mvp = new GEngine::MVP();
+    proj = glm::ortho(0.0f, float(this->getState()._win_width), 0.0f,
+                      float(this->getState()._win_height));
+    mvp->updateProj(proj);
+
+#if !defined(__EMSCRIPTEN__) && !defined(__ANDROID__)
+    shader = new GEngine::Shader("glsl/vs.glsl", "glsl/fs.glsl");
+#elif defined(__EMSCRIPTEN__)
+        shader =
+            new GEngine::Shader("glsl/vs_es_em.glsl", "glsl/fs_es_em.glsl");
+#elif defined(__ANDROID__)
+shader = new GEngine::Shader("glsl/vs_es.glsl", "glsl/fs_es.glsl");
+#endif
+}
+}
+;
+
+static App* app = nullptr;
+void eventHandle(GEngine::Event& evt) { app->eventHandler(evt); }
+
+#ifdef __ANDROID__
+int __main(GLFMDisplay* display) {
+    initApp(0, nullptr);
+#else
 int __main(int argc, char* argv[]) {
     initApp(argc, argv);
+#endif
 
+#ifdef __ANDROID__
+    App* _app = new App(display);
+    app = _app;
+#else
     App _app;
     app = &_app;
-    _app.start();
+#endif
+    app->start();
 
     return 0;
 }

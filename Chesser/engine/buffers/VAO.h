@@ -33,6 +33,7 @@ class VAO {
 
     GEngine::VBO* _vbo = nullptr;
     GLuint _vaoID;
+    vector<ShaderAttrib*> _attribs;
 };
 } // namespace GEngine
 

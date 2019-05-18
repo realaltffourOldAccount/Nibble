@@ -1,5 +1,5 @@
-#ifndef UNIV_INC_H
-#define UNIV_INC_H
+#ifndef COMMON_H
+#define COMMON_H
 #pragma once
 
 /*
@@ -19,17 +19,10 @@
 #endif
 
 #ifdef __ANDROID__
-
-extern "C" {
-#include <EGL/egl.h>
-#include <GLES3/gl3.h>
-#include <android/log.h>
-#include <android_native_app_glue.h>
-#include <errno.h>
-#include <jni.h>
-#include <stdlib.h>
-#include <unistd.h>
-}
+#define GLFM_INCLUDE_ES3
+#include <glfm.h>
+#define FILE_COMPAT_ANDROID_ACTIVITY glfmAndroidGetActivity()
+#include <vendor/file_compat.h>
 
 #endif
 

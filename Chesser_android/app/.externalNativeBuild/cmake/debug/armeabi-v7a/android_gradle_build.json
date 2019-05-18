@@ -1,0 +1,239 @@
+
+{
+	"buildFiles" : 
+	[
+		"/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/CMakeLists.txt",
+		"/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/CMakeLists.txt",
+		"/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM/CMakeLists.txt",
+		"/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM/glm/CMakeLists.txt",
+		"/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM/test/CMakeLists.txt",
+		"/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/gflags/CMakeLists.txt"
+	],
+	"cFileExtensions" : [ "c" ],
+	"cleanCommands" : 
+	[
+		"/home/akham/Android/Sdk/cmake/3.6.4111459/bin/cmake --build /home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/armeabi-v7a --target clean"
+	],
+	"cppFileExtensions" : [ "cc", "cpp" ],
+	"libraries" : 
+	{
+		"Chesser_lib-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "Chesser_lib",
+			"buildCommand" : "/home/akham/Android/Sdk/cmake/3.6.4111459/bin/cmake --build /home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/armeabi-v7a --target Chesser_lib",
+			"buildType" : "debug",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi18 --gcc-toolchain=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -DChesser_lib_EXPORTS -DGFLAGS_IS_A_DLL=0 -D__ANDROID__ -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/miniglog -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM -Ideps/gflags/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -std=c++14  -c ",
+					"src" : "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/Log.cpp",
+					"workingDirectory" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi18 --gcc-toolchain=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -DChesser_lib_EXPORTS -DGFLAGS_IS_A_DLL=0 -D__ANDROID__ -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/miniglog -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM -Ideps/gflags/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -std=c++14  -c ",
+					"src" : "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/app.cpp",
+					"workingDirectory" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi18 --gcc-toolchain=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -DChesser_lib_EXPORTS -DGFLAGS_IS_A_DLL=0 -D__ANDROID__ -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/miniglog -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM -Ideps/gflags/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -std=c++14  -c ",
+					"src" : "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/engine/buffers/BufferObject.cpp",
+					"workingDirectory" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi18 --gcc-toolchain=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -DChesser_lib_EXPORTS -DGFLAGS_IS_A_DLL=0 -D__ANDROID__ -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/miniglog -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM -Ideps/gflags/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -std=c++14  -c ",
+					"src" : "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/engine/buffers/IBO.cpp",
+					"workingDirectory" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi18 --gcc-toolchain=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -DChesser_lib_EXPORTS -DGFLAGS_IS_A_DLL=0 -D__ANDROID__ -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/miniglog -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM -Ideps/gflags/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -std=c++14  -c ",
+					"src" : "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/engine/buffers/VAO.cpp",
+					"workingDirectory" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi18 --gcc-toolchain=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -DChesser_lib_EXPORTS -DGFLAGS_IS_A_DLL=0 -D__ANDROID__ -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/miniglog -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM -Ideps/gflags/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -std=c++14  -c ",
+					"src" : "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/engine/buffers/VBO.cpp",
+					"workingDirectory" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi18 --gcc-toolchain=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -DChesser_lib_EXPORTS -DGFLAGS_IS_A_DLL=0 -D__ANDROID__ -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/miniglog -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM -Ideps/gflags/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -std=c++14  -c ",
+					"src" : "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/engine/mvp/MVP.cpp",
+					"workingDirectory" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi18 --gcc-toolchain=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -DChesser_lib_EXPORTS -DGFLAGS_IS_A_DLL=0 -D__ANDROID__ -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/miniglog -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM -Ideps/gflags/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -std=c++14  -c ",
+					"src" : "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/engine/object/Object.cpp",
+					"workingDirectory" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi18 --gcc-toolchain=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -DChesser_lib_EXPORTS -DGFLAGS_IS_A_DLL=0 -D__ANDROID__ -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/miniglog -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM -Ideps/gflags/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -std=c++14  -c ",
+					"src" : "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/engine/shaders/Shaders.cpp",
+					"workingDirectory" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi18 --gcc-toolchain=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -DChesser_lib_EXPORTS -DGFLAGS_IS_A_DLL=0 -D__ANDROID__ -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/miniglog -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM -Ideps/gflags/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -std=c++14  -c ",
+					"src" : "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/engine/textures/Texture.cpp",
+					"workingDirectory" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi18 --gcc-toolchain=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -DChesser_lib_EXPORTS -DGFLAGS_IS_A_DLL=0 -D__ANDROID__ -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/miniglog -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM -Ideps/gflags/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -std=c++14  -c ",
+					"src" : "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/engine/window/Window_android.cpp",
+					"workingDirectory" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi18 --gcc-toolchain=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -DChesser_lib_EXPORTS -DGFLAGS_IS_A_DLL=0 -D__ANDROID__ -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/miniglog -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM -Ideps/gflags/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -std=c++14  -c ",
+					"src" : "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/engine/window/Window_desktop.cpp",
+					"workingDirectory" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi18 --gcc-toolchain=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -DChesser_lib_EXPORTS -DGFLAGS_IS_A_DLL=0 -D__ANDROID__ -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/miniglog -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM -Ideps/gflags/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -std=c++14  -c ",
+					"src" : "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/game/Game.cpp",
+					"workingDirectory" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi18 --gcc-toolchain=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -DChesser_lib_EXPORTS -DGFLAGS_IS_A_DLL=0 -D__ANDROID__ -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/miniglog -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM -Ideps/gflags/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -std=c++14  -c ",
+					"src" : "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/globals.cpp",
+					"workingDirectory" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi18 --gcc-toolchain=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -DChesser_lib_EXPORTS -DGFLAGS_IS_A_DLL=0 -D__ANDROID__ -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/miniglog -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM -Ideps/gflags/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -std=c++14  -c ",
+					"src" : "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/widgets/Layout.cpp",
+					"workingDirectory" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				}
+			],
+			"output" : "/home/akham/Desktop/Chesser/Chesser_android/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libChesser_lib.so",
+			"toolchain" : "16816159029170451693"
+		},
+		"gflags_nothreads_static-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "gflags_nothreads_static",
+			"buildCommand" : "/home/akham/Android/Sdk/cmake/3.6.4111459/bin/cmake --build /home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/armeabi-v7a --target gflags_nothreads_static",
+			"buildType" : "debug",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi18 --gcc-toolchain=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -DGFLAGS_IS_A_DLL=0 -DNO_THREADS -Ideps/gflags/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/gflags/src -Ideps/gflags/include/gflags  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -std=c++14  -c ",
+					"src" : "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/gflags/src/gflags.cc",
+					"workingDirectory" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi18 --gcc-toolchain=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -DGFLAGS_IS_A_DLL=0 -DNO_THREADS -Ideps/gflags/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/gflags/src -Ideps/gflags/include/gflags  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -std=c++14  -c ",
+					"src" : "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/gflags/src/gflags_reporting.cc",
+					"workingDirectory" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi18 --gcc-toolchain=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -DGFLAGS_IS_A_DLL=0 -DNO_THREADS -Ideps/gflags/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/gflags/src -Ideps/gflags/include/gflags  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -std=c++14  -c ",
+					"src" : "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/gflags/src/gflags_completions.cc",
+					"workingDirectory" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				}
+			],
+			"output" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/armeabi-v7a/deps/gflags/libgflags_nothreads_debug.a",
+			"toolchain" : "16816159029170451693"
+		},
+		"glfm-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "glfm",
+			"buildCommand" : "/home/akham/Android/Sdk/cmake/3.6.4111459/bin/cmake --build /home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/armeabi-v7a --target glfm",
+			"buildType" : "debug",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi18 --gcc-toolchain=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/src -I/home/akham/Android/Sdk/ndk-bundle/sources/android/native_app_glue  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC   -Weverything -Wwrite-strings -Wno-padded -Wno-covered-switch-default  -std=gnu99    -c ",
+					"src" : "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/src/glfm_platform_android.c",
+					"workingDirectory" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi18 --gcc-toolchain=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/src -I/home/akham/Android/Sdk/ndk-bundle/sources/android/native_app_glue  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC   -Weverything -Wwrite-strings -Wno-padded -Wno-covered-switch-default  -std=gnu99 -DNDEBUG    -c ",
+					"src" : "/home/akham/Android/Sdk/ndk-bundle/sources/android/native_app_glue/android_native_app_glue.c",
+					"workingDirectory" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				}
+			],
+			"output" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/armeabi-v7a/deps/GLFM/libglfm.a",
+			"toolchain" : "16816159029170451693"
+		},
+		"glm_shared-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "glm_shared",
+			"buildCommand" : "/home/akham/Android/Sdk/cmake/3.6.4111459/bin/cmake --build /home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/armeabi-v7a --target glm_shared",
+			"buildType" : "debug",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi18 --gcc-toolchain=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -Dglm_shared_EXPORTS -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM/glm/..  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -Werror -Weverything -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-c++11-long-long -Wno-padded -Wno-gnu-anonymous-struct -Wno-nested-anon-types -Wno-undefined-reinterpret-cast -Wno-sign-conversion -Wno-unused-variable -Wno-missing-prototypes -Wno-unreachable-code -Wno-missing-variable-declarations -Wno-sign-compare -Wno-global-constructors -Wno-unused-macros -Wno-format-nonliteral -std=c++14  -c ",
+					"src" : "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM/glm/detail/glm.cpp",
+					"workingDirectory" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				}
+			],
+			"output" : "/home/akham/Desktop/Chesser/Chesser_android/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libglm_shared.so",
+			"toolchain" : "16816159029170451693"
+		},
+		"glm_static-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "glm_static",
+			"buildCommand" : "/home/akham/Android/Sdk/cmake/3.6.4111459/bin/cmake --build /home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/armeabi-v7a --target glm_static",
+			"buildType" : "debug",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi18 --gcc-toolchain=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot   -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM/glm/..  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -Werror -Weverything -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-c++11-long-long -Wno-padded -Wno-gnu-anonymous-struct -Wno-nested-anon-types -Wno-undefined-reinterpret-cast -Wno-sign-conversion -Wno-unused-variable -Wno-missing-prototypes -Wno-unreachable-code -Wno-missing-variable-declarations -Wno-sign-compare -Wno-global-constructors -Wno-unused-macros -Wno-format-nonliteral -std=c++14  -c ",
+					"src" : "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM/glm/detail/glm.cpp",
+					"workingDirectory" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				}
+			],
+			"output" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/armeabi-v7a/deps/GLM/glm/libglm_static.a",
+			"toolchain" : "16816159029170451693"
+		},
+		"miniglog-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "miniglog",
+			"buildCommand" : "/home/akham/Android/Sdk/cmake/3.6.4111459/bin/cmake --build /home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/armeabi-v7a --target miniglog",
+			"buildType" : "debug",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi18 --gcc-toolchain=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -D__ANDROID__ -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/miniglog -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -std=c++14  -c ",
+					"src" : "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/miniglog/glog/logging.cc",
+					"workingDirectory" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/armeabi-v7a"
+				}
+			],
+			"output" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/armeabi-v7a/libminiglog.a",
+			"toolchain" : "16816159029170451693"
+		}
+	},
+	"toolchains" : 
+	{
+		"16816159029170451693" : 
+		{
+			"cCompilerExecutable" : "/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang",
+			"cppCompilerExecutable" : "/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++"
+		}
+	}
+}

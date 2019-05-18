@@ -1,0 +1,13 @@
+[1/13] Building CXX object CMakeFiles/Chesser_lib.dir/Chesser/Log.cpp.o
+[2/13] Building CXX object CMakeFiles/Chesser_lib.dir/Chesser/app.cpp.o
+[3/13] Building CXX object CMakeFiles/Chesser_lib.dir/Chesser/engine/buffers/BufferObject.cpp.o
+[4/13] Building CXX object CMakeFiles/Chesser_lib.dir/Chesser/engine/buffers/IBO.cpp.o
+[5/13] Building CXX object CMakeFiles/Chesser_lib.dir/Chesser/engine/buffers/VAO.cpp.o
+[6/13] Building CXX object CMakeFiles/Chesser_lib.dir/Chesser/engine/buffers/VBO.cpp.o
+[7/13] Building CXX object CMakeFiles/Chesser_lib.dir/Chesser/engine/mvp/MVP.cpp.o
+[8/13] Building CXX object CMakeFiles/Chesser_lib.dir/Chesser/engine/object/Object.cpp.o
+[9/13] Building CXX object CMakeFiles/Chesser_lib.dir/Chesser/engine/shaders/Shaders.cpp.o
+[10/13] Building CXX object CMakeFiles/Chesser_lib.dir/Chesser/engine/textures/Texture.cpp.o
+[11/13] Building CXX object CMakeFiles/Chesser_lib.dir/Chesser/engine/window/Window_android.cpp.o
+[12/13] Building CXX object CMakeFiles/Chesser_lib.dir/Chesser/engine/window/Window_desktop.cpp.o
+[13/13] Linking CXX shared library /home/akham/Desktop/Chesser/Chesser_android/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libChesser_lib.so

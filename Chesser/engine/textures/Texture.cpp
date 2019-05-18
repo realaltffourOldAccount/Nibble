@@ -3,7 +3,6 @@
 #ifndef __EMSCRIPTEN__
 #define STB_IMAGE_IMPLEMENTATION
 #endif
-
 #include "vendor/stb_image.h"
 
 GEngine::Texture::Texture(std::string file, GLuint tex_id) {

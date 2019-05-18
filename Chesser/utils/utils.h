@@ -6,31 +6,6 @@
 #include <vector>
 using namespace std;
 
-static std::string read_file(std::string filename) {
-    FILE* f = fopen(filename.c_str(), "r");
-    char* buffer = 0;
-    long length;
-
-    if (f) {
-        fseek(f, 0, SEEK_END);
-        length = ftell(f);
-        fseek(f, 0, SEEK_SET);
-        buffer = (char*)malloc(length);
-        if (buffer) {
-            fread(buffer, 1, length, f);
-        }
-        printf("We are here");
-        fclose(f);
-    }
-
-    if (buffer) {
-        return std::string(buffer);
-    }
-
-    fclose(f);
-    return "";
-}
-
 static bool isInRange(int x, int begin, int end) {
     if (begin <= x <= end)
         return true;

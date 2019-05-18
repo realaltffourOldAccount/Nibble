@@ -23,7 +23,13 @@ enum class EventType {
     MouseScrolled,
     MouseEntered,
     MouseExited,
-    MouseState
+    MouseState,
+    Touch,
+    TouchHover,
+    TouchBegan,
+    TouchMoved,
+    TouchCancelled,
+    TouchEnded
 };
 
 enum EventCategory {
@@ -34,6 +40,7 @@ enum EventCategory {
     EventCategoryMouse = BIT(3),
     EventCategoryMouseState = BIT(4),
     EventCategoryMouseButton = BIT(5),
+    EventCategoryTouch = BIT(6),
 };
 
 #define EVENT_CLASS_TYPE(type)                                                 \
@@ -47,7 +54,6 @@ enum EventCategory {
 class Event {
   public:
     bool Handled = false;
-
     virtual EventType GetEventType() const = 0;
     virtual const char* GetName() const = 0;
     virtual int GetCategoryFlags() const = 0;

@@ -2,5 +2,5 @@
 
 mkdir build
 cd build
-cmake -DCMAKE_BUILD_TYPE=Release ..
-make
+cmake -GNinja -DCMAKE_BUILD_TYPE=Release ..
+ninja -j8

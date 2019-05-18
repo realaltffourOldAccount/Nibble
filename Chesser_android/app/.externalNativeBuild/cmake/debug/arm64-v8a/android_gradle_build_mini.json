@@ -1,0 +1,51 @@
+{
+  "buildFiles": [
+    "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/CMakeLists.txt",
+    "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/CMakeLists.txt",
+    "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM/CMakeLists.txt",
+    "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM/glm/CMakeLists.txt",
+    "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM/test/CMakeLists.txt",
+    "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/gflags/CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "/home/akham/Android/Sdk/cmake/3.6.4111459/bin/cmake --build /home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/arm64-v8a --target clean"
+  ],
+  "libraries": {
+    "glm_static-Debug-arm64-v8a": {
+      "artifactName": "glm_static",
+      "buildCommand": "/home/akham/Android/Sdk/cmake/3.6.4111459/bin/cmake --build /home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/arm64-v8a --target glm_static",
+      "abi": "arm64-v8a",
+      "output": "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/arm64-v8a/deps/GLM/glm/libglm_static.a"
+    },
+    "gflags_nothreads_static-Debug-arm64-v8a": {
+      "artifactName": "gflags_nothreads_static",
+      "buildCommand": "/home/akham/Android/Sdk/cmake/3.6.4111459/bin/cmake --build /home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/arm64-v8a --target gflags_nothreads_static",
+      "abi": "arm64-v8a",
+      "output": "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/arm64-v8a/deps/gflags/libgflags_nothreads_debug.a"
+    },
+    "Chesser_lib-Debug-arm64-v8a": {
+      "artifactName": "Chesser_lib",
+      "buildCommand": "/home/akham/Android/Sdk/cmake/3.6.4111459/bin/cmake --build /home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/arm64-v8a --target Chesser_lib",
+      "abi": "arm64-v8a",
+      "output": "/home/akham/Desktop/Chesser/Chesser_android/app/build/intermediates/cmake/debug/obj/arm64-v8a/libChesser_lib.so"
+    },
+    "glfm-Debug-arm64-v8a": {
+      "artifactName": "glfm",
+      "buildCommand": "/home/akham/Android/Sdk/cmake/3.6.4111459/bin/cmake --build /home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/arm64-v8a --target glfm",
+      "abi": "arm64-v8a",
+      "output": "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/arm64-v8a/deps/GLFM/libglfm.a"
+    },
+    "miniglog-Debug-arm64-v8a": {
+      "artifactName": "miniglog",
+      "buildCommand": "/home/akham/Android/Sdk/cmake/3.6.4111459/bin/cmake --build /home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/arm64-v8a --target miniglog",
+      "abi": "arm64-v8a",
+      "output": "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/arm64-v8a/libminiglog.a"
+    },
+    "glm_shared-Debug-arm64-v8a": {
+      "artifactName": "glm_shared",
+      "buildCommand": "/home/akham/Android/Sdk/cmake/3.6.4111459/bin/cmake --build /home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/arm64-v8a --target glm_shared",
+      "abi": "arm64-v8a",
+      "output": "/home/akham/Desktop/Chesser/Chesser_android/app/build/intermediates/cmake/debug/obj/arm64-v8a/libglm_shared.so"
+    }
+  }
+}

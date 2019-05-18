@@ -17,7 +17,8 @@ struct WindowState {
     int _mouse_pos_x, _mouse_pos_y;
     bool _isMouseIn = true;
 };
-// This window is used for desktop/Browser
+// This window Class is used for desktop/Browser
+#if (!defined(__ANDROID__))
 class Window {
   public:
     using EventCallbackFn = std::function<void(GEngine::Event& e)>;
@@ -97,6 +98,140 @@ static void resize_callback(GLFWwindow* window, int width, int height) {
     GEngine::Window* win = static_cast<GEngine::Window*>(data);
     win->OnResize(width, height);
 }
+#endif
+
+#ifdef __ANDROID__
+// This window Class is used for android
+class Window {
+  public:
+    using EventCallbackFn = std::function<void(GEngine::Event& e)>;
+
+    Window(GLFMDisplay* display);
+    ~Window(void);
+
+    void setEventHandler(const EventCallbackFn& callback);
+
+    void start(void);
+    void destroy(void);
+
+    WindowState getState(void) const;
+    GEngine::MVP* getMVP(void) const;
+    glm::mat4 getProj(void) const;
+
+    EventCallbackFn EventCallback;
+    WindowState _state;
+
+  protected: // Custom Events
+    virtual void tick(void) = 0;
+    virtual void render(void) = 0;
+    virtual void init(void) = 0;
+
+  private: // Vars
+    GLFMDisplay* _window;
+    GEngine::MVP* _mvp = nullptr;
+    glm::mat4 _projection = glm::mat4(1.0f);
+
+  public: // Funcs
+    void __init(GLFMDisplay* display);
+    void __surfaceCreated(void);
+    void __surfaceDestroyed(void);
+    void __iter(void);
+    void __underhood_tick(void);
+    void __update_mvp(void);
+};
+
+static void onSurfaceCreated(GLFMDisplay* display, const int width,
+                             const int height) {
+    Window* win = static_cast<Window*>(glfmGetUserData(display));
+    win->__surfaceCreated();
+}
+
+static void onSurfaceResized(GLFMDisplay* display, const int width,
+                             const int height) {
+    Window* win = static_cast<Window*>(glfmGetUserData(display));
+    win->_state._win_width = width;
+    win->_state._win_height = height;
+    win->__update_mvp();
+
+    GEngine::WindowResizeEvent event(width, height);
+    win->EventCallback(event);
+}
+
+static void onSurfaceDestroyed(GLFMDisplay* display) {
+    // When the surface is destroyed, all existing GL resources are no longer
+    // valid.
+    Window* win = static_cast<Window*>(glfmGetUserData(display));
+    win->__surfaceDestroyed();
+}
+
+static void onFrame(GLFMDisplay* display, const double frameTime) {
+    Window* win = static_cast<Window*>(glfmGetUserData(display));
+    win->__iter();
+}
+
+static bool onTouch(GLFMDisplay* display, int touch, GLFMTouchPhase phase,
+                    double x, double y) {
+    Window* win = static_cast<Window*>(glfmGetUserData(display));
+    switch (phase) {
+    case GLFMTouchPhaseBegan: {
+        GEngine::TouchBeganEvent event(x, y);
+        win->EventCallback(event);
+        break;
+    }
+    case GLFMTouchPhaseMoved: {
+        GEngine::TouchMovedEvent event(x, y);
+        win->EventCallback(event);
+        break;
+    }
+    case GLFMTouchPhaseEnded: {
+        GEngine::TouchEndedEvent event(x, y);
+        win->EventCallback(event);
+        break;
+    }
+    case GLFMTouchPhaseCancelled: {
+        GEngine::TouchCancelledEvent event(x, y);
+        win->EventCallback(event);
+        break;
+    }
+    case GLFMTouchPhaseHover: {
+        GEngine::TouchHoverEvent event(x, y);
+        win->EventCallback(event);
+        break;
+    }
+    default:
+        return false;
+        break;
+    }
+    return true;
+}
+
+static bool onKey(GLFMDisplay* display, GLFMKey keyCode, GLFMKeyAction action,
+                  int modifiers) {
+    Window* win = static_cast<Window*>(glfmGetUserData(display));
+    switch (action) {
+    case GLFMKeyActionPressed: {
+        GEngine::KeyPressedEvent event(keyCode, 0);
+        win->EventCallback(event);
+        break;
+    }
+    case GLFMKeyActionReleased: {
+        GEngine::KeyReleasedEvent event(keyCode);
+        win->EventCallback(event);
+        break;
+    }
+    case GLFMKeyActionRepeated: {
+        GEngine::KeyPressedEvent event(keyCode, 1);
+        win->EventCallback(event);
+        break;
+    }
+    default:
+        return false;
+        break;
+    }
+    return true;
+}
+
+#endif
 
 } // namespace GEngine
 

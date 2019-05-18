@@ -49,6 +49,15 @@ GEngine::Object::Object(std::string tex_file, Rect shape, Rect texcord,
         tl_x, tl_y, 0.0f, 1.0f, 1.0f, 1.0f, ttl_x, ttl_y, // top left
     };
 
+    //// Set the buffer data.
+    //_buffer_data = new GLfloat[32]{
+    //    // positions          // colors           // texture coords
+    //    0.5f,  0.5f,  0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f, // top right
+    //    0.5f,  -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, // bottom right
+    //    -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, // bottom left
+    //    -0.5f, 0.5f,  0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f  // top left
+    //};
+
     this->_vbo =
         new GEngine::VBO(GL_STATIC_DRAW, sizeof(GLfloat) * 32, _buffer_data);
 
@@ -100,9 +109,10 @@ void GEngine::Object::bind(int tex_index) const {
     this->_ibo->bind();
 }
 void GEngine::Object::unbind(int tex_index) const {
-    this->_vao->bind();
-    this->_vbo->bind();
-    this->_ibo->bind();
+    this->_tex->unbind();
+    this->_vao->unbind();
+    this->_vbo->unbind();
+    this->_ibo->unbind();
 }
 
 glm::mat4 GEngine::Object::getModel(void) const { return this->model; }

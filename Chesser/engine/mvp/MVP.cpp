@@ -1,17 +1,14 @@
 #include "MVP.h"
 
-GEngine::MVP::MVP(glm::mat4 model, 
-    glm::mat4 view, glm::mat4 proj) {
-        this->_model = model;
-        this->_view = view;
-        this->_proj = proj;
+GEngine::MVP::MVP(glm::mat4 model, glm::mat4 view, glm::mat4 proj) {
+    this->_model = model;
+    this->_view = view;
+    this->_proj = proj;
 
-        this->calc();
+    this->calc();
 }
 
-GEngine::MVP::~MVP(void) {
-    this->destroy();
-}
+GEngine::MVP::~MVP(void) { this->destroy(); }
 
 void GEngine::MVP::bind(GLuint program) {
     calc();
@@ -19,37 +16,25 @@ void GEngine::MVP::bind(GLuint program) {
     if (mvpID == -1) {
         THROW_ERROR("Could not locate MVP uniform matrix.");
     }
-    
+
     calc();
 
     glUniformMatrix4fv(mvpID, 1, GL_FALSE, &_mvp[0][0]);
 }
 
-void GEngine::MVP::updateModel(const glm::mat4 model) {
-    _model = model;
-}
+void GEngine::MVP::updateModel(const glm::mat4 model) { _model = model; }
 
-void GEngine::MVP::updateView(const glm::mat4 view) {
-    _view = view;
-}
+void GEngine::MVP::updateView(const glm::mat4 view) { _view = view; }
 
-void GEngine::MVP::updateProj(const glm::mat4 proj) {
-    _proj = proj;
-}
+void GEngine::MVP::updateProj(const glm::mat4 proj) { _proj = proj; }
 
-glm::mat4 GEngine::MVP::getModel(void) const {
-    return _model;
-}
-glm::mat4 GEngine::MVP::getView(void) const {
-    return _view;
-}
-glm::mat4 GEngine::MVP::getProj(void) const {
-    return _proj;
-}
+glm::mat4 GEngine::MVP::getModel(void) const { return _model; }
+glm::mat4 GEngine::MVP::getView(void) const { return _view; }
+glm::mat4 GEngine::MVP::getProj(void) const { return _proj; }
 
 glm::mat4 GEngine::MVP::getMVP(void) {
-   calc();
-   return _model; 
+    calc();
+    return _model;
 }
 
 void GEngine::MVP::destroy(void) {
@@ -59,6 +44,4 @@ void GEngine::MVP::destroy(void) {
     _mvp = glm::mat4(1.0f);
 }
 
-void GEngine::MVP::calc(void) {
-    _mvp = _proj * _view * _model;
-}
+void GEngine::MVP::calc(void) { _mvp = _proj * _view * _model; }

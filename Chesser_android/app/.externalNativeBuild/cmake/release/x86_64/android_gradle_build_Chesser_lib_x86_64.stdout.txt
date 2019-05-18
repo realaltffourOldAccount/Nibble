@@ -1,0 +1,2 @@
+[1/2] Building CXX object CMakeFiles/Chesser_lib.dir/Chesser/app.cpp.o
+[2/2] Linking CXX shared library /home/akham/Desktop/Chesser/Chesser_android/app/build/intermediates/cmake/release/obj/x86_64/libChesser_lib.so
