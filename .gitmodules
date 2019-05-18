@@ -10,9 +10,6 @@
 [submodule "deps/gflags"]
 	path = deps/gflags
 	url = https://github.com/gflags/gflags.git
-[submodule "deps/GLFM"]
-	path = deps/GLFM
-	url = https://github.com/brackeen/glfm.git
 [submodule "deps/miniglog"]
 	path = deps/miniglog
 	url = https://github.com/tzutalin/miniglog.git
