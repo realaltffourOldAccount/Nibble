@@ -13,3 +13,6 @@
 [submodule "deps/miniglog"]
 	path = deps/miniglog
 	url = https://github.com/tzutalin/miniglog.git
+[submodule "deps/GLFM"]
+	path = deps/GLFM
+	url = https://github.com/realaltffour/glfm.git
