@@ -3,7 +3,7 @@
 #pragma once
 
 /*
-        Deps Includes
+		Deps Includes
 */
 
 #if (!defined(__EMSCRIPTEN__)) && (!defined(__ANDROID__))
@@ -35,12 +35,14 @@
 #include <glog/logging.h>
 #endif
 
+#define GLM_ENABLE_EXPERIMENTAL
+#include <glm/ext.hpp>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/transform.hpp>
 
 /*
-        Universal files
+		Universal files
 */
 #include "Log.h"
 #include "defs.h"
@@ -49,7 +51,7 @@
 #include "utils/utils.h"
 
 /*
-        STL Includes
+		STL Includes
 */
 #include <algorithm>
 #include <deque>
@@ -66,12 +68,16 @@
 #include <ostream>
 
 #include <chrono>
+#if (__OS__ != __OS_WIN32__) || (__OS__ != __OS_WIN64__)
 #include <thread>
+#else
+#include <vendor/threads/mingw.thread.h>
+#endif
 
 using namespace std;
 
 /*
-        Univ Definitions
+		Univ Definitions
 */
 
 #endif

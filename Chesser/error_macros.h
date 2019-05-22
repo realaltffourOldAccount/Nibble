@@ -66,7 +66,7 @@ static void GLCheckError(int line, std::string func_name, std::string file) {
     GLenum err = glGetError();
     bool err_occ = false;
     while (err != GL_NO_ERROR) {
-        THROW_ERROR("OpenGL Error Occured.");
+        Log::error("OpenGL Error Occured.");
         std::string error_name = err2str(err);
 
         Log::error("Error Type: " + error_name + ".");

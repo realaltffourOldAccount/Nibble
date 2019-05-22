@@ -44,8 +44,9 @@ endif()
 
 # Libraries
 
-# Desktop Only libraires
+# Desktop Only Libraries
 if (NOT EMSCRIPTEN)
+add_definitions(-D__DESKTOP__)
 # GLFW
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
@@ -54,14 +55,11 @@ add_subdirectory("deps/GLFW/")
 
 # GLAD
 add_subdirectory("deps/GLAD/")
-endif()
 
-# GLM
-set(GLM_QUIET OFF CACHE BOOL "" FORCE)
-set(GLM_TEST_ENABLE OFF CACHE BOOL "" FORCE)
-add_subdirectory("deps/GLM/")
+# Freetype
+add_subdirectory("deps/freetype/")
+include_directories("deps/freetype/include/freetype")
 
-if (NOT EMSCRIPTEN)
 # Options of google's libraries
 set(BUILD_TESTING OFF CACHE BOOL "" FORCE)
 
@@ -73,7 +71,26 @@ add_subdirectory("deps/glog")
 
 # GFLAGS
 add_subdirectory("deps/gflags")
+
+# End of Desktop Only Libraries
 endif()
+
+# Emscripten Only Libraries
+if (EMSCRIPTEN)
+
+# Freetype-Emscripten
+add_subdirectory("deps/freetype-em/")
+include_directories("deps/freetype-em/include")
+
+# End of Emscripten Only Libraries
+endif()
+
+# Cross-Platform Libraries
+# GLM
+set(GLM_QUIET OFF CACHE BOOL "" FORCE)
+set(GLM_TEST_ENABLE OFF CACHE BOOL "" FORCE)
+add_subdirectory("deps/GLM/")
+# End of Cross-Platform Libraries
 
 # Chesser
 if (NOT EMSCRIPTEN)
@@ -96,7 +113,7 @@ add_executable(
     ${chesser_hdrs}
 )
 
-target_link_libraries("Chesser" glfw ${GLFW_LIBRARIES} glad glm glog::glog gflags::gflags) 
+target_link_libraries("Chesser" glfw ${GLFW_LIBRARIES} glad glm glog::glog gflags::gflags freetype) 
 cotire("Chesser")
 endif()
 
@@ -123,7 +140,7 @@ add_executable(
     ${chesser_hdrs}
 )
 # Link 3rd-party deps
-target_link_libraries("Chesser_EMCC" glm)
+target_link_libraries("Chesser_EMCC" glm freetype)
 
 # Use WebGL3 And GLFW3 and stb_image
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s FULL_ES3=1 -s USE_GLFW=3 -s STB_IMAGE=1")

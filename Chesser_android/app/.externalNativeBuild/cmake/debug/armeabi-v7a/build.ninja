@@ -107,6 +107,14 @@ build CMakeFiles/Chesser_lib.dir/Chesser/app.cpp.o: CXX_COMPILER__Chesser_lib /h
   IN_ABS = /home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/app.cpp
   OBJECT_DIR = CMakeFiles/Chesser_lib.dir
   OBJECT_FILE_DIR = CMakeFiles/Chesser_lib.dir/Chesser
+build CMakeFiles/Chesser_lib.dir/Chesser/engine/Timer.cpp.o: CXX_COMPILER__Chesser_lib /home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/engine/Timer.cpp || cmake_order_depends_target_Chesser_lib
+  DEFINES = -DChesser_lib_EXPORTS -DGFLAGS_IS_A_DLL=0 -D__ANDROID__
+  DEP_FILE = CMakeFiles/Chesser_lib.dir/Chesser/engine/Timer.cpp.o.d
+  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -std=c++14
+  INCLUDES = -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/miniglog -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM -Ideps/gflags/include
+  IN_ABS = /home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/engine/Timer.cpp
+  OBJECT_DIR = CMakeFiles/Chesser_lib.dir
+  OBJECT_FILE_DIR = CMakeFiles/Chesser_lib.dir/Chesser/engine
 build CMakeFiles/Chesser_lib.dir/Chesser/engine/buffers/BufferObject.cpp.o: CXX_COMPILER__Chesser_lib /home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/engine/buffers/BufferObject.cpp || cmake_order_depends_target_Chesser_lib
   DEFINES = -DChesser_lib_EXPORTS -DGFLAGS_IS_A_DLL=0 -D__ANDROID__
   DEP_FILE = CMakeFiles/Chesser_lib.dir/Chesser/engine/buffers/BufferObject.cpp.o.d
@@ -171,22 +179,38 @@ build CMakeFiles/Chesser_lib.dir/Chesser/engine/textures/Texture.cpp.o: CXX_COMP
   IN_ABS = /home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/engine/textures/Texture.cpp
   OBJECT_DIR = CMakeFiles/Chesser_lib.dir
   OBJECT_FILE_DIR = CMakeFiles/Chesser_lib.dir/Chesser/engine/textures
-build CMakeFiles/Chesser_lib.dir/Chesser/engine/window/Window_android.cpp.o: CXX_COMPILER__Chesser_lib /home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/engine/window/Window_android.cpp || cmake_order_depends_target_Chesser_lib
+build CMakeFiles/Chesser_lib.dir/Chesser/engine/window/WindowBase.cpp.o: CXX_COMPILER__Chesser_lib /home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/engine/window/WindowBase.cpp || cmake_order_depends_target_Chesser_lib
   DEFINES = -DChesser_lib_EXPORTS -DGFLAGS_IS_A_DLL=0 -D__ANDROID__
-  DEP_FILE = CMakeFiles/Chesser_lib.dir/Chesser/engine/window/Window_android.cpp.o.d
+  DEP_FILE = CMakeFiles/Chesser_lib.dir/Chesser/engine/window/WindowBase.cpp.o.d
   FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -std=c++14
   INCLUDES = -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/miniglog -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM -Ideps/gflags/include
-  IN_ABS = /home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/engine/window/Window_android.cpp
+  IN_ABS = /home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/engine/window/WindowBase.cpp
   OBJECT_DIR = CMakeFiles/Chesser_lib.dir
   OBJECT_FILE_DIR = CMakeFiles/Chesser_lib.dir/Chesser/engine/window
-build CMakeFiles/Chesser_lib.dir/Chesser/engine/window/Window_desktop.cpp.o: CXX_COMPILER__Chesser_lib /home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/engine/window/Window_desktop.cpp || cmake_order_depends_target_Chesser_lib
+build CMakeFiles/Chesser_lib.dir/Chesser/engine/window/android/Window_android.cpp.o: CXX_COMPILER__Chesser_lib /home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/engine/window/android/Window_android.cpp || cmake_order_depends_target_Chesser_lib
   DEFINES = -DChesser_lib_EXPORTS -DGFLAGS_IS_A_DLL=0 -D__ANDROID__
-  DEP_FILE = CMakeFiles/Chesser_lib.dir/Chesser/engine/window/Window_desktop.cpp.o.d
+  DEP_FILE = CMakeFiles/Chesser_lib.dir/Chesser/engine/window/android/Window_android.cpp.o.d
   FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -std=c++14
   INCLUDES = -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/miniglog -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM -Ideps/gflags/include
-  IN_ABS = /home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/engine/window/Window_desktop.cpp
+  IN_ABS = /home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/engine/window/android/Window_android.cpp
   OBJECT_DIR = CMakeFiles/Chesser_lib.dir
-  OBJECT_FILE_DIR = CMakeFiles/Chesser_lib.dir/Chesser/engine/window
+  OBJECT_FILE_DIR = CMakeFiles/Chesser_lib.dir/Chesser/engine/window/android
+build CMakeFiles/Chesser_lib.dir/Chesser/engine/window/desktop/Window_desktop.cpp.o: CXX_COMPILER__Chesser_lib /home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/engine/window/desktop/Window_desktop.cpp || cmake_order_depends_target_Chesser_lib
+  DEFINES = -DChesser_lib_EXPORTS -DGFLAGS_IS_A_DLL=0 -D__ANDROID__
+  DEP_FILE = CMakeFiles/Chesser_lib.dir/Chesser/engine/window/desktop/Window_desktop.cpp.o.d
+  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -std=c++14
+  INCLUDES = -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/miniglog -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM -Ideps/gflags/include
+  IN_ABS = /home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/engine/window/desktop/Window_desktop.cpp
+  OBJECT_DIR = CMakeFiles/Chesser_lib.dir
+  OBJECT_FILE_DIR = CMakeFiles/Chesser_lib.dir/Chesser/engine/window/desktop
+build CMakeFiles/Chesser_lib.dir/Chesser/engine/window/emscripten/Window_emscripten.cpp.o: CXX_COMPILER__Chesser_lib /home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/engine/window/emscripten/Window_emscripten.cpp || cmake_order_depends_target_Chesser_lib
+  DEFINES = -DChesser_lib_EXPORTS -DGFLAGS_IS_A_DLL=0 -D__ANDROID__
+  DEP_FILE = CMakeFiles/Chesser_lib.dir/Chesser/engine/window/emscripten/Window_emscripten.cpp.o.d
+  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -std=c++14
+  INCLUDES = -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/miniglog -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM -Ideps/gflags/include
+  IN_ABS = /home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/engine/window/emscripten/Window_emscripten.cpp
+  OBJECT_DIR = CMakeFiles/Chesser_lib.dir
+  OBJECT_FILE_DIR = CMakeFiles/Chesser_lib.dir/Chesser/engine/window/emscripten
 build CMakeFiles/Chesser_lib.dir/Chesser/game/Game.cpp.o: CXX_COMPILER__Chesser_lib /home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/game/Game.cpp || cmake_order_depends_target_Chesser_lib
   DEFINES = -DChesser_lib_EXPORTS -DGFLAGS_IS_A_DLL=0 -D__ANDROID__
   DEP_FILE = CMakeFiles/Chesser_lib.dir/Chesser/game/Game.cpp.o.d
@@ -203,14 +227,6 @@ build CMakeFiles/Chesser_lib.dir/Chesser/globals.cpp.o: CXX_COMPILER__Chesser_li
   IN_ABS = /home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/globals.cpp
   OBJECT_DIR = CMakeFiles/Chesser_lib.dir
   OBJECT_FILE_DIR = CMakeFiles/Chesser_lib.dir/Chesser
-build CMakeFiles/Chesser_lib.dir/Chesser/widgets/Layout.cpp.o: CXX_COMPILER__Chesser_lib /home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/widgets/Layout.cpp || cmake_order_depends_target_Chesser_lib
-  DEFINES = -DChesser_lib_EXPORTS -DGFLAGS_IS_A_DLL=0 -D__ANDROID__
-  DEP_FILE = CMakeFiles/Chesser_lib.dir/Chesser/widgets/Layout.cpp.o.d
-  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -std=c++14
-  INCLUDES = -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/miniglog -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM -Ideps/gflags/include
-  IN_ABS = /home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/widgets/Layout.cpp
-  OBJECT_DIR = CMakeFiles/Chesser_lib.dir
-  OBJECT_FILE_DIR = CMakeFiles/Chesser_lib.dir/Chesser/widgets
 
 # =============================================================================
 # Link build statements for SHARED_LIBRARY target Chesser_lib
@@ -219,7 +235,7 @@ build CMakeFiles/Chesser_lib.dir/Chesser/widgets/Layout.cpp.o: CXX_COMPILER__Che
 #############################################
 # Link the shared library /home/akham/Desktop/Chesser/Chesser_android/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libChesser_lib.so
 
-build /home/akham/Desktop/Chesser/Chesser_android/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libChesser_lib.so: CXX_SHARED_LIBRARY_LINKER__Chesser_lib CMakeFiles/Chesser_lib.dir/Chesser/Log.cpp.o CMakeFiles/Chesser_lib.dir/Chesser/app.cpp.o CMakeFiles/Chesser_lib.dir/Chesser/engine/buffers/BufferObject.cpp.o CMakeFiles/Chesser_lib.dir/Chesser/engine/buffers/IBO.cpp.o CMakeFiles/Chesser_lib.dir/Chesser/engine/buffers/VAO.cpp.o CMakeFiles/Chesser_lib.dir/Chesser/engine/buffers/VBO.cpp.o CMakeFiles/Chesser_lib.dir/Chesser/engine/mvp/MVP.cpp.o CMakeFiles/Chesser_lib.dir/Chesser/engine/object/Object.cpp.o CMakeFiles/Chesser_lib.dir/Chesser/engine/shaders/Shaders.cpp.o CMakeFiles/Chesser_lib.dir/Chesser/engine/textures/Texture.cpp.o CMakeFiles/Chesser_lib.dir/Chesser/engine/window/Window_android.cpp.o CMakeFiles/Chesser_lib.dir/Chesser/engine/window/Window_desktop.cpp.o CMakeFiles/Chesser_lib.dir/Chesser/game/Game.cpp.o CMakeFiles/Chesser_lib.dir/Chesser/globals.cpp.o CMakeFiles/Chesser_lib.dir/Chesser/widgets/Layout.cpp.o | deps/GLFM/libglfm.a libminiglog.a deps/gflags/libgflags_nothreads_debug.a /home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/18/liblog.so /home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/18/libandroid.so /home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/18/libEGL.so /home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/18/libGLESv3.so || deps/GLFM/libglfm.a deps/gflags/libgflags_nothreads_debug.a libminiglog.a
+build /home/akham/Desktop/Chesser/Chesser_android/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libChesser_lib.so: CXX_SHARED_LIBRARY_LINKER__Chesser_lib CMakeFiles/Chesser_lib.dir/Chesser/Log.cpp.o CMakeFiles/Chesser_lib.dir/Chesser/app.cpp.o CMakeFiles/Chesser_lib.dir/Chesser/engine/Timer.cpp.o CMakeFiles/Chesser_lib.dir/Chesser/engine/buffers/BufferObject.cpp.o CMakeFiles/Chesser_lib.dir/Chesser/engine/buffers/IBO.cpp.o CMakeFiles/Chesser_lib.dir/Chesser/engine/buffers/VAO.cpp.o CMakeFiles/Chesser_lib.dir/Chesser/engine/buffers/VBO.cpp.o CMakeFiles/Chesser_lib.dir/Chesser/engine/mvp/MVP.cpp.o CMakeFiles/Chesser_lib.dir/Chesser/engine/object/Object.cpp.o CMakeFiles/Chesser_lib.dir/Chesser/engine/shaders/Shaders.cpp.o CMakeFiles/Chesser_lib.dir/Chesser/engine/textures/Texture.cpp.o CMakeFiles/Chesser_lib.dir/Chesser/engine/window/WindowBase.cpp.o CMakeFiles/Chesser_lib.dir/Chesser/engine/window/android/Window_android.cpp.o CMakeFiles/Chesser_lib.dir/Chesser/engine/window/desktop/Window_desktop.cpp.o CMakeFiles/Chesser_lib.dir/Chesser/engine/window/emscripten/Window_emscripten.cpp.o CMakeFiles/Chesser_lib.dir/Chesser/game/Game.cpp.o CMakeFiles/Chesser_lib.dir/Chesser/globals.cpp.o | deps/GLFM/libglfm.a libminiglog.a deps/gflags/libgflags_nothreads_debug.a /home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/18/liblog.so /home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/18/libandroid.so /home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/18/libEGL.so /home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/18/libGLESv3.so || deps/GLFM/libglfm.a deps/gflags/libgflags_nothreads_debug.a libminiglog.a
   LANGUAGE_COMPILE_FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info
   LINK_FLAGS = -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -static-libstdc++ -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -Wl,--exclude-libs,libunwind.a -Wl,--no-undefined -Qunused-arguments -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now
   LINK_LIBRARIES = deps/GLFM/libglfm.a libminiglog.a deps/gflags/libgflags_nothreads_debug.a /home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/18/liblog.so /home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/18/libandroid.so /home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/18/libEGL.so /home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/18/libGLESv3.so -latomic -lm

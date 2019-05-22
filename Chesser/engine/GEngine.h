@@ -17,4 +17,6 @@
 
 #include "events/events.h"
 
+#include "Timer.h"
+
 #endif

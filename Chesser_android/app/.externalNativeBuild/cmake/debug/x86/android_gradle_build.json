@@ -40,6 +40,12 @@
 				
 				{
 					"flags" : "  --target=i686-none-linux-android18 --gcc-toolchain=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -DChesser_lib_EXPORTS -DGFLAGS_IS_A_DLL=0 -D__ANDROID__ -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/miniglog -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM -Ideps/gflags/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -std=c++14  -c ",
+					"src" : "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/engine/Timer.cpp",
+					"workingDirectory" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/x86"
+				},
+				
+				{
+					"flags" : "  --target=i686-none-linux-android18 --gcc-toolchain=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -DChesser_lib_EXPORTS -DGFLAGS_IS_A_DLL=0 -D__ANDROID__ -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/miniglog -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM -Ideps/gflags/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -std=c++14  -c ",
 					"src" : "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/engine/buffers/BufferObject.cpp",
 					"workingDirectory" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/x86"
 				},
@@ -88,13 +94,25 @@
 				
 				{
 					"flags" : "  --target=i686-none-linux-android18 --gcc-toolchain=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -DChesser_lib_EXPORTS -DGFLAGS_IS_A_DLL=0 -D__ANDROID__ -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/miniglog -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM -Ideps/gflags/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -std=c++14  -c ",
-					"src" : "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/engine/window/Window_android.cpp",
+					"src" : "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/engine/window/WindowBase.cpp",
 					"workingDirectory" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/x86"
 				},
 				
 				{
 					"flags" : "  --target=i686-none-linux-android18 --gcc-toolchain=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -DChesser_lib_EXPORTS -DGFLAGS_IS_A_DLL=0 -D__ANDROID__ -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/miniglog -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM -Ideps/gflags/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -std=c++14  -c ",
-					"src" : "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/engine/window/Window_desktop.cpp",
+					"src" : "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/engine/window/android/Window_android.cpp",
+					"workingDirectory" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/x86"
+				},
+				
+				{
+					"flags" : "  --target=i686-none-linux-android18 --gcc-toolchain=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -DChesser_lib_EXPORTS -DGFLAGS_IS_A_DLL=0 -D__ANDROID__ -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/miniglog -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM -Ideps/gflags/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -std=c++14  -c ",
+					"src" : "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/engine/window/desktop/Window_desktop.cpp",
+					"workingDirectory" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/x86"
+				},
+				
+				{
+					"flags" : "  --target=i686-none-linux-android18 --gcc-toolchain=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -DChesser_lib_EXPORTS -DGFLAGS_IS_A_DLL=0 -D__ANDROID__ -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/miniglog -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM -Ideps/gflags/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -std=c++14  -c ",
+					"src" : "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/engine/window/emscripten/Window_emscripten.cpp",
 					"workingDirectory" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/x86"
 				},
 				
@@ -107,12 +125,6 @@
 				{
 					"flags" : "  --target=i686-none-linux-android18 --gcc-toolchain=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -DChesser_lib_EXPORTS -DGFLAGS_IS_A_DLL=0 -D__ANDROID__ -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/miniglog -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM -Ideps/gflags/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -std=c++14  -c ",
 					"src" : "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/globals.cpp",
-					"workingDirectory" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/x86"
-				},
-				
-				{
-					"flags" : "  --target=i686-none-linux-android18 --gcc-toolchain=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -DChesser_lib_EXPORTS -DGFLAGS_IS_A_DLL=0 -D__ANDROID__ -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/include -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/miniglog -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser -I/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLM -Ideps/gflags/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++  -O0 -fno-limit-debug-info  -fPIC   -std=c++14  -c ",
-					"src" : "/home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/Chesser/widgets/Layout.cpp",
 					"workingDirectory" : "/home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/x86"
 				}
 			],

@@ -33,45 +33,49 @@
 #define __OS__ __OS_WIN32__
 #define __OS_STR__ __OS_STR_WIN32__
 #endif
+#define __DEKSTOP__
 #elif defined(__ANDROID__)
 #define __OS__ __OS_ANDROID__
 #define __OS_STR__ __OS_STR_ANDROID__
 #elif defined(__APPLE__) || defined(__MACH__)
 #define __OS__ __OS_APPLE__
 #define __OS_STR__ __OS_STR_APPLE__
+#define __DEKSTOP__
 #elif defined(__linux__) || defined(linux) || defined(__linux)
 #define __OS__ __OS_LINUX__
 #define __OS_STR__ __OS_STR_LINUX__
+#define __DEKSTOP__
 #elif defined(__EMSCRIPTEN__)
 #define __OS__ __OS_BROWSER__
 #define __OS_STR__ __OS_STR_BROWSER__
+#define __WEB__
 #else
 #define __OS__ __OS_UNKNOWN__
 #define __OS_STR__ __OS_STR_UNKOWN__
 #endif
 
 static const char* os_to_str(int id) {
-    if (id == 1) {
-        // windows64
-        return __OS_STR_WIN64__;
-    } else if (id == 2) {
-        // windows32
-        return __OS_STR_WIN32__;
-    } else if (id == 3) {
-        // linux
-        return __OS_STR_LINUX__;
-    } else if (id == 4) {
-        // apple
-        return __OS_STR_APPLE__;
-    } else if (id == 6) {
-        // browser
-        return __OS_STR_BROWSER__;
-    } else if (id == 5) {
-        // android
-        return __OS_STR_ANDROID__;
-    } else
-        // unkown
-        return __OS_STR_UNKOWN__;
+	if (id == 1) {
+		// windows64
+		return __OS_STR_WIN64__;
+	} else if (id == 2) {
+		// windows32
+		return __OS_STR_WIN32__;
+	} else if (id == 3) {
+		// linux
+		return __OS_STR_LINUX__;
+	} else if (id == 4) {
+		// apple
+		return __OS_STR_APPLE__;
+	} else if (id == 6) {
+		// browser
+		return __OS_STR_BROWSER__;
+	} else if (id == 5) {
+		// android
+		return __OS_STR_ANDROID__;
+	} else
+		// unkown
+		return __OS_STR_UNKOWN__;
 }
 
 #endif

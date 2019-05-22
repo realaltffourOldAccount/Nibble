@@ -16,3 +16,6 @@
 [submodule "deps/GLFM"]
 	path = deps/GLFM
 	url = https://github.com/realaltffour/glfm.git
+[submodule "deps/freetype-em"]
+	path = deps/freetype-em
+	url = https://github.com/juj/emscripten-freetype.git
