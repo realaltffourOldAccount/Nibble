@@ -1,1 +1,2 @@
-ninja: no work to do.
+[1/2] Building CXX object deps/GLM/glm/CMakeFiles/glm_shared.dir/detail/glm.cpp.o
+[2/2] Linking CXX shared library /home/akham/Desktop/Chesser/Chesser_android/app/build/intermediates/cmake/debug/obj/x86/libglm_shared.so

@@ -41,12 +41,14 @@ struct TextureProps {
 	GLenum _type;
 	GLint _bufferFormat;
 
-	const GLvoid* _data;
+	bool _gen_mipmap = false;
 
+	const GLvoid* _data;
+	TextureProps() {}
 	TextureProps(GLint wrapS, GLint wrapT, GLint min_filter, GLint mag_filter,
 				 GLint width, GLint height, GLint border, GLint level,
 				 GLint internal_format, GLint buffer_format, GLenum type,
-				 const GLvoid* data)
+				 const GLvoid* data, bool gen_mipmap)
 		: _wrapS(wrapS),
 		  _wrapT(wrapT),
 		  _min_filter(min_filter),
@@ -58,7 +60,8 @@ struct TextureProps {
 		  _internalFormat(internal_format),
 		  _bufferFormat(buffer_format),
 		  _type(type),
-		  _data(data) {}
+		  _data(data),
+		  _gen_mipmap(gen_mipmap) {}
 };
 
 class Texture {

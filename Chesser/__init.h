@@ -13,6 +13,9 @@ static void initGLFW(void) {
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+#if (__OS__ == __OS_APPLE__)
+		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);  // Required on Mac
+#endif
 		Log::info("GLFW Initialized.");
 	} else if (res == GLFW_FALSE) {
 		THROW_ERROR("GLFW Failed To Initialize.");

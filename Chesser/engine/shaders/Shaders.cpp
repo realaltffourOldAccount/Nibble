@@ -9,14 +9,12 @@ GEngine::Shader::Shader(const std::string vsfile, const std::string fsfile) {
 	vShaderFile.open(vsfile);
 	if (vShaderFile.is_open() == false) {
 		THROW_ERROR("Error occured Reading Vertex Shader File: " + vsfile);
-		__err_check();
 	} else
 		Log::info("Read Vertex Shader File: " + vsfile);
 
 	fShaderFile.open(fsfile);
 	if (fShaderFile.is_open() == false) {
 		THROW_ERROR("Error Occured Reading Fragment Shader File: " + fsfile);
-		__err_check();
 	} else
 		Log::info("Read Fragment Shader File: " + fsfile);
 

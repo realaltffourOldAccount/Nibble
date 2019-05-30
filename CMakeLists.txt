@@ -58,7 +58,7 @@ add_subdirectory("deps/GLAD/")
 
 # Freetype
 add_subdirectory("deps/freetype/")
-include_directories("deps/freetype/include/freetype")
+include_directories("deps/freetype/include/freetype/")
 
 # Options of google's libraries
 set(BUILD_TESTING OFF CACHE BOOL "" FORCE)
@@ -106,6 +106,8 @@ include_directories("deps/GLM/")
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D static_link")
 
+add_definitions(-D__DESKTOP__)
+
 add_executable(
     "Chesser"
 
@@ -123,12 +125,15 @@ if (EMSCRIPTEN)
 project ("Chesser_EMCC")
 
 add_definitions(-D__EMSCRIPTEN__)
+add_definitions(-D__WEB__)
 
 include_directories("Chesser/")
 include_directories("deps/GLFW/include")
 include_directories("deps/GLAD/include")
 include_directories("deps/GLM/")
 include_directories("deps/spdlog/include/")
+
+include_directories("Chesser/vendor/imgui/")
 
 file(GLOB_RECURSE chesser_srcs "Chesser/*.cpp")
 file(GLOB_RECURSE chesser_hdrs "Chesser/*.h")
@@ -143,7 +148,7 @@ add_executable(
 target_link_libraries("Chesser_EMCC" glm freetype)
 
 # Use WebGL3 And GLFW3 and stb_image
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s FULL_ES3=1 -s USE_GLFW=3 -s STB_IMAGE=1")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s FULL_ES3=3 -s USE_GLFW=3 -s STB_IMAGE=1")
 
 # Set debug only options
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O1 -g -s ASSERTIONS=2")

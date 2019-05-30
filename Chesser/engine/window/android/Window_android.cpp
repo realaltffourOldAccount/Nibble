@@ -113,8 +113,8 @@ void Window::__iter(void) {
 					std::chrono::nanoseconds((int)leftOver));
 		}
 
-		Log::info("MSPF: " + std::to_string(this->mspf) +
-				  ", UT: " + std::to_string(this->ut));
+		//Log::info("MSPF: " + std::to_string(this->mspf) +
+		//		  ", UT: " + std::to_string(this->ut));
 	}
 }
 

@@ -28,6 +28,11 @@
 -- Check size of uint32_t - done
 -- Looking for strtoll
 -- Looking for strtoll - found
+-- Found ZLIB: /home/akham/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/libz.a (found version "1.2.7") 
+-- Could NOT find PNG (missing:  PNG_LIBRARY PNG_PNG_INCLUDE_DIR) 
+-- Could NOT find BZip2 (missing:  BZIP2_LIBRARIES BZIP2_INCLUDE_DIR) 
+-- Looking for fcntl.h
+-- Looking for fcntl.h - found
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/akham/Desktop/Chesser/Chesser_android/app/.externalNativeBuild/cmake/debug/arm64-v8a

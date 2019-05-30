@@ -27,6 +27,11 @@ add_subdirectory("deps/gflags/")
 # add_subdirectory("deps/miniglog/")
 add_library(miniglog "deps/miniglog/glog/logging.h" "deps/miniglog/glog/logging.cc")
 
+# Freetype
+set(CMAKE_DISABLE_FIND_PACKAGE_HarfBuzz TRUE CACHE BOOL "" FORCE)
+set(FT_WITH_ZLIB FALSE CACHE BOOL "" FORCE)
+add_subdirectory("deps/freetype/")
+
 # Chesser
 file(GLOB_RECURSE chesser_srcs "Chesser/*.cpp")
 file(GLOB_RECURSE chesser_hdrs "Chesser/*.h")
@@ -35,7 +40,7 @@ include_directories("deps/GLFM/include/")
 include_directories("deps/miniglog/")
 include_directories("Chesser/")
 add_definitions(-D__ANDROID__)
-add_library(Chesser_lib SHARED ${chesser_hdrs} ${chesser_srcs})
+add_library(Chesser_lib SHARED ${chesser_hdrs} ${chesser_srcs} )
 #add_library(Chesser_lib SHARED native-lib.cpp)
 
-target_link_libraries(Chesser_lib glfm glm miniglog gflags::gflags)
+target_link_libraries(Chesser_lib glfm glm miniglog gflags::gflags freetype)

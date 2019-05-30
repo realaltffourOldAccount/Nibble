@@ -6,14 +6,14 @@
 		Deps Includes
 */
 
-#if (!defined(__EMSCRIPTEN__)) && (!defined(__ANDROID__))
+#if defined(__DESKTOP__)
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
 #endif
 
-#ifdef __EMSCRIPTEN__
-#include <GLES3/gl3.h>
+#if defined(__WEB__)
+#include <GLES3/gl32.h>
 #include <GLFW/glfw3.h>
 #include <emscripten/emscripten.h>
 #endif
@@ -23,7 +23,6 @@
 #include <glfm.h>
 #define FILE_COMPAT_ANDROID_ACTIVITY glfmAndroidGetActivity()
 #include <vendor/file_compat.h>
-
 #endif
 
 #ifndef __EMSCRIPTEN__

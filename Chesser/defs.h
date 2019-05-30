@@ -33,22 +33,18 @@
 #define __OS__ __OS_WIN32__
 #define __OS_STR__ __OS_STR_WIN32__
 #endif
-#define __DEKSTOP__
 #elif defined(__ANDROID__)
 #define __OS__ __OS_ANDROID__
 #define __OS_STR__ __OS_STR_ANDROID__
 #elif defined(__APPLE__) || defined(__MACH__)
 #define __OS__ __OS_APPLE__
 #define __OS_STR__ __OS_STR_APPLE__
-#define __DEKSTOP__
 #elif defined(__linux__) || defined(linux) || defined(__linux)
 #define __OS__ __OS_LINUX__
 #define __OS_STR__ __OS_STR_LINUX__
-#define __DEKSTOP__
 #elif defined(__EMSCRIPTEN__)
 #define __OS__ __OS_BROWSER__
 #define __OS_STR__ __OS_STR_BROWSER__
-#define __WEB__
 #else
 #define __OS__ __OS_UNKNOWN__
 #define __OS_STR__ __OS_STR_UNKOWN__

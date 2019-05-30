@@ -10,6 +10,9 @@ WindowState WindowBase::getState(void) const { return this->_state; }
 GEngine::MVP* WindowBase::getMVP(void) const { return this->_mvp; }
 glm::mat4 WindowBase::getProj(void) const { return this->_projection; }
 
+long double WindowBase::getMSPF(void) const { return this->mspf; }
+long double WindowBase::getUT(void) const { return this->ut; }
+
 WindowBase::WindowBase(void) {}
 WindowBase::~WindowBase(void) {}
 

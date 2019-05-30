@@ -56,11 +56,15 @@ GEngine::Texture::Texture(TextureProps prop) {
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, prop._min_filter);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, prop._mag_filter);
 
+	// Log::info(std::to_string(prop._width));
+	// Log::info(std::to_string(prop._height));
+
 	GLCall(glTexImage2D(GL_TEXTURE_2D, prop._level, prop._internalFormat,
 						prop._width, prop._height, prop._border,
 						prop._bufferFormat, prop._type, prop._data));
-
-	GLCall(glGenerateMipmap(GL_TEXTURE_2D));
+	if (prop._gen_mipmap) {
+		GLCall(glGenerateMipmap(GL_TEXTURE_2D));
+	}
 
 	GLCall(glBindTexture(GL_TEXTURE_2D, 0));
 }

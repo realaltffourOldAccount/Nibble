@@ -40,6 +40,9 @@ class WindowBase {
 	MVP* getMVP(void) const;
 	glm::mat4 getProj(void) const;
 
+	long double getMSPF(void) const;
+	long double getUT(void) const;
+
    public:  // Custom Events
 	virtual void tick(void) = 0;
 	virtual void render(void) = 0;

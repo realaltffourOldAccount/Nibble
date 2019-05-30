@@ -24,13 +24,14 @@ int main(int argc, char* argv[]) { return __main(argc, argv); }
 #include "game/Game.h"
 #include "globals.cpp"
 
+#include <engine/text/TextRenderer.h>
+
 void eventHandle(GEngine::Event& evt);
 
 static GEngine::Object* object;
 static GEngine::Object* object2;
-static GEngine::MVP* mvp;
 static GEngine::Shader* shader;
-static glm::mat4 proj;
+GEngine::Text::TextRenderer* texter;
 
 class App : public GEngine::Window::Window {
    public:
@@ -55,11 +56,15 @@ class App : public GEngine::Window::Window {
 		object->translate(glm::vec2(1.0f / 128.0f, 0.0f));
 	}
 	void render(void) override {
+		texter->RenderText("MSPF: " + std::to_string(this->getMSPF()) +
+							   " UT: " + std::to_string(this->getUT()),
+						   "Arial", 1.0f, GEngine::Point(0, 0),
+						   glm::vec3(1.0f, 1.0f, 1.0f), this->getMVP());
+
 		shader->bind();
 		this->getMVP()->updateModel(object->getModel());
 		this->getMVP()->bind(shader->getProgId());
 		object->bind();
-
 		GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0));
 	}
 
@@ -71,10 +76,16 @@ class App : public GEngine::Window::Window {
 	void init(void) override {
 #endif
 		this->setEventHandler(eventHandle);
+
 	object = new GEngine::Object("assets/awesomeface.png",
 								 GEngine::Rect(100, 100, 50, 50));
 	object2 = new GEngine::Object("assets/awesomeface.png",
 								  GEngine::Rect(200, 250, 100, 100));
+
+	texter = new GEngine::Text::TextRenderer();
+	texter->Init();
+	texter->LoadFont("Arial", "assets/fonts/arial.ttf");
+	texter->LoadCharacters("Arial");
 
 #if !defined(__EMSCRIPTEN__) && !defined(__ANDROID__)
 	shader = new GEngine::Shader("glsl/vs.glsl", "glsl/fs.glsl");
