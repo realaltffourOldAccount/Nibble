@@ -102,13 +102,23 @@ GEngine::Object::Object(std::string tex_file, Rect shape, Rect texcord,
 
 GEngine::Object::~Object(void) { this->destroy(); }
 
-void GEngine::Object::bind() const {
+void GEngine::Object::render(GEngine::Shader* shader, GEngine::MVP* mvp) {
+	shader->bind();
+	mvp->updateModel(this->getModel());
+	mvp->bind(shader->getProgId());
+	this->bind();
+	GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0));
+	this->unbind();
+	shader->unbind();
+}
+
+void GEngine::Object::bind(void) const {
 	this->_tex->bind();
 	this->_vao->bind();
 	this->_vbo->bind();
 	this->_ibo->bind();
 }
-void GEngine::Object::unbind() const {
+void GEngine::Object::unbind(void) const {
 	this->_tex->unbind();
 	this->_vao->unbind();
 	this->_vbo->unbind();

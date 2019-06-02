@@ -12,12 +12,13 @@
 
 #include "common.h"
 
-#include "engine/Point.h"
-#include "engine/Rect.h"
+#include <engine/Point.h>
+#include <engine/Rect.h>
 
-#include "engine/buffers/buffers.h"
-#include "engine/shaders/Shaders.h"
-#include "engine/textures/Texture.h"
+#include <engine/buffers/buffers.h>
+#include <engine/mvp/MVP.h>
+#include <engine/shaders/Shaders.h>
+#include <engine/textures/Texture.h>
 
 namespace GEngine {
 /**
@@ -43,15 +44,23 @@ class Object {
 	~Object(void);
 
 	/**
+	 * @brief Renders the object to the screen.
+	 *
+	 * @param shader	The @ref Shader to be used.
+	 * @param mvp		The @ref MVP to be used.
+	 */
+	void render(GEngine::Shader* shader, GEngine::MVP* mvp);
+
+	/**
 	 * @brief Binds the Object to be used.
 	 *
 	 */
-	void bind() const;
+	void bind(void) const;
 	/**
 	 * @brief Unbinds the Object.
 	 *
 	 */
-	void unbind() const;
+	void unbind(void) const;
 
 	/**
 	 * @brief Get the Model object.

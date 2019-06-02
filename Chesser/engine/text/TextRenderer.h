@@ -12,8 +12,6 @@
 #include "common.h"
 #include "error_macros.h"
 
-#include <utils/utils.h>
-
 #include "ft2build.h"
 #include FT_FREETYPE_H
 
@@ -23,6 +21,7 @@
 #include <engine/mvp/MVP.h>
 #include <engine/shaders/Shaders.h>
 #include <engine/textures/Texture.h>
+#include <utils/utils.h>
 
 namespace GEngine {
 namespace Text {

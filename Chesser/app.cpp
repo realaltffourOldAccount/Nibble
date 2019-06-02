@@ -2,7 +2,7 @@
  * @file app.cpp
  * @author Ayham Mamoun (ayhamaboualfadl@gmail.com)
  * @brief Contains the app's main function.
- * @version 0.1
+ * @version 0.2
  * @date 2019-05-31
  *
  */
@@ -48,11 +48,7 @@ class App : public GEngine::Window::Window {
 						   "Arial", 1.0f, GEngine::Point(0, 0),
 						   glm::vec3(1.0f, 1.0f, 1.0f), this->getMVP());
 
-		shader->bind();
-		this->getMVP()->updateModel(object->getModel());
-		this->getMVP()->bind(shader->getProgId());
-		object->bind();
-		GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0));
+		object->render(shader, this->getMVP());
 	}
 
    private:
