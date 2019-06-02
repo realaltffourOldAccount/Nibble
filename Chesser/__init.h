@@ -1,3 +1,11 @@
+/**
+ * @file __init.h
+ * @author Ayham Mamoun (ayhamaboualfadl@gmail.com)
+ * @brief Contains basic initiliazation functions.
+ * @version 0.1
+ * @date 2019-05-31
+ *
+ */
 #ifndef __INIT_H
 #define __INIT_H
 
@@ -5,7 +13,18 @@
 #include "error_macros.h"
 
 #ifndef __ANDROID__
-static void error_callback(int error, const char* description) {}
+/**
+ * @brief The GLFW library callback.
+ *
+ * @param error			The error code.
+ * @param description	The description of the error.
+ */
+static void glfw_error_callback(int error, const char* description) {}
+
+/**
+ * @brief Initializes the GLFW library.
+ *
+ */
 static void initGLFW(void) {
 	int res = glfwInit();
 
@@ -21,9 +40,13 @@ static void initGLFW(void) {
 		THROW_ERROR("GLFW Failed To Initialize.");
 	}
 
-	glfwSetErrorCallback(error_callback);
+	glfwSetErrorCallback(glfw_error_callback);
 }
 
+/**
+ * @brief Initializes the GLAD library.
+ *
+ */
 static void initGLAD(void) {
 #ifndef __EMSCRIPTEN__
 	if (gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
@@ -35,6 +58,12 @@ static void initGLAD(void) {
 }
 #endif
 
+/**
+ * @brief Initializes all libraries.
+ *
+ * @param argc	The number of commands passed from the command line.
+ * @param argv	The commands passed from the command line.
+ */
 static void initApp(int argc, char* argv[]) {
 	Log::Init(argc, argv);
 	Log::info("Detected OS: " + std::string(os_to_str(__OS__)));

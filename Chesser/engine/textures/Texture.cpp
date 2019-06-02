@@ -5,7 +5,7 @@
 #endif
 #include "vendor/stb_image.h"
 
-GEngine::Texture::Texture(std::string file, GLuint tex_id) {
+GEngine::Texture::Texture(std::string file) {
 	stbi_set_flip_vertically_on_load(true);
 	unsigned char* imgData = stbi_load(file.c_str(), &this->_imgWidth,
 									   &this->_imgHeight, &this->_imgComp, 0);
@@ -56,9 +56,6 @@ GEngine::Texture::Texture(TextureProps prop) {
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, prop._min_filter);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, prop._mag_filter);
 
-	// Log::info(std::to_string(prop._width));
-	// Log::info(std::to_string(prop._height));
-
 	GLCall(glTexImage2D(GL_TEXTURE_2D, prop._level, prop._internalFormat,
 						prop._width, prop._height, prop._border,
 						prop._bufferFormat, prop._type, prop._data));
@@ -72,20 +69,25 @@ GEngine::Texture::~Texture(void) { this->destroy(); }
 
 void GEngine::Texture::bind(int index) {
 	if (index == -1) {
-		GLCall(glActiveTexture(GL_TEXTURE0 + FindEmptyTexSlot()));
+		GLCall(glActiveTexture(GL_TEXTURE0));
+		AddTexSlot(0);
+		this->_slot_bound = 0;
 	} else {
 		GLCall(glActiveTexture(GL_TEXTURE0 + index));
+		AddTexSlot(index);
+		this->_slot_bound = index;
 	}
 	GLCall(glBindTexture(GL_TEXTURE_2D, this->_tex_id));
 }
 
 void GEngine::Texture::unbind(void) {
 	GLCall(glBindTexture(GL_TEXTURE_2D, this->_tex_id));
+	RemoveTexSlot(this->_slot_bound);
 }
 
 int GEngine::Texture::getImgWidth(void) { return this->_imgWidth; }
 
-int GEngine::Texture::getImgHieght(void) { return this->_imgHeight; }
+int GEngine::Texture::getImgHeight(void) { return this->_imgHeight; }
 
 int GEngine::Texture::getImgCompNum(void) { return this->_imgComp; }
 

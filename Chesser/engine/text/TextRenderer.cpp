@@ -69,12 +69,6 @@ void TextRenderer::LoadFont(std::string fontname, std::string fontPath) {
 	AAsset_close(fontFile);
 	FT_Error res =
 		FT_New_Memory_Face(ft, (FT_Byte*)&fontData[0], fontDataSize, 0, &face);
-
-//#elif defined(__WEB__)
-//	std::string buffer = readFile(fontPath);
-//	buffer += '\0';
-//	auto size = filesize(fontPath.c_str());
-//	FT_Error res = FT_New_Memory_Face(ft, (FT_Byte*)&buffer[0], size, 0, &face);
 #else
 	FT_Error res = FT_New_Face(ft, fontPath.c_str(), 0, &face);
 #endif
@@ -173,7 +167,6 @@ void TextRenderer::UnLoadAllCharacters(void) {
 void TextRenderer::RenderText(std::string text, std::string fontname,
 							  GLfloat scale, GEngine::Point location,
 							  glm::vec3 color, GEngine::MVP* mvp) {
-	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 	glm::mat4 old_view = mvp->getView();
 	glm::mat4 old_model = mvp->getModel();
 	mvp->updateModel(glm::mat4(1.0f));
@@ -188,18 +181,20 @@ void TextRenderer::RenderText(std::string text, std::string fontname,
 	t_VAO->bind();
 	t_VBO->bind();
 
+	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 	std::string::const_iterator c;
 	for (c = text.begin(); c != text.end(); c++) {
 		Character ch = t_Characters[fontname][*c];
 		if (ch._textureID == nullptr) continue;
 
+		// Caculate character position.
 		GLfloat xpos = location.x + ch._bearing.x * scale;
 		GLfloat ypos = location.y - (ch._size.y - ch._bearing.y) * scale;
 
 		GLfloat w = ch._size.x * scale;
 		GLfloat h = ch._size.y * scale;
 
-		// Update VBO for each character
+		// Update VBO for each character.
 		GLfloat vertices[6][4] = {
 			{xpos, ypos + h, 0.0, 0.0},	{xpos, ypos, 0.0, 1.0},
 			{xpos + w, ypos, 1.0, 1.0},
@@ -207,20 +202,22 @@ void TextRenderer::RenderText(std::string text, std::string fontname,
 			{xpos, ypos + h, 0.0, 0.0},	{xpos + w, ypos, 1.0, 1.0},
 			{xpos + w, ypos + h, 1.0, 0.0}};
 
-		// Render glyph texture over quad
+		// Render glyph texture over quad.
 		ch._textureID->bind();
-		// Update content of VBO memory
+		// Update content of VBO memory.
 		GLCall(glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices));
 		// Render quad
 		GLCall(glDrawArrays(GL_TRIANGLES, 0, 6));
 		ch._textureID->unbind();
 
 		// Now advance cursors for next glyph (note that advance is number of
-		// 1/64 pixels)
-		location.x += (ch._advance >> 6) *
-					  scale;  // Bitshift by 6 to get value in pixels (2^6 = 64)
+		// 1/64 pixels).
+		location.x +=
+			(ch._advance >> 6) *
+			scale;  // Bitshift by 6 to get value in pixels (2^6 = 64).
 	}
 	t_VAO->unbind();
+	t_VBO->unbind();
 	t_Shaders->unbind();
 
 	mvp->updateModel(old_model);

@@ -46,7 +46,6 @@ endif()
 
 # Desktop Only Libraries
 if (NOT EMSCRIPTEN)
-add_definitions(-D__DESKTOP__)
 # GLFW
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
@@ -92,6 +91,8 @@ set(GLM_TEST_ENABLE OFF CACHE BOOL "" FORCE)
 add_subdirectory("deps/GLM/")
 # End of Cross-Platform Libraries
 
+# End of Libraries
+
 # Chesser
 if (NOT EMSCRIPTEN)
 project("Chesser")
@@ -105,8 +106,6 @@ include_directories("deps/GLAD/include")
 include_directories("deps/GLM/")
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D static_link")
-
-add_definitions(-D__DESKTOP__)
 
 add_executable(
     "Chesser"
@@ -125,7 +124,6 @@ if (EMSCRIPTEN)
 project ("Chesser_EMCC")
 
 add_definitions(-D__EMSCRIPTEN__)
-add_definitions(-D__WEB__)
 
 include_directories("Chesser/")
 include_directories("deps/GLFW/include")

@@ -1,3 +1,12 @@
+/**
+ * @file globals.h
+ * @author Ayham Mamoun (ayhamaboulafadl@gmail.com)
+ * @brief Defines and declares global variables of the app.
+ * @version 0.1
+ * @date 2019-05-31
+ *
+ */
+
 #ifndef GLOBALS_H
 #define GLOBALS_H
 

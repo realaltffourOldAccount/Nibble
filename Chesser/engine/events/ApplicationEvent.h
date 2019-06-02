@@ -1,3 +1,11 @@
+/**
+ * @file ApplicationEvent.h
+ * @author Ayham Mamoun (ayhamaboualfadl@gmail.com)
+ * @brief Contains the definitions for application events.
+ * @version 0.1
+ * @date 2019-05-31
+ *
+ */
 #ifndef APP_EVENT_H
 #define APP_EVENT_H
 
@@ -6,58 +14,58 @@
 
 namespace GEngine {
 
+/**
+ * @brief Represents a window resize event.
+ *
+ */
 class WindowResizeEvent : public Event {
-  public:
-    WindowResizeEvent(unsigned int width, unsigned int height)
-        : m_Width(width), m_Height(height) {}
+   public:
+	/**
+	 * @brief Construct a new Window Resize Event object
+	 *
+	 * @param width	The width of the window.
+	 * @param height	The height of the window.
+	 */
+	WindowResizeEvent(unsigned int width, unsigned int height)
+		: m_Width(width), m_Height(height) {}
 
-    inline unsigned int GetWidth() const { return m_Width; }
-    inline unsigned int GetHeight() const { return m_Height; }
+	/**
+	 * @brief Get the Width object.
+	 *
+	 * @return unsigned int
+	 */
+	inline unsigned int GetWidth() const { return m_Width; }
+	/**
+	 * @brief Get the Height object.
+	 *
+	 * @return unsigned int
+	 */
+	inline unsigned int GetHeight() const { return m_Height; }
 
-    std::string ToString() const override {
-        std::stringstream ss;
-        ss << "WindowResizeEvent: " << m_Width << ", " << m_Height;
-        return ss.str();
-    }
+	std::string ToString() const override {
+		std::stringstream ss;
+		ss << "WindowResizeEvent: " << m_Width << ", " << m_Height;
+		return ss.str();
+	}
 
-    EVENT_CLASS_TYPE(WindowResize)
-    EVENT_CLASS_CATEGORY(EventCategoryApplication)
-  private:
-    unsigned int m_Width, m_Height;
+	EVENT_CLASS_TYPE(WindowResize)
+	EVENT_CLASS_CATEGORY(EventCategoryApplication)
+   private:
+	unsigned int m_Width, m_Height;
 };
 
+/**
+ * @brief Represents a close event.
+ *
+ */
 class WindowCloseEvent : public Event {
-  public:
-    WindowCloseEvent() {}
+   public:
+	WindowCloseEvent() {}
 
-    EVENT_CLASS_TYPE(WindowClose)
-    EVENT_CLASS_CATEGORY(EventCategoryApplication)
+	EVENT_CLASS_TYPE(WindowClose)
+	EVENT_CLASS_CATEGORY(EventCategoryApplication)
 };
 
-class AppTickEvent : public Event {
-  public:
-    AppTickEvent() {}
-
-    EVENT_CLASS_TYPE(AppTick)
-    EVENT_CLASS_CATEGORY(EventCategoryApplication)
-};
-
-class AppUpdateEvent : public Event {
-  public:
-    AppUpdateEvent() {}
-
-    EVENT_CLASS_TYPE(AppUpdate)
-    EVENT_CLASS_CATEGORY(EventCategoryApplication)
-};
-
-class AppRenderEvent : public Event {
-  public:
-    AppRenderEvent() {}
-
-    EVENT_CLASS_TYPE(AppRender)
-    EVENT_CLASS_CATEGORY(EventCategoryApplication)
-};
-
-} // namespace GEngine
+}  // namespace GEngine
 
 #endif

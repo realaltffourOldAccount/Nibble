@@ -190,7 +190,6 @@ void Window::OnMouseButton(int button, int action, int mods) {
 		}
 	}
 }
-
 #endif
 }  // namespace Window
 }  // namespace GEngine

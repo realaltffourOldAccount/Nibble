@@ -1,32 +1,19 @@
-#include "common.h"
-// Main Function
-#ifdef __ANDROID__
-int __main(GLFMDisplay* display);
-#else
-int __main(int argc, char* argv[]);
-#endif
-
-// Cross-Platform Main Function
-#if (__OS__ == __OS_WIN64__) || (__OS__ == __OS_WIN32__)
-#if !defined(__DEBUG__)
-#include <windows.h>
-INT WinMain(HINSTANCE, HINSTANCE, PSTR, INT) { return __main(0, nullptr); }
-#else
-int main(int argc, char* argv[]) { return __main(argc, argv); }
-#endif
-#elif defined(__ANDROID__)
-void glfmMain(GLFMDisplay* display) { __main(display); }
-#else
-int main(int argc, char* argv[]) { return __main(argc, argv); }
-#endif
+/**
+ * @file app.cpp
+ * @author Ayham Mamoun (ayhamaboualfadl@gmail.com)
+ * @brief Contains the app's main function.
+ * @version 0.1
+ * @date 2019-05-31
+ *
+ */
+#include "mainFunc.h"
 
 #include "chsr_api.h"
+#include "common.h"
 #include "game/Game.h"
 #include "globals.cpp"
 
-#include <engine/text/TextRenderer.h>
-
-void eventHandle(GEngine::Event& evt);
+static MainData* app_data = nullptr;
 
 static GEngine::Object* object;
 static GEngine::Object* object2;
@@ -35,9 +22,8 @@ GEngine::Text::TextRenderer* texter;
 
 class App : public GEngine::Window::Window {
    public:
-#ifndef __ANDROID__
+#if !defined(__ANDROID__)
 	App(void) : Window(false, WINDOW_WIDTH, WINDOW_HEIGHT, "Chesser") {
-		this->__init();
 #else
 	App(GLFMDisplay* display)
 		: Window(display){
@@ -53,7 +39,7 @@ class App : public GEngine::Window::Window {
 
    public:
 	void tick(void) override {
-		object->translate(glm::vec2(1.0f / 128.0f, 0.0f));
+		object->translate(glm::vec2(100.0f / 128.0f, 0.0f));
 	}
 	void render(void) override {
 		texter->RenderText("MSPF: " + std::to_string(this->getMSPF()) +
@@ -70,54 +56,41 @@ class App : public GEngine::Window::Window {
 
    private:
 	bool inited = false;
-#ifndef __ANDROID__
-	void __init(void){
-#else
 	void init(void) override {
-#endif
-		this->setEventHandler(eventHandle);
+		using namespace std::placeholders;
+		this->setEventHandler(std::bind(&App::eventHandler, this, _1));
 
-	object = new GEngine::Object("assets/awesomeface.png",
-								 GEngine::Rect(100, 100, 50, 50));
-	object2 = new GEngine::Object("assets/awesomeface.png",
-								  GEngine::Rect(200, 250, 100, 100));
+		object = new GEngine::Object("assets/awesomeface.png",
+									 GEngine::Rect(100, 100, 50, 50));
+		object2 = new GEngine::Object("assets/awesomeface.png",
+									  GEngine::Rect(200, 250, 100, 100));
 
-	texter = new GEngine::Text::TextRenderer();
-	texter->Init();
-	texter->LoadFont("Arial", "assets/fonts/arial.ttf");
-	texter->LoadCharacters("Arial");
+		texter = new GEngine::Text::TextRenderer();
+		texter->Init();
+		texter->LoadFont("Arial", "assets/fonts/arial.ttf");
+		texter->LoadCharacters("Arial");
 
-#if !defined(__EMSCRIPTEN__) && !defined(__ANDROID__)
-	shader = new GEngine::Shader("glsl/vs.glsl", "glsl/fs.glsl");
-#elif defined(__EMSCRIPTEN__)
+#if defined(__DESKTOP__)
+		shader = new GEngine::Shader("glsl/vs.glsl", "glsl/fs.glsl");
+#elif defined(__WEB__)
 		shader =
 			new GEngine::Shader("glsl/vs_es_em.glsl", "glsl/fs_es_em.glsl");
 #elif defined(__ANDROID__)
-shader = new GEngine::Shader("glsl/vs_es.glsl", "glsl/fs_es.glsl");
+	shader = new GEngine::Shader("glsl/vs_es.glsl", "glsl/fs_es.glsl");
 #endif
-}
-}
-;
+	}
+};
 
-static App* app = nullptr;
-void eventHandle(GEngine::Event& evt) { app->eventHandler(evt); }
-
-#ifdef __ANDROID__
-int __main(GLFMDisplay* display) {
-	initApp(0, nullptr);
-#else
-int __main(int argc, char* argv[]) {
-	initApp(argc, argv);
-#endif
+int __main(MainData* data) {
+	app_data = data;
+	initApp(data->argc, data->argv);
 
 #ifdef __ANDROID__
-	App* _app = new App(display);
-	app = _app;
+	App* _app = new App(data->display);
 #else
-	App _app;
-	app = &_app;
+	App* _app = new App();
 #endif
-	app->start();
+	_app->start();
 
 	return 0;
 }

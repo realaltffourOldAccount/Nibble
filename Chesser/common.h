@@ -1,6 +1,24 @@
+/**
+ * @file common.h
+ * @author Ayham Mamoun (ayhamaboulfadl@gmail.com)
+ * @brief Contains common includes.
+ * @version 0.1
+ * @date 2019-05-31
+ *
+ */
 #ifndef COMMON_H
 #define COMMON_H
 #pragma once
+
+/*
+		OS Specific Includes
+*/
+#include "defs.h"
+#if defined(__WINDOWS__)
+#include <windows.h>
+#elif defined(__LINUX__)
+#include <unistd.h>
+#endif
 
 /*
 		Deps Includes
@@ -18,18 +36,18 @@
 #include <emscripten/emscripten.h>
 #endif
 
-#ifdef __ANDROID__
+#if defined(__ANDROID__)
 #define GLFM_INCLUDE_ES3
 #include <glfm.h>
 #define FILE_COMPAT_ANDROID_ACTIVITY glfmAndroidGetActivity()
 #include <vendor/file_compat.h>
 #endif
 
-#ifndef __EMSCRIPTEN__
-#ifdef __WINDOWS__
+#if defined(__WINDOWS__)
 #define GLOG_NO_ABBREVIATED_SEVERITIES
 #include <windows.h>
 #endif
+#if !defined(__EMSCRIPTEN__)
 #include <gflags/gflags.h>
 #include <glog/logging.h>
 #endif
@@ -44,7 +62,6 @@
 		Universal files
 */
 #include "Log.h"
-#include "defs.h"
 #include "globals.h"
 #include "macros.h"
 #include "utils/utils.h"
@@ -67,13 +84,13 @@
 #include <ostream>
 
 #include <chrono>
-#if (__OS__ != __OS_WIN32__) || (__OS__ != __OS_WIN64__)
+
+// Include correct threads library.
+#if !defined(__WINDOWS__)
 #include <thread>
 #else
 #include <vendor/threads/mingw.thread.h>
 #endif
-
-using namespace std;
 
 /*
 		Univ Definitions

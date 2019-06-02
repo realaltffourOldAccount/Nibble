@@ -1,3 +1,12 @@
+/**
+ * @file GEngine.h
+ * @author Ayham Mamoun (ayhammamoun@gmail.com)
+ * @brief Contains all includes needed to use the GEngine api.
+ * @version 0.1
+ * @date 2019-05-31
+ *
+ */
+
 #ifndef GENGINE_H
 #define GENGINE_H
 #pragma once
@@ -16,6 +25,8 @@
 #include "window/Window.h"
 
 #include "events/events.h"
+
+#include <engine/text/TextRenderer.h>
 
 #include "Timer.h"
 

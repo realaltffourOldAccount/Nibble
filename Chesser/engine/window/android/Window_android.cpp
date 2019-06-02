@@ -2,7 +2,7 @@
 
 namespace GEngine {
 namespace Window {
-#ifdef __ANDROID__
+#if defined(__ANDROID__)
 Window::Window(GLFMDisplay* display) { this->__init(display); }
 Window::~Window(void) { this->destroy(); }
 
@@ -113,7 +113,7 @@ void Window::__iter(void) {
 					std::chrono::nanoseconds((int)leftOver));
 		}
 
-		//Log::info("MSPF: " + std::to_string(this->mspf) +
+		// Log::info("MSPF: " + std::to_string(this->mspf) +
 		//		  ", UT: " + std::to_string(this->ut));
 	}
 }
@@ -140,7 +140,7 @@ void Window::OnSurfaceCreated(void) {
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	init();
+	this->init();
 }
 void Window::OnSurfaceDestroyed(void) { Log::info("Surface Destroyed"); }
 
