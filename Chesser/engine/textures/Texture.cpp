@@ -12,9 +12,12 @@ GEngine::Texture::Texture(std::string file) {
 	if (imgData == nullptr) {
 		THROW_ERROR("Failed to load texture: " + file,
 					Log::GenLogID(__LINE__, __FILE__, "Texture", __func__));
-	} else
+	} else {
+#if !defined(SUPPRESS_TEXTURE_SUCCESS)
 		Log::info("Loaded Texture: " + file,
 				  Log::GenLogID(__LINE__, __FILE__, "Texture", __func__));
+#endif
+	}
 
 	GLCall(glGenTextures(1, &this->_tex_id));
 	GLCall(glBindTexture(GL_TEXTURE_2D, this->_tex_id));
@@ -46,8 +49,10 @@ GEngine::Texture::Texture(std::string file) {
 
 GEngine::Texture::Texture(TextureProps prop) {
 	if (prop._data == nullptr) {
+#if !defined(SUPPRESS_TEXTURE_NULL_WARNING)
 		Log::warn("Texture data is null.",
 				  Log::GenLogID(__LINE__, __FILE__, "Texture", __func__));
+#endif
 	}
 
 	GLCall(glGenTextures(1, &this->_tex_id));

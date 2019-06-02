@@ -11,6 +11,7 @@
 #pragma once
 
 #include "common.h"
+#include "config.h"
 #include "error_macros.h"
 
 namespace GEngine {

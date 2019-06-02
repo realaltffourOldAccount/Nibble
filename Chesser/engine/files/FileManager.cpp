@@ -7,9 +7,13 @@ std::string FileManager::LoadFile(std::string file) {
 	std::ifstream filestream;
 	filestream.open(file);
 	if (filestream.is_open() == false) {
-		THROW_ERROR(
-			"Error Could not open file: " + file + ".",
-			Log::GenLogID(__LINE__, __FILE__, "FileManager", "LoadFile()"));
+		THROW_ERROR("Error Could not open file: " + file + ".",
+					Log::GenLogID(__LINE__, __FILE__, "FileManager", __func__));
+	} else {
+#if !defined(SUPPRESS_FILE_SUCCESS)
+		Log::info("Succussfully read file: " + file + ". ",
+				  Log::GenLogID(__LINE__, __FILE__, "FileManager", __func__));
+#endif
 	}
 
 	std::stringstream ss;
@@ -28,6 +32,13 @@ std::string FileManager::LoadFile(std::string file) {
 
 	char* fileassetData = new char[fileassetSize];
 	int redres = AAsset_read(fileasset, fileassetData, (size_t)fileassetSize);
+	if (redres != 0 && redres == fileassetSize) {
+#if !defined(SUPPRESS_FILE_SUCCESS)
+		Log::info(
+			"Succussfully read file: " + file + ". ",
+			Log::GenLogID(__LINE__, __FILE__, "FileManager", "LoadFile()"));
+#endif
+	}
 	AAsset_close(fileasset);
 	return std::string(fileassetData);
 #endif

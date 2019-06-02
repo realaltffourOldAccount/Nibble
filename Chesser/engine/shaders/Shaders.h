@@ -15,6 +15,7 @@
 #define SHADER_ATTRIB_COLOR 1
 #define SHADER_ATTRIB_TEXCOORD 2  // if needed
 
+#include <engine/files/FileManager.h>
 #include "common.h"
 #include "error_macros.h"
 

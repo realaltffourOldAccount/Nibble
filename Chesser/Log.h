@@ -2,7 +2,7 @@
  * @file Log.h
  * @author Ayham Mamoun (ayhamaboulafadl@gmail.com)
  * @brief The main logger of the app.
- * @version 0.1
+ * @version 0.2
  * @date 2019-05-31
  *
  */
@@ -85,12 +85,12 @@ static void FlushLog(void) {
  * @param msg	The message to print.
  */
 static void error(std::string msg, std::string id) {
+#ifndef SUPPRESS_ERROR
 #ifndef __EMSCRIPTEN__
-#ifndef SUPRESS_ERROR
 	LOG(ERROR) << id << msg;
-#endif
 #else
 	std::cout << id << msg << std::endl;
+#endif
 #endif
 	g_log->push_back(id + msg);
 	Log::FlushLog();
@@ -102,12 +102,12 @@ static void error(std::string msg, std::string id) {
  * @param msg	The message to print.
  */
 static void info(std::string msg, std::string id) {
+#ifndef SUPPRESS_INFO
 #ifndef __EMSCRIPTEN__
-#ifndef SUPRESS_INFO
 	LOG(INFO) << id << msg;
-#endif
 #else
 	std::cout << id << msg << std::endl;
+#endif
 #endif
 	g_log->push_back(id + msg);
 	Log::FlushLog();
@@ -119,12 +119,12 @@ static void info(std::string msg, std::string id) {
  * @param msg	The message to print.
  */
 static void warn(std::string msg, std::string id) {
+#ifndef SUPPRESS_WARNING
 #ifndef __EMSCRIPTEN__
-#ifndef SUPRESS_WARN
 	LOG(WARNING) << id << msg;
-#endif
 #else
 	std::cout << id << msg << std::endl;
+#endif
 #endif
 	g_log->push_back(id + msg);
 	Log::FlushLog();
