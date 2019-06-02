@@ -8,7 +8,7 @@
  */
 
 /**
- * @brief Supresses Warning from the log.
+ * @brief Supresses Warnings from the log.
  *
  */
 //#define SUPPRESS_WARNING
@@ -20,7 +20,13 @@
 //#define SUPPRESS_INFO
 
 /**
- * @brief Suprreses Errors from the log.
+ * @brief Supresses Errors from the log.
  *
  */
 //#define SUPPRESS_ERROR
+
+/**
+ * @brief Supresses Event Logging. Currently has no effect.
+ *
+ */
+//#define SUPPRESS_EVENTS

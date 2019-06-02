@@ -8,15 +8,19 @@ GEngine::Shader::Shader(const std::string vsfile, const std::string fsfile) {
 
 	vShaderFile.open(vsfile);
 	if (vShaderFile.is_open() == false) {
-		THROW_ERROR("Error occured Reading Vertex Shader File: " + vsfile);
+		THROW_ERROR("Error occured Reading Vertex Shader File: " + vsfile,
+					Log::GenLogID(__LINE__, __FILE__, "Shader", __func__));
 	} else
-		Log::info("Read Vertex Shader File: " + vsfile);
+		Log::info("Read Vertex Shader File: " + vsfile,
+				  Log::GenLogID(__LINE__, __FILE__, "Shader", __func__));
 
 	fShaderFile.open(fsfile);
 	if (fShaderFile.is_open() == false) {
-		THROW_ERROR("Error Occured Reading Fragment Shader File: " + fsfile);
+		THROW_ERROR("Error Occured Reading Fragment Shader File: " + fsfile,
+					Log::GenLogID(__LINE__, __FILE__, "Shader", __func__));
 	} else
-		Log::info("Read Fragment Shader File: " + fsfile);
+		Log::info("Read Fragment Shader File: " + fsfile,
+				  Log::GenLogID(__LINE__, __FILE__, "Shader", __func__));
 
 	std::stringstream vstream, fstream;
 	vstream << vShaderFile.rdbuf();
@@ -42,9 +46,11 @@ GEngine::Shader::Shader(const std::string vsfile, const std::string fsfile) {
 	if (!success) {
 		GLCall(glGetShaderInfoLog(vertex, 512, NULL, infoLog));
 		THROW_ERROR("Compilation of Vertex Shader for Program Failed.\n" +
-					std::string(infoLog));
+						std::string(infoLog),
+					Log::GenLogID(__LINE__, __FILE__, "Shader", __func__));
 	} else
-		Log::info("Compilation of Vertex Shader for Program Succeeded.");
+		Log::info("Compilation of Vertex Shader for Program Succeeded.",
+				  Log::GenLogID(__LINE__, __FILE__, "Shader", __func__));
 
 	// fragment shader
 	fragment = glCreateShader(GL_FRAGMENT_SHADER);
@@ -55,9 +61,11 @@ GEngine::Shader::Shader(const std::string vsfile, const std::string fsfile) {
 	if (!success) {
 		GLCall(glGetShaderInfoLog(fragment, 512, NULL, infoLog));
 		THROW_ERROR("Compilation of Fragment Shader for Program Failed.\n" +
-					std::string(infoLog));
+						std::string(infoLog),
+					Log::GenLogID(__LINE__, __FILE__, "Shader", __func__));
 	} else
-		Log::info("Compilation of Fragment Shader for Program Succeeded.");
+		Log::info("Compilation of Fragment Shader for Program Succeeded.",
+				  Log::GenLogID(__LINE__, __FILE__, "Shader", __func__));
 
 	// shader program
 	this->_prog_id = glCreateProgram();
@@ -68,9 +76,11 @@ GEngine::Shader::Shader(const std::string vsfile, const std::string fsfile) {
 	GLCall(glGetProgramiv(this->_prog_id, GL_LINK_STATUS, &success));
 	if (!success) {
 		GLCall(glGetProgramInfoLog(this->_prog_id, 512, NULL, infoLog));
-		THROW_ERROR("Linking for Program  failed.\n" + std::string(infoLog));
+		THROW_ERROR("Linking for Program  failed.\n" + std::string(infoLog),
+					Log::GenLogID(__LINE__, __FILE__, "Shader", __func__));
 	} else
-		Log::info("Linking for Program Succeeded.");
+		Log::info("Linking for Program Succeeded.",
+				  Log::GenLogID(__LINE__, __FILE__, "Shader", __func__));
 	GLCall(glDeleteShader(vertex));
 	GLCall(glDeleteShader(fragment));
 }

@@ -12,7 +12,8 @@ Window* ptr = nullptr;
 static void em__loop(void) { ptr->__iter(); }
 
 void Window::start(void) {
-	Log::info("Started Game Loop.");
+	Log::info("Started Game Loop.",
+			  Log::GenLogID(__LINE__, __FILE__, "Window", __func__));
 	ptr = this;
 
 	this->timer->reset();
@@ -28,10 +29,12 @@ void Window::destroy(void) {}
 void Window::__init(int w, int h, std::string str) {
 	this->_window = glfwCreateWindow(w, h, str.c_str(), NULL, NULL);
 	if (this->_window == NULL) {
-		THROW_ERROR("Failed Window Creation.");
+		THROW_ERROR("Failed Window Creation.",
+					Log::GenLogID(__LINE__, __FILE__, "Window", __func__));
 		return;
 	} else
-		Log::info("Window Created.");
+		Log::info("Window Created.",
+				  Log::GenLogID(__LINE__, __FILE__, "Window", __func__));
 	// Create Context
 	glfwMakeContextCurrent(this->_window);
 	initGLAD();

@@ -1,0 +1,2 @@
+[1/2] Building CXX object deps/GLM/glm/CMakeFiles/glm_shared.dir/detail/glm.cpp.o
+[2/2] Linking CXX shared library /home/akham/Desktop/Chesser/Chesser_android/app/build/intermediates/cmake/debug/obj/arm64-v8a/libglm_shared.so

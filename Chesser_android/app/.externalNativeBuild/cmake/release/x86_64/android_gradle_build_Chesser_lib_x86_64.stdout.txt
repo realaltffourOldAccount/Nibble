@@ -1,0 +1,110 @@
+[1/70] Building C object deps/GLFM/CMakeFiles/glfm.dir/src/glfm_platform_android.c.o
+[2/70] Building CXX object CMakeFiles/miniglog.dir/deps/miniglog/glog/logging.cc.o
+[3/70] Building C object deps/GLFM/CMakeFiles/glfm.dir/home/akham/Android/Sdk/ndk-bundle/sources/android/native_app_glue/android_native_app_glue.c.o
+[4/70] Building CXX object deps/gflags/CMakeFiles/gflags_nothreads_static.dir/src/gflags.cc.o
+[5/70] Building CXX object deps/gflags/CMakeFiles/gflags_nothreads_static.dir/src/gflags_reporting.cc.o
+[6/70] Building CXX object deps/gflags/CMakeFiles/gflags_nothreads_static.dir/src/gflags_completions.cc.o
+[7/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/autofit/autofit.c.o
+[8/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/base/ftbase.c.o
+[9/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/base/ftbbox.c.o
+[10/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/base/ftbdf.c.o
+[11/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/base/ftbitmap.c.o
+[12/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/base/ftcid.c.o
+In file included from /home/akham/Android/Sdk/ndk-bundle/sources/android/native_app_glue/android_native_app_glue.c:26:
+/home/akham/Android/Sdk/ndk-bundle/sources/android/native_app_glue/android_native_app_glue.h:19:9: warning: macro name is a reserved identifier [-Wreserved-id-macro]
+#define _ANDROID_NATIVE_APP_GLUE_H
+        ^
+/home/akham/Android/Sdk/ndk-bundle/sources/android/native_app_glue/android_native_app_glue.h:342:10: warning: this function declaration is not a prototype [-Wstrict-prototypes]
+app_dummy();
+         ^
+          void
+/home/akham/Android/Sdk/ndk-bundle/sources/android/native_app_glue/android_native_app_glue.c:170:6: warning: no previous prototype for function 'app_dummy' [-Wmissing-prototypes]
+void app_dummy() {
+     ^
+/home/akham/Android/Sdk/ndk-bundle/sources/android/native_app_glue/android_native_app_glue.h:342:1: note: this declaration is not a prototype; add 'void' to make it a prototype for a zero-parameter function
+app_dummy();
+^
+          void
+/home/akham/Android/Sdk/ndk-bundle/sources/android/native_app_glue/android_native_app_glue.c:188:80: warning: unused parameter 'source' [-Wunused-parameter]
+static void process_input(struct android_app* app, struct android_poll_source* source) {
+                                                                               ^
+/home/akham/Android/Sdk/ndk-bundle/sources/android/native_app_glue/android_native_app_glue.c:201:78: warning: unused parameter 'source' [-Wunused-parameter]
+static void process_cmd(struct android_app* app, struct android_poll_source* source) {
+                                                                             ^
+/home/akham/Android/Sdk/ndk-bundle/sources/android/native_app_glue/android_native_app_glue.c:408:79: warning: unused parameter 'window' [-Wunused-parameter]
+static void onNativeWindowDestroyed(ANativeActivity* activity, ANativeWindow* window) {
+                                                                              ^
+/home/akham/Android/Sdk/ndk-bundle/sources/android/native_app_glue/android_native_app_glue.c:418:75: warning: unused parameter 'queue' [-Wunused-parameter]
+static void onInputQueueDestroyed(ANativeActivity* activity, AInputQueue* queue) {
+                                                                          ^
+/home/akham/Android/Sdk/ndk-bundle/sources/android/native_app_glue/android_native_app_glue.c:29:9: warning: macro is not used [-Wunused-macros]
+#define LOGI(...) ((void)__android_log_print(ANDROID_LOG_INFO, "threaded_app", __VA_ARGS__))
+        ^
+8 warnings generated.
+[13/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/base/ftfstype.c.o
+In file included from /home/akham/Desktop/Chesser/Chesser_android/app/src/main/cpp/deps/GLFM/src/glfm_platform_android.c:25:
+/home/akham/Android/Sdk/ndk-bundle/sources/android/native_app_glue/android_native_app_glue.h:19:9: warning: macro name is a reserved identifier [-Wreserved-id-macro]
+#define _ANDROID_NATIVE_APP_GLUE_H
+        ^
+/home/akham/Android/Sdk/ndk-bundle/sources/android/native_app_glue/android_native_app_glue.h:342:10: warning: this function declaration is not a prototype [-Wstrict-prototypes]
+app_dummy();
+         ^
+          void
+2 warnings generated.
+[14/70] Linking C static library deps/GLFM/libglfm.a
+[15/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/base/ftgasp.c.o
+[16/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/base/ftglyph.c.o
+[17/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/base/ftgxval.c.o
+[18/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/base/ftinit.c.o
+[19/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/base/ftmm.c.o
+[20/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/base/ftotval.c.o
+[21/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/base/ftpatent.c.o
+[22/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/base/ftpfr.c.o
+[23/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/base/ftstroke.c.o
+[24/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/base/ftsynth.c.o
+[25/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/base/ftsystem.c.o
+[26/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/base/fttype1.c.o
+[27/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/base/ftwinfnt.c.o
+[28/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/bdf/bdf.c.o
+[29/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/bzip2/ftbzip2.c.o
+[30/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/cache/ftcache.c.o
+[31/70] Linking CXX static library libminiglog.a
+[32/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/cff/cff.c.o
+[33/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/cid/type1cid.c.o
+[34/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/gzip/ftgzip.c.o
+[35/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/lzw/ftlzw.c.o
+[36/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/pcf/pcf.c.o
+[37/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/pfr/pfr.c.o
+[38/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/psaux/psaux.c.o
+[39/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/pshinter/pshinter.c.o
+[40/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/psnames/psnames.c.o
+[41/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/raster/raster.c.o
+[42/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/sfnt/sfnt.c.o
+[43/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/smooth/smooth.c.o
+[44/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/truetype/truetype.c.o
+[45/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/type1/type1.c.o
+[46/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/type42/type42.c.o
+[47/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/winfonts/winfnt.c.o
+[48/70] Building C object deps/freetype/CMakeFiles/freetype.dir/src/base/ftdebug.c.o
+[49/70] Linking CXX static library deps/gflags/libgflags_nothreads.a
+[50/70] Linking C static library deps/freetype/libfreetype.a
+[51/70] Building CXX object CMakeFiles/Chesser_lib.dir/Chesser/Log.cpp.o
+[52/70] Building CXX object CMakeFiles/Chesser_lib.dir/Chesser/app.cpp.o
+[53/70] Building CXX object CMakeFiles/Chesser_lib.dir/Chesser/engine/Timer.cpp.o
+[54/70] Building CXX object CMakeFiles/Chesser_lib.dir/Chesser/engine/buffers/BufferObject.cpp.o
+[55/70] Building CXX object CMakeFiles/Chesser_lib.dir/Chesser/engine/buffers/IBO.cpp.o
+[56/70] Building CXX object CMakeFiles/Chesser_lib.dir/Chesser/engine/buffers/VAO.cpp.o
+[57/70] Building CXX object CMakeFiles/Chesser_lib.dir/Chesser/engine/buffers/VBO.cpp.o
+[58/70] Building CXX object CMakeFiles/Chesser_lib.dir/Chesser/engine/files/FileManager.cpp.o
+[59/70] Building CXX object CMakeFiles/Chesser_lib.dir/Chesser/engine/mvp/MVP.cpp.o
+[60/70] Building CXX object CMakeFiles/Chesser_lib.dir/Chesser/engine/object/Object.cpp.o
+[61/70] Building CXX object CMakeFiles/Chesser_lib.dir/Chesser/engine/shaders/Shaders.cpp.o
+[62/70] Building CXX object CMakeFiles/Chesser_lib.dir/Chesser/engine/text/TextRenderer.cpp.o
+[63/70] Building CXX object CMakeFiles/Chesser_lib.dir/Chesser/engine/textures/Texture.cpp.o
+[64/70] Building CXX object CMakeFiles/Chesser_lib.dir/Chesser/engine/window/WindowBase.cpp.o
+[65/70] Building CXX object CMakeFiles/Chesser_lib.dir/Chesser/engine/window/android/Window_android.cpp.o
+[66/70] Building CXX object CMakeFiles/Chesser_lib.dir/Chesser/engine/window/desktop/Window_desktop.cpp.o
+[67/70] Building CXX object CMakeFiles/Chesser_lib.dir/Chesser/engine/window/emscripten/Window_emscripten.cpp.o
+[68/70] Building CXX object CMakeFiles/Chesser_lib.dir/Chesser/game/Game.cpp.o
+[69/70] Building CXX object CMakeFiles/Chesser_lib.dir/Chesser/globals.cpp.o
+[70/70] Linking CXX shared library /home/akham/Desktop/Chesser/Chesser_android/app/build/intermediates/cmake/release/obj/x86_64/libChesser_lib.so

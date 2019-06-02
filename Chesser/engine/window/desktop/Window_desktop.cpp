@@ -22,10 +22,12 @@ void Window::__init(int w, int h,
 					std::string str) {  // Create window
 	this->_window = glfwCreateWindow(w, h, str.c_str(), NULL, NULL);
 	if (this->_window == NULL) {
-		THROW_ERROR("Failed Window Creation.");
+		THROW_ERROR("Failed Window Creation.",
+					Log::GenLogID(__LINE__, __FILE__, "Window", __func__));
 		return;
 	} else
-		Log::info("Window Created.");
+		Log::info("Window Created.",
+				  Log::GenLogID(__LINE__, __FILE__, "Window", __func__));
 	// Create Context
 	glfwMakeContextCurrent(this->_window);
 	initGLAD();
@@ -60,7 +62,8 @@ void Window::__init(int w, int h,
 }
 void Window::__loop(void) {
 	using namespace std::chrono;
-	Log::info("Started Game Loop.");
+	Log::info("Started Game Loop.",
+			  Log::GenLogID(__LINE__, __FILE__, "Window", __func__));
 	GLCall(glClearColor(0.0f, 0.0f, 0.0f, 1.0f));
 
 	this->timer->reset();

@@ -5,7 +5,9 @@ namespace GEngine {
 namespace Text {
 void TextRenderer::Init(void) {
 	if (FT_Init_FreeType(&ft)) {
-		THROW_ERROR("Could not Initialize Freetype.");
+		THROW_ERROR(
+			"Could not Initialize Freetype.",
+			Log::GenLogID(__LINE__, __FILE__, "TextRenderer", __func__));
 	}
 
 #if defined(__DESKTOP__)
@@ -74,7 +76,9 @@ void TextRenderer::LoadFont(std::string fontname, std::string fontPath) {
 #endif
 
 	if (0 != res) {
-		THROW_ERROR("Failed to load font name: " + fontname + ".");
+		THROW_ERROR(
+			"Failed to load font name: " + fontname + ".",
+			Log::GenLogID(__LINE__, __FILE__, "TextRenderer", __func__));
 	}
 	FT_Set_Pixel_Sizes(face, 0, 24);
 
@@ -98,7 +102,9 @@ void TextRenderer::LoadCharacters(std::string fontname) {
 	if (loc != t_Fonts.end())
 		face = t_Fonts[fontname];
 	else {
-		THROW_ERROR("No " + fontname + " font name exists.");
+		THROW_ERROR(
+			"No " + fontname + " font name exists.",
+			Log::GenLogID(__LINE__, __FILE__, "TextRenderer", __func__));
 	}
 
 	std::map<GLchar, Character> characters;
@@ -106,8 +112,10 @@ void TextRenderer::LoadCharacters(std::string fontname) {
 	for (GLubyte c = 32; c < 127; c++) {  // 127
 		// Load character glyph
 		if (FT_Load_Char(face, c, FT_LOAD_RENDER)) {
-			Log::warn("Could not load glyph for '" + std::to_string(c) +
-					  "' character.");
+			Log::warn(
+				"Could not load glyph for '" + std::to_string(c) +
+					"' character.",
+				Log::GenLogID(__LINE__, __FILE__, "TextRenderer", __func__));
 			continue;
 		}
 		// Generate texture

@@ -20,14 +20,12 @@
 #include "mvp/MVP.h"
 #include "object/Object.h"
 #include "shaders/Shaders.h"
+#include "text/TextRenderer.h"
 #include "textures/Texture.h"
 
+#include "Timer.h"
+#include "events/events.h"
 #include "window/Window.h"
 
-#include "events/events.h"
-
-#include <engine/text/TextRenderer.h>
-
-#include "Timer.h"
-
+#include "files/FileManager.h"
 #endif

@@ -35,9 +35,12 @@ static void initGLFW(void) {
 #if (__OS__ == __OS_APPLE__)
 		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);  // Required on Mac
 #endif
-		Log::info("GLFW Initialized.");
+		Log::info("GLFW Initialized.",
+				  Log::GenLogID(__LINE__, __FILE__, "Initiator", "initGLFW"));
 	} else if (res == GLFW_FALSE) {
-		THROW_ERROR("GLFW Failed To Initialize.");
+		THROW_ERROR(
+			"GLFW Failed To Initialize.",
+			Log::GenLogID(__LINE__, __FILE__, "Initiator", "initGLFW()"));
 	}
 
 	glfwSetErrorCallback(glfw_error_callback);
@@ -50,9 +53,11 @@ static void initGLFW(void) {
 static void initGLAD(void) {
 #ifndef __EMSCRIPTEN__
 	if (gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-		Log::info("GLAD Initialized.");
+		Log::info("GLAD Initialized.",
+				  Log::GenLogID(__LINE__, __FILE__, "Initiator", __func__));
 	} else {
-		THROW_ERROR("GLAD Failed To Initialize.");
+		THROW_ERROR("GLAD Failed To Initialize.",
+					Log::GenLogID(__LINE__, __FILE__, "Initiator", __func__));
 	}
 #endif
 }
@@ -66,7 +71,8 @@ static void initGLAD(void) {
  */
 static void initApp(int argc, char* argv[]) {
 	Log::Init(argc, argv);
-	Log::info("Detected OS: " + std::string(os_to_str(__OS__)));
+	Log::info("Detected OS: " + std::string(os_to_str(__OS__)),
+			  Log::GenLogID(__LINE__, __FILE__, "Initiator", __func__));
 #ifndef __ANDROID__
 	initGLFW();
 #endif

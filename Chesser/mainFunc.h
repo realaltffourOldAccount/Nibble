@@ -37,8 +37,8 @@ INT WinMain(HINSTANCE instance, HINSTANCE instace2, PSTR pstr, INT i) {
 	return __main(data);
 }
 #else
-int main(int argc, char* argv) {
-	MainData* data = MainData;
+int main(int argc, char** argv) {
+	MainData* data = new MainData;
 	data->argc = argc;
 	data->argv = argv;
 	return __main(data);

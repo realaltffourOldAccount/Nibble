@@ -119,7 +119,8 @@ void Window::__iter(void) {
 }
 
 void Window::OnSurfaceCreated(void) {
-	Log::info("Surface Created");
+	Log::info("Surface Created",
+			  Log::GenLogID(__LINE__, __FILE__, "Window", __func__));
 	glfmGetDisplaySize(this->_window, &this->_state._win_width,
 					   &this->_state._win_height);
 
@@ -142,7 +143,10 @@ void Window::OnSurfaceCreated(void) {
 
 	this->init();
 }
-void Window::OnSurfaceDestroyed(void) { Log::info("Surface Destroyed"); }
+void Window::OnSurfaceDestroyed(void) {
+	Log::info("Surface Destroyed",
+			  Log::GenLogID(__LINE__, __FILE__, "Window", __func__));
+}
 
 void Window::OnSurfaceResized(GLFMDisplay* display, const int width,
 							  const int height) {

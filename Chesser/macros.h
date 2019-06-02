@@ -7,8 +7,8 @@
  *
  */
 
-#define THROW_ERROR(msg) \
-	Log::error(msg);     \
+#define THROW_ERROR(msg, id) \
+	Log::error(msg, id);     \
 	__err_check();
 
 #ifdef _WINDOWS

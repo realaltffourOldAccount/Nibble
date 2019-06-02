@@ -89,7 +89,8 @@
 #if !defined(__WINDOWS__)
 #include <thread>
 #else
-#include <vendor/threads/mingw.thread.h>
+//#include <vendor/threads/mingw.thread.h>
+#include <thread>
 #endif
 
 /*

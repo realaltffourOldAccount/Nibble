@@ -24,6 +24,7 @@ class App : public GEngine::Window::Window {
    public:
 #if !defined(__ANDROID__)
 	App(void) : Window(false, WINDOW_WIDTH, WINDOW_HEIGHT, "Chesser") {
+		this->init();
 #else
 	App(GLFMDisplay* display)
 		: Window(display){
@@ -35,7 +36,7 @@ class App : public GEngine::Window::Window {
 	void OnKey(int key, int scancode, int action, int mods) {}
 	void OnMouseButton(int button, int action, int mods) {}
 
-	void eventHandler(const GEngine::Event& evt) { Log::info(evt.ToString()); }
+	void eventHandler(GEngine::Event& evt) {}
 
    public:
 	void tick(void) override {

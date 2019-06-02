@@ -19,6 +19,7 @@
 
 #include <engine/Point.h>
 #include <engine/buffers/buffers.h>
+#include <engine/files/FileManager.h>
 #include <engine/mvp/MVP.h>
 #include <engine/shaders/Shaders.h>
 #include <engine/textures/Texture.h>

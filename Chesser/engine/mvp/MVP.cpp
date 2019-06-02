@@ -13,7 +13,8 @@ GEngine::MVP::~MVP(void) { this->destroy(); }
 void GEngine::MVP::bind(GLuint program) {
 	GLuint mvpID = glGetUniformLocation(program, "MVP");
 	if (mvpID == -1) {
-		THROW_ERROR("Could not locate 'MVP' uniform matrix.");
+		THROW_ERROR("Could not locate 'MVP' uniform matrix.",
+					Log::GenLogID(__LINE__, __FILE__, "Initiator", __func__));
 	}
 
 	calc();

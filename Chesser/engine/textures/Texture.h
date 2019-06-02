@@ -44,7 +44,8 @@ static inline int FindEmptyTexSlot() {
  */
 static inline void AddTexSlot(int index) {
 	if (index >= GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS) {
-		THROW_ERROR("Texture Slot index not supported.");
+		THROW_ERROR("Texture Slot index not supported.",
+					Log::GenLogID(__LINE__, __FILE__, "Texture", __func__));
 	}
 	(*g_tex_slots)[index] = ++g_tex_slot_cnt;
 }
@@ -56,7 +57,8 @@ static inline void AddTexSlot(int index) {
  */
 static inline void RemoveTexSlot(int index) {
 	if (index < 0) {
-		THROW_ERROR("Texture Slot index can't be below 0.");
+		THROW_ERROR("Texture Slot index can't be below 0.",
+					Log::GenLogID(__LINE__, __FILE__, "Texture", __func__));
 	}
 	(*g_tex_slots)[index] = -1;
 	g_tex_slot_cnt--;

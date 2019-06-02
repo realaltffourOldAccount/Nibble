@@ -17,37 +17,6 @@
 using namespace std;
 
 /**
- * @brief Reads a file.
- *
- * @param file			The file path.
- * @return std::string	The file data.
- */
-static std::string readFile(std::string file) {
-	std::ifstream filestream;
-	filestream.open(file);
-	if (filestream.is_open() == false) {
-		Log::error("Error Could not read file: " + file + ".");
-	}
-
-	std::stringstream ss;
-	ss << filestream.rdbuf();
-	filestream.close();
-
-	return ss.str();
-}
-
-/**
- * @brief Returns a file size.
- *
- * @param filename					The file name.
- * @return std::ifstream::pos_type	The file size.
- */
-static std::ifstream::pos_type filesize(const char* filename) {
-	std::ifstream in(filename, std::ifstream::ate | std::ifstream::binary);
-	return in.tellg();
-}
-
-/**
  * @brief Returns if a value is between a range.
  *
  * @param x			The value to check.

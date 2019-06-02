@@ -9,7 +9,9 @@
 #ifndef EVENT_H
 #define EVENT_H
 
+#include "Log.h"
 #include "common.h"
+#include "config.h"
 
 namespace GEngine {
 /**
@@ -129,7 +131,7 @@ class EventDispatcher {
 	EventDispatcher(Event& event) : m_Event(event) {}
 
 	/**
-	 * @brief Dispatches the event.
+	 * @brief Dispatches the fired event.
 	 *
 	 * @tparam T		The event class.
 	 * @param func		The function to be dispatched to.

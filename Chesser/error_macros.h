@@ -18,8 +18,10 @@
 static void __err_check(void) {
 	// error occured
 #if defined(__DEBUG__)
-	Log::error("Error Occurred.");
-	Log::warn("Info Logged to log/Log.txt");
+	Log::error("Error Occurred.",
+			   Log::GenLogID(__LINE__, __FILE__, "error", __func__));
+	Log::warn("Info Logged to log/Log.txt",
+			  Log::GenLogID(__LINE__, __FILE__, "error", __func__));
 #else
 #if (__OS__ == __OS_WIN32__) || (__OS__ == __OS_WIN64__)
 	MessageBox(NULL,
@@ -98,10 +100,12 @@ static void GLCheckError(int line, std::string func_name, std::string file) {
 	GLenum err = glGetError();
 	bool err_occ = false;
 	while (err != GL_NO_ERROR) {
-		Log::error("OpenGL Error Occured.");
+		Log::error("OpenGL Error Occured.",
+				   Log::GenLogID(__LINE__, __FILE__, "error", __func__));
 		std::string error_name = err2str(err);
 
-		Log::error("Error Type: " + error_name + ".");
+		Log::error("Error Type: " + error_name + ".",
+				   Log::GenLogID(__LINE__, __FILE__, "error", __func__));
 		std::stringstream str;
 		str << ("Error Occurred at: ");
 		str << (func_name);
@@ -112,7 +116,8 @@ static void GLCheckError(int line, std::string func_name, std::string file) {
 		std::set<char> delims{'\\', '/'};
 		std::vector<std::string> file_path = splitpath(file, delims);
 		str << (file_path.back());
-		Log::error(str.str());
+		Log::error(str.str(),
+				   Log::GenLogID(__LINE__, __FILE__, "error", __func__));
 		err = glGetError();
 		err_occ = true;
 	}
