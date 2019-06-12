@@ -1,4 +1,4 @@
 #!/bin/bash
 
 cd Chesser_android/app/build/outputs/apk/debug/
-adb install app-debug.apk
+adb install -r -f app-debug.apk

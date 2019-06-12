@@ -18,7 +18,6 @@
 
 #include "buffers/buffers.h"
 #include "mvp/MVP.h"
-#include "object/Object.h"
 #include "shaders/Shaders.h"
 #include "text/TextRenderer.h"
 #include "textures/Texture.h"

@@ -4,6 +4,7 @@
 namespace GEngine {
 namespace Text {
 void TextRenderer::Init(void) {
+	if (GEngine::Text::g_TextRendererInited) return;
 	if (FT_Init_FreeType(&ft)) {
 		THROW_ERROR(
 			"Could not Initialize Freetype.",
@@ -34,26 +35,32 @@ void TextRenderer::Init(void) {
 	std::vector<GEngine::ShaderAttrib*> attribs = {&attrib_pos};
 
 	t_VAO = new GEngine::VAO(t_VBO, attribs);
+
+	g_TextRendererInited = true;
 }
 void TextRenderer::DeInit(void) {
+	if (!g_TextRendererInited) return;
+
 	UnLoadAllCharacters();
 	UnLoadAllFonts();
+	FT_Done_FreeType(ft);
 
 	if (t_Shaders != nullptr) {
 		delete t_Shaders;
 		t_Shaders = nullptr;
 	}
-	if (t_VBO != nullptr) {
-		delete t_VBO;
-		t_VBO = nullptr;
-	}
 	if (t_VAO != nullptr) {
 		delete t_VAO;
 		t_VAO = nullptr;
 	}
+	g_TextRendererInited = false;
 }
 
-void TextRenderer::LoadFont(std::string fontname, std::string fontPath) {
+void TextRenderer::LoadFont(std::string fontname, std::string fontPath, int wPx,
+							int hPx) {
+	// Check if font is already loaded.
+	if (t_Fonts.find(fontname) != t_Fonts.end()) return;
+
 	FT_Face face;
 
 #if defined(__ANDROID__)
@@ -80,7 +87,7 @@ void TextRenderer::LoadFont(std::string fontname, std::string fontPath) {
 			"Failed to load font name: " + fontname + ".",
 			Log::GenLogID(__LINE__, __FILE__, "TextRenderer", __func__));
 	}
-	FT_Set_Pixel_Sizes(face, 0, 24);
+	FT_Set_Pixel_Sizes(face, wPx, hPx);
 
 	t_Fonts.insert(std::pair<std::string, FT_Face>(fontname, face));
 }
@@ -97,6 +104,9 @@ void TextRenderer::UnLoadAllFonts(void) {
 }
 
 void TextRenderer::LoadCharacters(std::string fontname) {
+	// Check if characters are loaded.
+	if (t_Characters.find(fontname) != t_Characters.end()) return;
+
 	FT_Face face;
 	auto loc = t_Fonts.find(fontname);
 	if (loc != t_Fonts.end())
@@ -176,8 +186,6 @@ void TextRenderer::RenderText(std::string text, std::string fontname,
 							  GLfloat scale, GEngine::Point location,
 							  glm::vec3 color, GEngine::MVP* mvp) {
 	glm::mat4 old_view = mvp->getView();
-	glm::mat4 old_model = mvp->getModel();
-	mvp->updateModel(glm::mat4(1.0f));
 	mvp->updateView(glm::mat4(1.0f));
 
 	t_Shaders->bind();
@@ -193,7 +201,6 @@ void TextRenderer::RenderText(std::string text, std::string fontname,
 	std::string::const_iterator c;
 	for (c = text.begin(); c != text.end(); c++) {
 		Character ch = t_Characters[fontname][*c];
-		if (ch._textureID == nullptr) continue;
 
 		// Caculate character position.
 		GLfloat xpos = location.x + ch._bearing.x * scale;
@@ -228,7 +235,6 @@ void TextRenderer::RenderText(std::string text, std::string fontname,
 	t_VBO->unbind();
 	t_Shaders->unbind();
 
-	mvp->updateModel(old_model);
 	mvp->updateView(old_view);
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
 }

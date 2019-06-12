@@ -119,6 +119,8 @@ void Window::__iter(void) {
 			this->nbTicks = 0;
 			this->lastTimeTick += std::chrono::seconds(1);
 		}
+		// Check for the correctness of the location.
+		this->HandleEvents();
 		this->tick();
 		accumulatedTime -= deltaUpdateInterval;
 		nLoops++;
@@ -138,57 +140,75 @@ void Window::OnResize(int width, int height) {
 	this->_state._win_height = height;
 	this->__update_mvp();
 
-	GEngine::WindowResizeEvent event(width, height);
-	this->EventCallback(event);
+	GEngine::WindowResizeEvent* event =
+		new GEngine::WindowResizeEvent(width, height);
+	// this->EventCallback(event);
+	this->mEventQueue.QueueEvent(event);
 }
 void Window::OnMousePos(double xpos, double ypos) {
-	this->_state._mouse_pos_x = xpos;
-	this->_state._mouse_pos_y = ypos;
-
-	GEngine::MouseMovedEvent event(xpos, ypos);
-	this->EventCallback(event);
+	GEngine::MouseMovedEvent* event = new GEngine::MouseMovedEvent(xpos, ypos);
+	// this->EventCallback(event);
+	this->mEventQueue.QueueEvent(event);
+	this->mInput->RegisterMousePosition(xpos, ypos);
 }
 void Window::OnCursorEntered(void) {
 	this->_state._isMouseIn = true;
 
-	GEngine::MouseEnteredEvent event;
-	this->EventCallback(event);
+	GEngine::MouseEnteredEvent* event = new GEngine::MouseEnteredEvent;
+	// this->EventCallback(event);
+	this->mEventQueue.QueueEvent(event);
 }
 void Window::OnCursorExit(void) {
 	this->_state._isMouseIn = false;
 
-	GEngine::MouseExitedEvent event;
-	this->EventCallback(event);
+	GEngine::MouseExitedEvent* event = new GEngine::MouseExitedEvent;
+	// this->EventCallback(event);
+	this->mEventQueue.QueueEvent(event);
 }
 
 void Window::OnKey(int key, int scancode, int action, int mods) {
 	switch (action) {
 		case GLFW_PRESS: {
-			GEngine::KeyPressedEvent event(key, 0);
-			this->EventCallback(event);
+			GEngine::KeyPressedEvent* event =
+				new GEngine::KeyPressedEvent(key, 0);
+			// this->EventCallback(event);
+			this->mEventQueue.QueueEvent(event);
+			this->mInput->RegisterKey(key);
 			break;
 		}
 		case GLFW_RELEASE: {
-			GEngine::KeyReleasedEvent event(key);
-			this->EventCallback(event);
+			GEngine::KeyReleasedEvent* event =
+				new GEngine::KeyReleasedEvent(key);
+			// this->EventCallback(event);
+			this->mEventQueue.QueueEvent(event);
+			this->mInput->UnRegisterKey(key);
 			break;
 		}
 		case GLFW_REPEAT: {
-			GEngine::KeyPressedEvent event(key, 1);
-			this->EventCallback(event);
+			GEngine::KeyPressedEvent* event =
+				new GEngine::KeyPressedEvent(key, 1);
+			// this->EventCallback(event);
+			this->mEventQueue.QueueEvent(event);
+			this->mInput->RegisterKey(key);
 		}
 	}
 }
 void Window::OnMouseButton(int button, int action, int mods) {
 	switch (action) {
 		case GLFW_PRESS: {
-			GEngine::MouseButtonPressedEvent event(button);
-			this->EventCallback(event);
+			GEngine::MouseButtonPressedEvent* event =
+				new GEngine::MouseButtonPressedEvent(button);
+			// this->EventCallback(event);
+			this->mEventQueue.QueueEvent(event);
+			this->mInput->RegisterMouseKey(button);
 			break;
 		}
 		case GLFW_RELEASE: {
-			GEngine::MouseButtonReleasedEvent event(button);
-			this->EventCallback(event);
+			GEngine::MouseButtonReleasedEvent* event =
+				new GEngine::MouseButtonReleasedEvent(button);
+			// this->EventCallback(event);
+			this->mEventQueue.QueueEvent(event);
+			this->mInput->UnRegisterMouseKey(button);
 			break;
 		}
 	}

@@ -120,35 +120,49 @@ class Event {
 };
 
 /**
- * @brief The event Dispatcher.
+ * @brief Definition of an Event Queue.
  *
  */
-class EventDispatcher {
-	template <typename T>
-	using EventFn = std::function<bool(T&)>;
-
+class EventQueue {
    public:
-	EventDispatcher(Event& event) : m_Event(event) {}
+	/**
+	 * @brief Construct a new Event Queue object
+	 *
+	 */
+	EventQueue(void) {}
+	/**
+	 * @brief Destroy the Event Queue object
+	 *
+	 */
+	~EventQueue(void) {}
 
 	/**
-	 * @brief Dispatches the fired event.
+	 * @brief Queue Event.
 	 *
-	 * @tparam T		The event class.
-	 * @param func		The function to be dispatched to.
-	 * @return true		The event have been handled.
-	 * @return false	The event have not been handled.
+	 * @param evt The event to queue.
 	 */
-	template <typename T>
-	bool Dispatch(EventFn<T> func) {
-		if (m_Event.GetEventType() == T::GetStaticType()) {
-			m_Event.Handled = func(*(T*)&m_Event);
-			return true;
-		}
-		return false;
-	}
+	void QueueEvent(Event* evt) { this->mQueue.push_back(evt); }
+	/**
+	 * @brief Removes the first event from the queue.
+	 *
+	 */
+	void UnQueueEvent() { this->mQueue.pop_front(); }
 
-   private:
-	Event& m_Event;
+	/**
+	 * @brief Get the first Event object.
+	 *
+	 * @return Event* The last
+	 */
+	Event* GetEvent() { return this->mQueue.front(); }
+
+	/**
+	 * @brief Returns the size of the queue.
+	 *
+	 * @return int The size.
+	 */
+	int size() { return mQueue.size(); }
+
+	std::deque<Event*> mQueue;
 };
 
 inline std::ostream& operator<<(std::ostream& os, const Event& e) {

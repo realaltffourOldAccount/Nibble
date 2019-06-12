@@ -85,6 +85,8 @@ void Window::__iter(void) {
 				lastTimeTick += std::chrono::seconds(1);
 			}
 
+			// TODO: Check for correctness of location.
+			this->HandleEvents();
 			this->tick();
 			accumulatedTime -= deltaUpdateInterval;
 			nLoops++;
@@ -154,8 +156,10 @@ void Window::OnSurfaceResized(GLFMDisplay* display, const int width,
 	this->_state._win_height = height;
 	this->__update_mvp();
 
-	GEngine::WindowResizeEvent event(width, height);
-	this->EventCallback(event);
+	GEngine::WindowResizeEvent* event =
+		new GEngine::WindowResizeEvent(width, height);
+	// this->EventCallback(event);
+	this->mEventQueue.QueueEvent(event);
 }
 
 void Window::OnFrame(GLFMDisplay* display, const double frameTime) {
@@ -166,28 +170,48 @@ void Window::OnTouch(GLFMDisplay* display, int touch, GLFMTouchPhase phase,
 					 double x, double y) {
 	switch (phase) {
 		case GLFMTouchPhaseBegan: {
-			GEngine::TouchBeganEvent event(x, y);
-			this->EventCallback(event);
+			GEngine::TouchBeganEvent* event =
+				new GEngine::TouchBeganEvent(x, y);
+			// this->EventCallback(event);
+			this->mEventQueue.QueueEvent(event);
+			this->mInput->RegisterTouchState(API_INPUT_ANDROID_TOUCH_BEGAN);
+			this->mInput->RegisterTouchPosition(x, y);
 			break;
 		}
 		case GLFMTouchPhaseMoved: {
-			GEngine::TouchMovedEvent event(x, y);
-			this->EventCallback(event);
+			GEngine::TouchMovedEvent* event =
+				new GEngine::TouchMovedEvent(x, y);
+			// this->EventCallback(event);
+			this->mEventQueue.QueueEvent(event);
+			this->mInput->RegisterTouchState(API_INPUT_ANDROID_TOUCH_MOVED);
+			this->mInput->RegisterTouchPosition(x, y);
 			break;
 		}
 		case GLFMTouchPhaseEnded: {
-			GEngine::TouchEndedEvent event(x, y);
-			this->EventCallback(event);
+			GEngine::TouchEndedEvent* event =
+				new GEngine::TouchEndedEvent(x, y);
+			// this->EventCallback(event);
+			this->mEventQueue.QueueEvent(event);
+			this->mInput->RegisterTouchState(API_INPUT_ANDROID_TOUCH_ENDED);
+			this->mInput->RegisterTouchPosition(x, y);
 			break;
 		}
 		case GLFMTouchPhaseCancelled: {
-			GEngine::TouchCancelledEvent event(x, y);
-			this->EventCallback(event);
+			GEngine::TouchCancelledEvent* event =
+				new GEngine::TouchCancelledEvent(x, y);
+			// this->EventCallback(event);
+			this->mEventQueue.QueueEvent(event);
+			this->mInput->RegisterTouchState(API_INPUT_ANDROID_TOUCH_CANCELLED);
+			this->mInput->RegisterTouchPosition(x, y);
 			break;
 		}
 		case GLFMTouchPhaseHover: {
-			GEngine::TouchHoverEvent event(x, y);
-			this->EventCallback(event);
+			GEngine::TouchHoverEvent* event =
+				new GEngine::TouchHoverEvent(x, y);
+			// this->EventCallback(event);
+			this->mEventQueue.QueueEvent(event);
+			this->mInput->RegisterTouchState(API_INPUT_ANDROID_TOUCH_HOVER);
+			this->mInput->RegisterTouchPosition(x, y);
 			break;
 		}
 	}
@@ -197,18 +221,102 @@ void Window::OnKey(GLFMDisplay* display, GLFMKey keyCode, GLFMKeyAction action,
 				   int modifiers) {
 	switch (action) {
 		case GLFMKeyActionPressed: {
-			GEngine::KeyPressedEvent event(keyCode, 0);
-			this->EventCallback(event);
+			GEngine::KeyPressedEvent* event =
+				new GEngine::KeyPressedEvent(keyCode, 0);
+			// this->EventCallback(event);
+			this->mEventQueue.QueueEvent(event);
+			if (keyCode == GLFMKeyBackspace) {
+				this->mInput->RegisterKey(API_INPUT_ANDROID_BACKSPACE);
+			} else if (keyCode == GLFMKeyTab) {
+				this->mInput->RegisterKey(API_INPUT_ANDROID_TAB);
+			} else if (keyCode == GLFMKeyEnter) {
+				this->mInput->RegisterKey(API_INPUT_ANDROID_ENTER);
+			} else if (keyCode == GLFMKeyEscape) {
+				this->mInput->RegisterKey(API_INPUT_ANDROID_ESCAPE);
+			} else if (keyCode == GLFMKeySpace) {
+				this->mInput->RegisterKey(API_INPUT_ANDROID_SPACE);
+			} else if (keyCode == GLFMKeyLeft) {
+				this->mInput->RegisterKey(API_INPUT_ANDROID_LEFT);
+			} else if (keyCode == GLFMKeyRight) {
+				this->mInput->RegisterKey(API_INPUT_ANDROID_RIGHT);
+			} else if (keyCode == GLFMKeyDown) {
+				this->mInput->RegisterKey(API_INPUT_ANDROID_DOWN);
+			} else if (keyCode == GLFMKeyNavBack) {
+				this->mInput->RegisterKey(API_INPUT_ANDROID_NAVBACK);
+			} else if (keyCode == GLFMKeyNavMenu) {
+				this->mInput->RegisterKey(API_INPUT_ANDROID_NAVMENU);
+			} else if (keyCode == GLFMKeyNavSelect) {
+				this->mInput->RegisterKey(API_INPUT_ANDROID_NAVSELECT);
+			} else if (keyCode == GLFMKeyPlayPause) {
+				this->mInput->RegisterKey(API_INPUT_ANDROID_PLAYPAUSE);
+			} else
+				this->mInput->RegisterKey(keyCode);
 			break;
 		}
 		case GLFMKeyActionReleased: {
-			GEngine::KeyReleasedEvent event(keyCode);
-			this->EventCallback(event);
+			GEngine::KeyReleasedEvent* event =
+				new GEngine::KeyReleasedEvent(keyCode);
+			// this->EventCallback(event);
+			this->mEventQueue.QueueEvent(event);
+			if (keyCode == GLFMKeyBackspace) {
+				this->mInput->UnRegisterKey(API_INPUT_ANDROID_BACKSPACE);
+			} else if (keyCode == GLFMKeyTab) {
+				this->mInput->UnRegisterKey(API_INPUT_ANDROID_TAB);
+			} else if (keyCode == GLFMKeyEnter) {
+				this->mInput->UnRegisterKey(API_INPUT_ANDROID_ENTER);
+			} else if (keyCode == GLFMKeyEscape) {
+				this->mInput->UnRegisterKey(API_INPUT_ANDROID_ESCAPE);
+			} else if (keyCode == GLFMKeySpace) {
+				this->mInput->UnRegisterKey(API_INPUT_ANDROID_SPACE);
+			} else if (keyCode == GLFMKeyLeft) {
+				this->mInput->UnRegisterKey(API_INPUT_ANDROID_LEFT);
+			} else if (keyCode == GLFMKeyRight) {
+				this->mInput->UnRegisterKey(API_INPUT_ANDROID_RIGHT);
+			} else if (keyCode == GLFMKeyDown) {
+				this->mInput->UnRegisterKey(API_INPUT_ANDROID_DOWN);
+			} else if (keyCode == GLFMKeyNavBack) {
+				this->mInput->UnRegisterKey(API_INPUT_ANDROID_NAVBACK);
+			} else if (keyCode == GLFMKeyNavMenu) {
+				this->mInput->UnRegisterKey(API_INPUT_ANDROID_NAVMENU);
+			} else if (keyCode == GLFMKeyNavSelect) {
+				this->mInput->UnRegisterKey(API_INPUT_ANDROID_NAVSELECT);
+			} else if (keyCode == GLFMKeyPlayPause) {
+				this->mInput->UnRegisterKey(API_INPUT_ANDROID_PLAYPAUSE);
+			} else
+				this->mInput->UnRegisterKey(keyCode);
 			break;
 		}
 		case GLFMKeyActionRepeated: {
-			GEngine::KeyPressedEvent event(keyCode, 1);
-			this->EventCallback(event);
+			GEngine::KeyPressedEvent* event =
+				new GEngine::KeyPressedEvent(keyCode, 1);
+			// this->EventCallback(event);
+			this->mEventQueue.QueueEvent(event);
+			if (keyCode == GLFMKeyBackspace) {
+				this->mInput->RegisterKey(API_INPUT_ANDROID_BACKSPACE);
+			} else if (keyCode == GLFMKeyTab) {
+				this->mInput->RegisterKey(API_INPUT_ANDROID_TAB);
+			} else if (keyCode == GLFMKeyEnter) {
+				this->mInput->RegisterKey(API_INPUT_ANDROID_ENTER);
+			} else if (keyCode == GLFMKeyEscape) {
+				this->mInput->RegisterKey(API_INPUT_ANDROID_ESCAPE);
+			} else if (keyCode == GLFMKeySpace) {
+				this->mInput->RegisterKey(API_INPUT_ANDROID_SPACE);
+			} else if (keyCode == GLFMKeyLeft) {
+				this->mInput->RegisterKey(API_INPUT_ANDROID_LEFT);
+			} else if (keyCode == GLFMKeyRight) {
+				this->mInput->RegisterKey(API_INPUT_ANDROID_RIGHT);
+			} else if (keyCode == GLFMKeyDown) {
+				this->mInput->RegisterKey(API_INPUT_ANDROID_DOWN);
+			} else if (keyCode == GLFMKeyNavBack) {
+				this->mInput->RegisterKey(API_INPUT_ANDROID_NAVBACK);
+			} else if (keyCode == GLFMKeyNavMenu) {
+				this->mInput->RegisterKey(API_INPUT_ANDROID_NAVMENU);
+			} else if (keyCode == GLFMKeyNavSelect) {
+				this->mInput->RegisterKey(API_INPUT_ANDROID_NAVSELECT);
+			} else if (keyCode == GLFMKeyPlayPause) {
+				this->mInput->RegisterKey(API_INPUT_ANDROID_PLAYPAUSE);
+			} else
+				this->mInput->RegisterKey(keyCode);
 			break;
 		}
 		default:

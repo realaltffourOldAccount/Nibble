@@ -81,6 +81,12 @@ static GEngine::VAO* t_VAO = nullptr;
 static FT_Library ft;
 
 /**
+ * @brief Holds if the Class is initialized.
+ *
+ */
+static bool g_TextRendererInited = false;
+
+/**
  * @brief The Text Renderer Class.
  *
  */
@@ -102,8 +108,11 @@ class TextRenderer {
 	 *
 	 * @param fontname	The font name to be refrenced later.
 	 * @param fontpath	The file path to be read from.
+	 * @param wPx		The font width in pixels.
+	 * @param hPx		The font height in pixels
 	 */
-	static void LoadFont(std::string fontname, std::string fontpath);
+	static void LoadFont(std::string fontname, std::string fontpath, int wPx,
+						 int hPx);
 	/**
 	 * @brief Unloads a font from the cache.
 	 *

@@ -8,17 +8,16 @@
  */
 #include "mainFunc.h"
 
+#include <engine/widgets/Panel.h>
+#include <engine/widgets/drawables/label/Label.h>
+#include <engine/widgets/drawables/object/Object2D.h>
+#include <engine/widgets/layouts/SimpleLayout.h>
 #include "chsr_api.h"
 #include "common.h"
 #include "game/Game.h"
 #include "globals.cpp"
 
 static MainData* app_data = nullptr;
-
-static GEngine::Object* object;
-static GEngine::Object* object2;
-static GEngine::Shader* shader;
-GEngine::Text::TextRenderer* texter;
 
 class App : public GEngine::Window::Window {
    public:
@@ -33,48 +32,72 @@ class App : public GEngine::Window::Window {
 	~App(void) {}
 
    public:
-	void OnKey(int key, int scancode, int action, int mods) {}
-	void OnMouseButton(int button, int action, int mods) {}
+	bool eventHandler(GEngine::Event* evt) {
+		// Log::info(evt->ToString(),
+		//		  Log::GenLogID(__LINE__, __FILE__, "App", __func__));
 
-	void eventHandler(GEngine::Event& evt) {}
+		return panel->eventHandler(evt);
+	}
 
    public:
 	void tick(void) override {
-		object->translate(glm::vec2(100.0f / 128.0f, 0.0f));
+		// object->translate(glm::vec2((50.0f / 128.0f), 0.0f));
+		if (this->mInput->IsKeyPressed(API_INPUT_KEY_W) ||
+			this->mInput->IsTouchState(API_INPUT_ANDROID_TOUCH_MOVED)) {
+			object->translate(glm::vec2(0.0f, 1.0f));
+		}
+		if (this->mInput->IsKeyPressed(API_INPUT_KEY_S)) {
+			object->translate(glm::vec2(0.0f, -1.0f));
+		}
+		if (this->mInput->IsKeyPressed(API_INPUT_KEY_D)) {
+			object->translate(glm::vec2(1.0f, 0.0f));
+		}
+		if (this->mInput->IsKeyPressed(API_INPUT_KEY_A)) {
+			object->translate(glm::vec2(-1.0f, 0.0f));
+		}
+		panel->tick();
 	}
 	void render(void) override {
-		texter->RenderText("MSPF: " + std::to_string(this->getMSPF()) +
-							   " UT: " + std::to_string(this->getUT()),
-						   "Arial", 1.0f, GEngine::Point(0, 0),
-						   glm::vec3(1.0f, 1.0f, 1.0f), this->getMVP());
-
-		object->render(shader, this->getMVP());
+		label->setText("MSPF: " + std::to_string(this->getMSPF()) +
+					   " UT: " + std::to_string(this->getUT()));
+		panel->render();
 	}
 
    private:
-	bool inited = false;
+	GEngine::Widgets::Panel* panel = nullptr;
+	GEngine::Widgets::Layer* layer = nullptr;
+	GEngine::Widgets::Layouts::SimpleLayout* layout = nullptr;
+	GEngine::Widgets::Drawables::Label* label = nullptr;
+	GEngine::Widgets::Drawables::Object2D* object = nullptr;
 	void init(void) override {
 		using namespace std::placeholders;
 		this->setEventHandler(std::bind(&App::eventHandler, this, _1));
 
-		object = new GEngine::Object("assets/awesomeface.png",
-									 GEngine::Rect(100, 100, 50, 50));
-		object2 = new GEngine::Object("assets/awesomeface.png",
-									  GEngine::Rect(200, 250, 100, 100));
+		panel = new GEngine::Widgets::Panel();
 
-		texter = new GEngine::Text::TextRenderer();
-		texter->Init();
-		texter->LoadFont("Arial", "assets/fonts/arial.ttf");
-		texter->LoadCharacters("Arial");
+		layer = new GEngine::Widgets::Layer();
 
-#if defined(__DESKTOP__)
-		shader = new GEngine::Shader("glsl/vs.glsl", "glsl/fs.glsl");
-#elif defined(__WEB__)
-		shader =
-			new GEngine::Shader("glsl/vs_es_em.glsl", "glsl/fs_es_em.glsl");
-#elif defined(__ANDROID__)
-	shader = new GEngine::Shader("glsl/vs_es.glsl", "glsl/fs_es.glsl");
-#endif
+		layout = new GEngine::Widgets::Layouts::SimpleLayout(
+			GEngine::Rect(0, 0, 500, 500));
+
+		layer->AddLayout(layout);
+		layer->setCurrentLayout(0);
+		panel->AddLayer(layer);
+
+		object = new GEngine::Widgets::Drawables::Object2D(
+			GEngine::Rect(100, 100, 50, 50), this->getMVP(),
+			"assets/awesomeface.png");
+
+		label = new GEngine::Widgets::Drawables::Label(
+			GEngine::Rect(0, 0, 0, 12), this->getMVP(), "", "arial",
+			"assets/fonts/arial.ttf", glm::vec3(1.0f, 1.0f, 1.0f));
+
+		layout->addDrawable(
+			std::pair<std::string, GEngine::Widgets::Drawables::Drawable*>(
+				"perf_label", label));
+		layout->addDrawable(
+			std::pair<std::string, GEngine::Widgets::Drawables::Drawable*>(
+				"object1", object));
 	}
 };
 

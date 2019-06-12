@@ -1,13 +1,48 @@
 #include "Shaders.h"
 
 GEngine::Shader::Shader(const std::string vsfile, const std::string fsfile) {
+	// std::string vertexCode;
+	// std::string fragmentCode;
+	// std::ifstream vShaderFile;
+	// std::ifstream fShaderFile;
+	//
+	// vertexCode = GEngine::Files::FileManager::LoadFile(vsfile);
+	// fragmentCode = GEngine::Files::FileManager::LoadFile(fsfile);
+
 	std::string vertexCode;
 	std::string fragmentCode;
 	std::ifstream vShaderFile;
 	std::ifstream fShaderFile;
 
-	vertexCode = GEngine::Files::FileManager::LoadFile(vsfile);
-	fragmentCode = GEngine::Files::FileManager::LoadFile(fsfile);
+	vShaderFile.open(vsfile);
+	if (vShaderFile.is_open() == false) {
+		THROW_ERROR("Error occured Reading Vertex Shader File: " + vsfile,
+					Log::GenLogID(__LINE__, __FILE__, "Shader", __func__));
+	} else {
+#if !defined(SUPPRESS_FILE_SUCCESS)
+		Log::info("Read Vertex Shader file: " + vsfile + ". ",
+				  Log::GenLogID(__LINE__, __FILE__, "Shader", __func__));
+#endif
+	}
+
+	fShaderFile.open(fsfile);
+	if (fShaderFile.is_open() == false) {
+		THROW_ERROR("Error Occured Reading Fragment Shader File: " + fsfile,
+					Log::GenLogID(__LINE__, __FILE__, "Shader", __func__));
+	} else {
+#if !defined(SUPPRESS_FILE_SUCCESS)
+		Log::info("Read Fragment Shader file: " + fsfile + ". ",
+				  Log::GenLogID(__LINE__, __FILE__, "Shader", __func__));
+#endif
+	}
+	std::stringstream vstream, fstream;
+	vstream << vShaderFile.rdbuf();
+	fstream << fShaderFile.rdbuf();
+	vShaderFile.close();
+	fShaderFile.close();
+
+	vertexCode = vstream.str();
+	fragmentCode = fstream.str();
 
 	const char* vShaderCode = vertexCode.c_str();
 	const char* fShaderCode = fragmentCode.c_str();
@@ -78,6 +113,6 @@ void GEngine::Shader::bind(void) { GLCall(glUseProgram(this->_prog_id)); }
 
 void GEngine::Shader::unbind(void) { GLCall(glUseProgram(0)); }
 
-void GEngine::Shader::destroy(void) { GLCall(glDeleteShader(this->_prog_id)); }
+void GEngine::Shader::destroy(void) { GLCall(glDeleteProgram(this->_prog_id)); }
 
 int GEngine::Shader::getProgId(void) { return this->_prog_id; }

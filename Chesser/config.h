@@ -17,7 +17,7 @@
  * @brief Unsuppresses all except for warning, info, error defines.
  *
  */
-//#define UNSUPPRESS_ALL
+#define UNSUPPRESS_ALL
 
 // Check if Unsuppress_all and Suppress_all both enabled.
 #if defined(UNSUPPRESS_ALL) && defined(SUPPRESS_ALL)
@@ -71,7 +71,7 @@
 #if defined(SUPPRESS_ALL)
 #define SUPPRESS_FILE_SUCCESS
 #else
-#define SUPPRESS_FILE_SUCCESS  // Change this option.
+//#define SUPPRESS_FILE_SUCCESS  // Change this option.
 #endif
 
 /**
@@ -81,7 +81,7 @@
 #if defined(SUPPRESS_ALL)
 #define SUPPRESS_SHADER_SUCCESS
 #else
-#define SUPPRESS_SHADER_SUCCESS  // Change this option.
+//#define SUPPRESS_SHADER_SUCCESS  // Change this option.
 #endif
 
 /**
@@ -91,7 +91,7 @@
 #if defined(SUPPRESS_ALL)
 #define SUPPRESS_TEXTURE_SUCCESS
 #else
-#define SUPPRESS_TEXTURE_SUCCESS  // Change this option.
+//#define SUPPRESS_TEXTURE_SUCCESS  // Change this option.
 #endif
 
 /**
@@ -101,5 +101,5 @@
 #if defined(SUPPRESS_ALL)
 #define SUPPRESS_TEXTURE_NULL_WARNING
 #else
-#define SUPPRESS_TEXTURE_NULL_WARNING  // Change this option.
+//#define SUPPRESS_TEXTURE_NULL_WARNING  // Change this option.
 #endif

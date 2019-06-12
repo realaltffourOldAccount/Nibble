@@ -34,12 +34,15 @@ std::string FileManager::LoadFile(std::string file) {
 	int redres = AAsset_read(fileasset, fileassetData, (size_t)fileassetSize);
 	if (redres != 0 && redres == fileassetSize) {
 #if !defined(SUPPRESS_FILE_SUCCESS)
-		Log::info(
-			"Succussfully read file: " + file + ". ",
-			Log::GenLogID(__LINE__, __FILE__, "FileManager", "LoadFile()"));
+		Log::info("Succussfully read file: " + file + ". ",
+				  Log::GenLogID(__LINE__, __FILE__, "FileManager", __func__));
 #endif
+	} else {
+		Log::error("Failed to read file: " + file + ". ",
+				   Log::GenLogID(__LINE__, __FILE__, "FileManager", __func__));
 	}
 	AAsset_close(fileasset);
+	fileassetData += '\0';
 	return std::string(fileassetData);
 #endif
 }

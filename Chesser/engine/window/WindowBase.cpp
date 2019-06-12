@@ -13,7 +13,19 @@ glm::mat4 WindowBase::getProj(void) const { return this->_projection; }
 long double WindowBase::getMSPF(void) const { return this->mspf; }
 long double WindowBase::getUT(void) const { return this->ut; }
 
-WindowBase::WindowBase(void) {}
+void WindowBase::HandleEvents(void) {
+	int size = this->mEventQueue.size();
+	for (int i = 0; i < size; i++) {
+		if (EventCallback(this->mEventQueue.GetEvent())) {
+			this->mEventQueue.UnQueueEvent();
+		}
+	}
+}
+
+WindowBase::WindowBase(void) {
+	this->mInput = new GEngine::Input();
+	this->mInput->Init();
+}
 WindowBase::~WindowBase(void) {}
 
 void WindowBase::__iter(void) {

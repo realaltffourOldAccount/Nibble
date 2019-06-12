@@ -13,7 +13,9 @@
 #include "common.h"
 #include "error_macros.h"
 #include "macros.h"
+#if defined(__ANDROID__)
 #include "vendor/file_compat.h"
+#endif
 
 namespace GEngine {
 namespace Files {

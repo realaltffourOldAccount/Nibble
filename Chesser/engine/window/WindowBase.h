@@ -10,15 +10,14 @@
 #define WINDOW_BASE_H
 #pragma once
 
+#include "__init.h"
 #include "common.h"
 #include "error_macros.h"
 
-#include <engine/events/events.h>
-#include <engine/mvp/MVP.h>
-
-#include "__init.h"
-
 #include <engine/Timer.h>
+#include <engine/events/events.h>
+#include <engine/input/Input.h>
+#include <engine/mvp/MVP.h>
 
 namespace GEngine {
 namespace Window {
@@ -40,11 +39,7 @@ const int maxSkipFrames = 10;
  */
 struct WindowState {
 	int _win_width, _win_height;
-	int _mouse_pos_x, _mouse_pos_y;
 	bool _isMouseIn = true;
-
-	bool _paused = false;
-	bool _loading = false;
 };
 
 /**
@@ -57,7 +52,7 @@ class WindowBase {
 	 * @brief The Event callback function.
 	 *
 	 */
-	using EventCallbackFn = std::function<void(Event& e)>;
+	using EventCallbackFn = std::function<bool(Event* e)>;
 
 	/**
 	 * @brief Set the Event Handler object.
@@ -109,6 +104,12 @@ class WindowBase {
 	 */
 	long double getUT(void) const;
 
+	/**
+	 * @brief Handles the Queued Events.
+	 *
+	 */
+	void HandleEvents(void);
+
 	// Custom Events
    public:
 	/**
@@ -134,8 +135,10 @@ class WindowBase {
 	WindowState _state;
 	MVP* _mvp = nullptr;
 	glm::mat4 _projection = glm::mat4(1.0f);
+	GEngine::Input* mInput = nullptr;
 
 	EventCallbackFn EventCallback;
+	EventQueue mEventQueue;
 
 	Timer* timer = nullptr;
 	long double mspf = 0.0;

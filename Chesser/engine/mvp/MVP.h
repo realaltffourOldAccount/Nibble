@@ -61,6 +61,11 @@ class MVP {
 	 * @param proj
 	 */
 	void updateProj(const glm::mat4 proj);
+	/**
+	 * @brief Updates the MVP matrix
+	 *
+	 */
+	void updateMVP(const glm::mat4 mvp);
 
 	/**
 	 * @brief Get the Model object.

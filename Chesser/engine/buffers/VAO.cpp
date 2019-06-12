@@ -37,7 +37,8 @@ void GEngine::VAO::unbind(void) { GLCall(glBindVertexArray(0)); }
 
 void GEngine::VAO::destroy(void) {
 	//#ifndef __ANDROID__
-	delete this->_vbo;
+	 delete this->_vbo;
+	//this->_vbo->destroy();
 	GLCall(glDeleteVertexArrays(1, &this->_vaoID));
 	//#endif
 }

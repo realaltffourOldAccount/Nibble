@@ -1,7 +1,7 @@
 /**
  * @file chsr_api.h
  * @author Ayham Mamoun (ayhamaboualfadl@gmail.com)
- * @brief Contains chesser's api includes, not be included within the api
+ * @brief Contains chesser's api includes, not to be included within the api itself.
  * itself.
  * @version 0.1
  * @date 2019-05-31

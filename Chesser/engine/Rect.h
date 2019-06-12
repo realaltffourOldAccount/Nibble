@@ -16,8 +16,8 @@ namespace GEngine {
  *
  */
 struct Rect {
-	float x, y;
-	float w, h;
+	float x = 0, y = 0;
+	float w = 0, h = 0;
 	/**
 	 * @brief Returns if another rectange instance interesects with this
 	 * rectangle instance.

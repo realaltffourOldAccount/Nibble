@@ -44,7 +44,9 @@
 #endif
 
 #if defined(__WINDOWS__)
+#ifndef GLOG_NO_ABBREVIATED_SEVERITIES
 #define GLOG_NO_ABBREVIATED_SEVERITIES
+#endif
 #include <windows.h>
 #endif
 #if !defined(__EMSCRIPTEN__)

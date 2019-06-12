@@ -36,6 +36,8 @@ void GEngine::MVP::updateProj(const glm::mat4 proj) {
 	calc();
 }
 
+void GEngine::MVP::updateMVP(const glm::mat4 mvp) { this->_mvp = mvp; }
+
 glm::mat4 GEngine::MVP::getModel(void) const { return _model; }
 glm::mat4 GEngine::MVP::getView(void) const { return _view; }
 glm::mat4 GEngine::MVP::getProj(void) const { return _proj; }
