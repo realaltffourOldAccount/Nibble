@@ -1,3 +1,4 @@
+#version 100  
 precision mediump float;
 attribute vec4 vertex; // <vec2 pos, vec2 tex>
 

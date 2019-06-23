@@ -12,13 +12,29 @@ void TextRenderer::Init(void) {
 	}
 
 #if defined(__DESKTOP__)
-	t_Shaders = new GEngine::Shader("glsl/text_vs.glsl", "glsl/text_fs.glsl");
+	if (g_glsl_version >= 3.0) {
+		t_Shaders = new GEngine::Shader("glsl/v3.x/dt/vs/text.glsl",
+										"glsl/v3.x/dt/fs/text.glsl");
+	} else {
+		t_Shaders = new GEngine::Shader("glsl/v1.x/dt/vs/text.glsl",
+										"glsl/v1.x/dt/fs/text.glsl");
+	}
 #elif defined(__WEB__)
-	t_Shaders = new GEngine::Shader("glsl/text_vs_es_em.glsl",
-									"glsl/text_fs_es_em.glsl");
+	if (g_glsl_version >= 3.0) {
+		t_Shaders = new GEngine::Shader("glsl/v3.x/em/vs/text.glsl",
+										"glsl/v3.x/em/fs/text.glsl");
+	} else {
+		t_Shaders = new GEngine::Shader("glsl/v1.x/em/vs/text.glsl",
+										"glsl/v1.x/em/fs/text.glsl");
+	}
 #elif defined(__ANDROID__)
-	t_Shaders =
-		new GEngine::Shader("glsl/text_vs_es.glsl", "glsl/text_fs_es.glsl");
+	if (g_glsl_version >= 3.0) {
+		t_Shaders = new GEngine::Shader("glsl/v3.x/es/vs/text.glsl",
+										"glsl/v3.x/es/fs/text.glsl");
+	} else {
+		t_Shaders = new GEngine::Shader("glsl/v1.x/es/vs/text.glsl",
+										"glsl/v1.x/es/fs/text.glsl");
+	}
 #endif
 
 	t_VBO = new GEngine::VBO(GL_DYNAMIC_DRAW, sizeof(GLfloat) * 6 * 4, NULL);
@@ -141,13 +157,14 @@ void TextRenderer::LoadCharacters(std::string fontname) {
 		texProp._min_filter = GL_LINEAR;
 		texProp._mag_filter = GL_LINEAR;
 		texProp._gen_mipmap = false;
-#if defined(__WEB__)
-		texProp._internalFormat = GL_LUMINANCE;
-		texProp._bufferFormat = GL_LUMINANCE;
-#else
-		texProp._internalFormat = GL_RED;
-		texProp._bufferFormat = GL_RED;
-#endif
+
+		if (g_opengl_ver_major >= 3) {
+			texProp._internalFormat = GL_RED;
+			texProp._bufferFormat = GL_RED;
+		} else {
+			texProp._internalFormat = GL_LUMINANCE;
+			texProp._bufferFormat = GL_LUMINANCE;
+		}
 
 		GEngine::Texture* texture = new GEngine::Texture(texProp);
 		Character character = {

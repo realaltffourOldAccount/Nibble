@@ -3,7 +3,10 @@
 namespace GEngine {
 namespace Window {
 #if defined(__ANDROID__)
-Window::Window(GLFMDisplay* display) { this->__init(display); }
+Window::Window(GLFMDisplay* display) {
+	g_ADisplay = display;
+	this->__init(display);
+}
 Window::~Window(void) { this->destroy(); }
 
 void Window::start(void) {
@@ -18,7 +21,7 @@ void Window::destroy(void) {
 
 void Window::__init(GLFMDisplay* display) {
 	this->_window = display;
-	glfmSetDisplayConfig(display, GLFMRenderingAPIOpenGLES3,
+	glfmSetDisplayConfig(display, GLFMRenderingAPIOpenGLES31,
 						 GLFMColorFormatRGBA8888, GLFMDepthFormatNone,
 						 GLFMStencilFormatNone, GLFMMultisampleNone);
 	glfmSetUserData(display, this);
@@ -92,8 +95,18 @@ void Window::__iter(void) {
 			nLoops++;
 		}
 
-		GLCall(glClear(GL_COLOR_BUFFER_BIT));
-		this->render();
+		if (g_opengl_ver_major >= 3) {
+			this->mFrameBuffer->bind();
+			this->mFrameBuffer->clear();
+			this->render();
+			this->mFrameBuffer->unbind();
+
+			GLCall(glClear(GL_COLOR_BUFFER_BIT));
+			this->mFrameBuffer->render();
+		} else {
+			GLCall(glClear(GL_COLOR_BUFFER_BIT));
+			this->render();
+		}
 
 		// Sleep if more than needed fps
 		long double leftOver =
@@ -139,9 +152,13 @@ void Window::OnSurfaceCreated(void) {
 
 	g_opengl_init = true;
 
-	// Enable blending
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	initGLVersion();
+
+	this->mFrameBuffer = new GEngine::FrameBuffer(
+		this->_state._win_width, this->_state._win_height, true, true);
 
 	this->init();
 }

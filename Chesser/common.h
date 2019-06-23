@@ -31,7 +31,7 @@
 #endif
 
 #if defined(__WEB__)
-#include <GLES3/gl32.h>
+#include <GLES3/gl3.h>
 #include <GLFW/glfw3.h>
 #include <emscripten/emscripten.h>
 #endif
@@ -49,7 +49,7 @@
 #endif
 #include <windows.h>
 #endif
-#if !defined(__EMSCRIPTEN__)
+#if !defined(__WEB__)
 #include <gflags/gflags.h>
 #include <glog/logging.h>
 #endif

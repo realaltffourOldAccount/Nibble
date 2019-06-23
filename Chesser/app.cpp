@@ -15,7 +15,6 @@
 #include "chsr_api.h"
 #include "common.h"
 #include "game/Game.h"
-#include "globals.cpp"
 
 static MainData* app_data = nullptr;
 
@@ -41,6 +40,9 @@ class App : public GEngine::Window::Window {
 
    public:
 	void tick(void) override {
+		label->setText("MSPF: " + std::to_string(this->getMSPF()) +
+					   " UT: " + std::to_string(this->getUT()));
+
 		// object->translate(glm::vec2((50.0f / 128.0f), 0.0f));
 		if (this->mInput->IsKeyPressed(API_INPUT_KEY_W) ||
 			this->mInput->IsTouchState(API_INPUT_ANDROID_TOUCH_MOVED)) {
@@ -57,11 +59,7 @@ class App : public GEngine::Window::Window {
 		}
 		panel->tick();
 	}
-	void render(void) override {
-		label->setText("MSPF: " + std::to_string(this->getMSPF()) +
-					   " UT: " + std::to_string(this->getUT()));
-		panel->render();
-	}
+	void render(void) override { panel->render(); }
 
    private:
 	GEngine::Widgets::Panel* panel = nullptr;
@@ -88,11 +86,11 @@ class App : public GEngine::Window::Window {
 			GEngine::Rect(100, 100, 50, 50), this->getMVP(),
 			"assets/awesomeface.png");
 
-		label = new GEngine::Widgets::Drawables::Label(
+		 label = new GEngine::Widgets::Drawables::Label(
 			GEngine::Rect(0, 0, 0, 12), this->getMVP(), "", "arial",
 			"assets/fonts/arial.ttf", glm::vec3(1.0f, 1.0f, 1.0f));
 
-		layout->addDrawable(
+		 layout->addDrawable(
 			std::pair<std::string, GEngine::Widgets::Drawables::Drawable*>(
 				"perf_label", label));
 		layout->addDrawable(

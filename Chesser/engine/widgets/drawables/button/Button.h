@@ -50,8 +50,8 @@ class Button : public Drawable {
 	void setOnLeftClick(OnClickEvent& func);
 
    private:
-	void initShaders();
-	void initTextRenderer();
+	void initShaders(void);
+	void initBuffers(void);
 
 	void drawBorders(int size, Colors::Color color);
 

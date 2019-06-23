@@ -15,7 +15,7 @@
  * @brief  Checks for errors and terminates if an error has ocurred.
  *
  */
-static void __err_check(void) {
+static void __err_proc(void) {
 	// error occured
 #if defined(__DEBUG__)
 	Log::error("Error Occurred.",
@@ -36,10 +36,10 @@ static void __err_check(void) {
 #endif
 // For other systems solution would be to make a glfw window, later TODO
 #endif
-#ifndef __EMSCRIPTEN__
+#ifndef __WEBs__
 	exit(EXIT_FAILURE);
 #else
-	emscripten_cancel_main_loop();
+	emscripten_pause_main_loop();
 #endif
 }
 
@@ -121,7 +121,7 @@ static void GLCheckError(int line, std::string func_name, std::string file) {
 		err = glGetError();
 		err_occ = true;
 	}
-	if (err_occ) __err_check();
+	if (err_occ) __err_proc();
 }
 
 /**

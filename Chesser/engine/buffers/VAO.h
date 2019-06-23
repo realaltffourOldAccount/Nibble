@@ -42,7 +42,7 @@ class VAO {
 	 * @param vbo		The Vertex Buffer to be bound to.
 	 * @param attribs	The attributes to be applied.
 	 */
-	VAO(GEngine::VBO* vbo, vector<ShaderAttrib*> attribs);
+	VAO(GEngine::VBO* vbo, std::vector<ShaderAttrib*> attribs);
 	/**
 	 * @brief Construct a new VAO object.
 	 *

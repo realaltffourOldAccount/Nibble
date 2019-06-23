@@ -145,8 +145,8 @@ add_executable(
 # Link 3rd-party deps
 target_link_libraries("Chesser_EMCC" glm freetype)
 
-# Use WebGL3 And GLFW3 and stb_image
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s FULL_ES3=3 -s USE_GLFW=3 -s STB_IMAGE=1")
+# Use WebGL2 And GLFW3 and stb_image
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s FULL_ES3=1 -s USE_WEBGL2=1  -s USE_GLFW=3 -s STB_IMAGE=1")
 
 # Set debug only options
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O1 -g -s ASSERTIONS=2")

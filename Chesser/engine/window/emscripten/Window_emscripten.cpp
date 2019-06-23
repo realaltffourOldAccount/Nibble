@@ -55,17 +55,22 @@ void Window::__init(int w, int h, std::string str) {
 	this->_mvp = new GEngine::MVP();
 	this->__update_mvp();
 
-	// Set up blending
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
 	// Set up timer
 	this->timer = new GEngine::Timer();
 
 	glfwSwapInterval(1);
 
-	g_engine_init = true;
 	g_opengl_init = true;
+
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	initGLVersion();
+
+	this->mFrameBuffer = new GEngine::FrameBuffer(
+		this->_state._win_width, this->_state._win_height, false, false);
+
+	g_engine_init = true;
 }
 void Window::__iter(void) {
 	// Tick the timer.
@@ -119,15 +124,20 @@ void Window::__iter(void) {
 			this->nbTicks = 0;
 			this->lastTimeTick += std::chrono::seconds(1);
 		}
-		// Check for the correctness of the location.
+		// TODO: Check for the correctness of the location.
 		this->HandleEvents();
 		this->tick();
 		accumulatedTime -= deltaUpdateInterval;
 		nLoops++;
 	}
 
-	GLCall(glClear(GL_COLOR_BUFFER_BIT));
+	this->mFrameBuffer->bind();
+	this->mFrameBuffer->clear();
 	this->render();
+	this->mFrameBuffer->unbind();
+
+	GLCall(glClear(GL_COLOR_BUFFER_BIT));
+	this->mFrameBuffer->render();
 	glfwSwapBuffers(this->_window);
 
 	// Log::info("MSPF: " + std::to_string(this->mspf) +

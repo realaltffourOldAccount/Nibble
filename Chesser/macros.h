@@ -9,7 +9,7 @@
 
 #define THROW_ERROR(msg, id) \
 	Log::error(msg, id);     \
-	__err_check();
+	__err_proc();
 
 #ifdef _WINDOWS
 #include <windows.h>

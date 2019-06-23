@@ -40,6 +40,10 @@ Button::Button(void) {}
 
 Button::~Button(void) {}
 
+void Button::initShaders(void) {}
+
+void Button::initBuffers(void) {}
+
 bool Button::eventHandler(Event* evt) {
 	if (evt->IsInCategory(GEngine::EventCategory::EventCategoryMouse)) {
 		if (evt->GetEventType() == GEngine::EventType::MouseButtonPressed) {

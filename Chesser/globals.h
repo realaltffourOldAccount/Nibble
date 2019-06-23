@@ -10,7 +10,15 @@
 #ifndef GLOBALS_H
 #define GLOBALS_H
 
-static bool g_engine_init = false;
-static bool g_opengl_init = false;
+extern bool g_engine_init;
+extern bool g_opengl_init;
+extern int g_opengl_ver_major;
+extern int g_opengl_ver_minor;
+extern float g_glsl_version;
+
+#ifdef __ANDROID__
+#include <glfm.h>
+extern GLFMDisplay* g_ADisplay;
+#endif
 
 #endif

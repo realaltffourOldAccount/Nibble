@@ -62,7 +62,7 @@ class Object2D : public Drawable {
 	GEngine::VAO* mVAO = nullptr;
 
 	GLfloat* mBufferData = nullptr;
-	GLuint* mIndicesData = nullptr;
+	GLubyte* mIndicesData = nullptr;
 
 	vector<GEngine::ShaderAttrib*> mShaderAttribs;
 };

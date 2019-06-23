@@ -15,6 +15,7 @@
 #include "error_macros.h"
 
 #include <engine/Timer.h>
+#include <engine/buffers/FrameBuffer.h>
 #include <engine/events/events.h>
 #include <engine/input/Input.h>
 #include <engine/mvp/MVP.h>
@@ -131,6 +132,8 @@ class WindowBase {
    protected:
 	WindowBase(void);
 	~WindowBase(void);
+
+	GEngine::FrameBuffer* mFrameBuffer = nullptr;
 
 	WindowState _state;
 	MVP* _mvp = nullptr;

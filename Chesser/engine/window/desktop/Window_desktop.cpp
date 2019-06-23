@@ -57,8 +57,14 @@ void Window::__init(int w, int h,
 
 	glfwSwapInterval(0);
 
-	g_engine_init = true;
+	initGLVersion();
+
 	g_opengl_init = true;
+
+	this->mFrameBuffer = new GEngine::FrameBuffer(
+		this->_state._win_width, this->_state._win_height, true, true);
+
+	g_engine_init = true;
 }
 void Window::__loop(void) {
 	using namespace std::chrono;
@@ -144,8 +150,13 @@ void Window::__loop(void) {
 			nLoops++;
 		}
 
-		GLCall(glClear(GL_COLOR_BUFFER_BIT));
+		this->mFrameBuffer->bind();
+		this->mFrameBuffer->clear();
 		this->render();
+		this->mFrameBuffer->unbind();
+
+		GLCall(glClear(GL_COLOR_BUFFER_BIT));
+		this->mFrameBuffer->render();
 		glfwSwapBuffers(this->_window);
 
 		// Sleep if more than needed fps
@@ -213,13 +224,6 @@ void Window::OnKey(int key, int scancode, int action, int mods) {
 			this->mInput->RegisterKey(key);
 			break;
 		}
-		case GLFW_REPEAT: {
-			GEngine::KeyPressedEvent* event =
-				new GEngine::KeyPressedEvent(key, 1);
-			// this->EventCallback(event);
-			this->mEventQueue.QueueEvent(event);
-			this->mInput->RegisterKey(key);
-		}
 		case GLFW_RELEASE: {
 			GEngine::KeyReleasedEvent* event =
 				new GEngine::KeyReleasedEvent(key);
@@ -227,6 +231,13 @@ void Window::OnKey(int key, int scancode, int action, int mods) {
 			this->mEventQueue.QueueEvent(event);
 			this->mInput->UnRegisterKey(key);
 			break;
+		}
+		case GLFW_REPEAT: {
+			GEngine::KeyPressedEvent* event =
+				new GEngine::KeyPressedEvent(key, 1);
+			// this->EventCallback(event);
+			this->mEventQueue.QueueEvent(event);
+			this->mInput->RegisterKey(key);
 		}
 	}
 }

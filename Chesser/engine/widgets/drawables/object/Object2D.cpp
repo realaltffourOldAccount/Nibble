@@ -33,25 +33,42 @@ void Object2D::init() { this->initShaders(); }
 
 void Object2D::initShaders() {
 #if defined(__DESKTOP__)
-	do_shaders = new GEngine::Shader("glsl/vs.glsl", "glsl/fs.glsl");
+	if (g_glsl_version >= 3.0) {
+		do_shaders = new GEngine::Shader("glsl/v3.x/dt/vs/smple.glsl",
+										 "glsl/v3.x/dt/fs/smple.glsl");
+	} else {
+		do_shaders = new GEngine::Shader("glsl/v1.x/dt/vs/smple.glsl",
+										 "glsl/v1.x/dt/fs/smple.glsl");
+	}
 #elif defined(__WEB__)
-	do_shaders =
-		new GEngine::Shader("glsl/vs_es_em.glsl", "glsl/fs_es_em.glsl");
+	if (g_glsl_version >= 3.0) {
+		do_shaders = new GEngine::Shader("glsl/v3.x/em/vs/smple.glsl",
+										 "glsl/v3.x/em/fs/smple.glsl");
+	} else {
+		do_shaders = new GEngine::Shader("glsl/v1.x/em/vs/smple.glsl",
+										 "glsl/v1.x/em/fs/smple.glsl");
+	}
 #elif defined(__ANDROID__)
-	do_shaders = new GEngine::Shader("glsl/vs_es.glsl", "glsl/fs_es.glsl");
+	if (g_glsl_version >= 3.0) {
+		do_shaders = new GEngine::Shader("glsl/v3.x/es/vs/smple.glsl",
+										 "glsl/v3.x/es/fs/smple.glsl");
+	} else {
+		do_shaders = new GEngine::Shader("glsl/v1.x/es/vs/smple.glsl",
+										 "glsl/v1.x/es/fs/smple.glsl");
+	}
 #endif
 }
 
 void Object2D::initDefaultObject() {
 	this->mTex = new GEngine::Texture(this->mTexFile);
 
-	this->mIndicesData = new GLuint[6]{
+	this->mIndicesData = new GLubyte[6]{
 		0, 1, 3,  // first triangle
 		1, 2, 3,  // second triangle
 	};
 
 	// Create indices buffer
-	this->mIBO = new GEngine::IBO(GL_STATIC_DRAW, sizeof(GLuint) * 6,
+	this->mIBO = new GEngine::IBO(GL_STATIC_DRAW, sizeof(GLubyte) * 6,
 								  this->mIndicesData);
 
 	// Place holders for the buffer object.
@@ -93,7 +110,11 @@ void Object2D::initDefaultObject() {
 	GEngine::ShaderAttrib* tex_cord_attrib;
 
 	position_attrib = new GEngine::ShaderAttrib();
-	position_attrib->_index = SHADER_ATTRIB_POS;
+	if (g_opengl_ver_major >= 3)
+		position_attrib->_index = SHADER_ATTRIB_POS;
+	else
+		position_attrib->_index =
+			glGetAttribLocation(do_shaders->getProgId(), "aPos");
 	position_attrib->_size = 3;
 	position_attrib->_stride = 8 * sizeof(GLfloat);
 	position_attrib->_offset = (void*)0;
@@ -102,7 +123,11 @@ void Object2D::initDefaultObject() {
 	position_attrib->_isEnable = true;
 
 	color_attrib = new GEngine::ShaderAttrib();
-	color_attrib->_index = SHADER_ATTRIB_COLOR;
+	if (g_opengl_ver_major >= 3)
+		color_attrib->_index = SHADER_ATTRIB_COLOR;
+	else
+		color_attrib->_index =
+			glGetAttribLocation(do_shaders->getProgId(), "aColor");
 	color_attrib->_size = 3;
 	color_attrib->_stride = 8 * sizeof(GLfloat);
 	color_attrib->_offset = (void*)(3 * sizeof(GLfloat));
@@ -111,7 +136,11 @@ void Object2D::initDefaultObject() {
 	color_attrib->_isEnable = true;
 
 	tex_cord_attrib = new GEngine::ShaderAttrib();
-	tex_cord_attrib->_index = SHADER_ATTRIB_TEXCOORD;
+	if (g_opengl_ver_major >= 3)
+		tex_cord_attrib->_index = SHADER_ATTRIB_TEXCOORD;
+	else
+		tex_cord_attrib->_index =
+			glGetAttribLocation(do_shaders->getProgId(), "aTexCoord");
 	tex_cord_attrib->_size = 2;
 	tex_cord_attrib->_stride = 8 * sizeof(GLfloat);
 	tex_cord_attrib->_offset = (void*)(6 * sizeof(GLfloat));
@@ -134,7 +163,7 @@ void Object2D::render(void) {
 	this->mVAO->bind();
 	this->mVBO->bind();
 	this->mIBO->bind();
-	GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0));
+	GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, 0));
 	this->mTex->unbind();
 	this->mVAO->unbind();
 	this->mVBO->unbind();
