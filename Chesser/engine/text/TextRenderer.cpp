@@ -159,8 +159,13 @@ void TextRenderer::LoadCharacters(std::string fontname) {
 		texProp._gen_mipmap = false;
 
 		if (g_opengl_ver_major >= 3) {
+#if !defined(__WEB__)
 			texProp._internalFormat = GL_RED;
 			texProp._bufferFormat = GL_RED;
+#else
+			texProp._internalFormat = GL_LUMINANCE;
+			texProp._bufferFormat = GL_LUMINANCE;
+#endif
 		} else {
 			texProp._internalFormat = GL_LUMINANCE;
 			texProp._bufferFormat = GL_LUMINANCE;

@@ -20,32 +20,20 @@
  * @param error			The error code.
  * @param description	The description of the error.
  */
-static void glfw_error_callback(int error, const char* description) {}
+static void glfw_error_callback(int error, const char* description) {
+	Log::error("GLFW Error: ",
+			   Log::GenLogID(__LINE__, __FILE__, "Initiator", __func__));
+	Log::error("GLFW Error Code: " + std::to_string(error),
+			   Log::GenLogID(__LINE__, __FILE__, "Initiator", __func__));
+	Log::error("GLFW Error Desc: " + std::string(description),
+			   Log::GenLogID(__LINE__, __FILE__, "Initiator", __func__));
+}
 
 /**
  * @brief Initializes the GLFW library.
  *
  */
-static void initGLFW(void) {
-	int res = glfwInit();
-
-	if (res == GLFW_TRUE) {
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-#if (__OS__ == __OS_APPLE__)
-		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);  // Required on Mac
-#endif
-		Log::info("GLFW Initialized.",
-				  Log::GenLogID(__LINE__, __FILE__, "Initiator", "initGLFW"));
-	} else if (res == GLFW_FALSE) {
-		THROW_ERROR(
-			"GLFW Failed To Initialize.",
-			Log::GenLogID(__LINE__, __FILE__, "Initiator", "initGLFW()"));
-	}
-
-	glfwSetErrorCallback(glfw_error_callback);
-}
+static void initGLFW(void) { glfwSetErrorCallback(glfw_error_callback); }
 
 /**
  * @brief Initializes the GLAD library.
@@ -106,7 +94,7 @@ static float getGLSLVersion(int openglvMaj, int openglvMin) {
 static void initGLVersion() {
 	Log::info(
 		"OpenGL Version: " + std::string((char*)(glGetString(GL_VERSION))),
-		Log::GenLogID(__LINE__, __FILE__, "__init", __func__));
+		Log::GenLogID(__LINE__, __FILE__, "Initiator", __func__));
 
 #if !defined(__ANDROID__)
 	glGetIntegerv(GL_MAJOR_VERSION, &g_opengl_ver_major);
@@ -136,13 +124,13 @@ static void initGLVersion() {
 	glslver = out.str();
 
 	Log::info("GLSL Version: " + glslver,
-			  Log::GenLogID(__LINE__, __FILE__, "__init", __func__));
+			  Log::GenLogID(__LINE__, __FILE__, "Initiator", __func__));
 
 	Log::info("OpenGL Vendor: " + std::string((char*)(glGetString(GL_VENDOR))),
-			  Log::GenLogID(__LINE__, __FILE__, "__init", __func__));
+			  Log::GenLogID(__LINE__, __FILE__, "Initiator", __func__));
 	Log::info(
 		"OpenGL Renderer: " + std::string((char*)(glGetString(GL_RENDERER))),
-		Log::GenLogID(__LINE__, __FILE__, "__init", __func__));
+		Log::GenLogID(__LINE__, __FILE__, "Initiator", __func__));
 }
 
 #endif

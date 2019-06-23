@@ -27,10 +27,41 @@ void Window::start(void) {
 void Window::destroy(void) {}
 
 void Window::__init(int w, int h, std::string str) {
+	int res = glfwInit();
+	if (res == GLFW_TRUE) {
+		Log::info("GLFW Initialized.",
+				  Log::GenLogID(__LINE__, __FILE__, "Window", __func__));
+	} else {
+		THROW_ERROR("GLFW Failed To Initialize.",
+					Log::GenLogID(__LINE__, __FILE__, "Window", __func__));
+	}
+
+	int major_ver = MAX_GL_VER_MAJOR;
+	int minor_ver = MAX_GL_VER_MINOR;
+
+	if (res == GLFW_TRUE) {
+	glfw_init:
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, major_ver);
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, minor_ver);
+		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	}
+
+	// Create window
 	this->_window = glfwCreateWindow(w, h, str.c_str(), NULL, NULL);
 	if (this->_window == NULL) {
-		THROW_ERROR("Failed Window Creation.",
-					Log::GenLogID(__LINE__, __FILE__, "Window", __func__));
+		if (major_ver < 2) {
+			THROW_ERROR("Failed Window Creation.",
+						Log::GenLogID(__LINE__, __FILE__, "Window", __func__));
+			return;
+		} else if (minor_ver == 0) {
+			minor_ver = 9;
+			major_ver--;
+		} else {
+			minor_ver--;
+		}
+		Log::warn("Failed Window Creation. Retrying . . . ",
+				  Log::GenLogID(__LINE__, __FILE__, "Window", __func__));
+		goto glfw_init;
 		return;
 	} else
 		Log::info("Window Created.",

@@ -98,5 +98,7 @@
 /*
 		Univ Definitions
 */
+#define MAX_GL_VER_MAJOR 4
+#define MAX_GL_VER_MINOR 6
 
 #endif
