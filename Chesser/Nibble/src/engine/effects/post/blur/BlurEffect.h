@@ -21,18 +21,52 @@ namespace GEngine {
     namespace Effects {
         namespace Post {
             extern GEngine::Shader* ep_blur_shaders;
+            /**
+             * @brief Represents the BlurEffect.
+             */
             class BlurEffect : PostEffect {
                 public:
+                    /**
+                     * @brief Creates a blur Effect.
+                     *
+                     * @param source      The source of the effect.
+                     * @param destination The destination of the effect.
+                     */
                     BlurEffect(GEngine::FrameBuffer* source, GEngine::FrameBuffer* destination);
+                    /**
+                     * @brief Creates a blur Effect.
+                     *
+                     * @param source      The source of the effect.
+                     * @param destination The destination of the effect.
+                     * @param strength    The strength of the blur effect.
+                     */ 
                     BlurEffect(GEngine::FrameBuffer* source, GEngine::FrameBuffer* destination, int strength);
+                    /**
+                     * @brief Destroys the BlurEffect Object.
+                     */
                     ~BlurEffect(void);
 
+                    /**
+                     * @brief Renders the effect to the destination.
+                     */
                     void render(void) override;
+                    /**
+                     * @brief Updates the effect (Not used).
+                     */
                     void tick(void) override;
+                    /**
+                     * @brief Destroys the BlurEffect Object.
+                     */
                     void destroy(void) override;
 
                 private:
+                    /**
+                     * @brief Initializes Shaders.
+                     */
                     void initShaders(void);
+                    /**
+                     * @brief Initializes Buffers.
+                     */
                     void initBuffers(void);
 
                     float mStrength = 4.0f;

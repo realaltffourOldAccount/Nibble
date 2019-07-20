@@ -2,7 +2,6 @@
 
 namespace GEngine {
     namespace Window {
-#if defined(__DESKTOP__)
         Window::Window(bool auto_size, int width, int height, std::string title) {
             if (auto_size) {
                 const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
@@ -95,9 +94,6 @@ glfw_init:
             g_opengl_init = true;
 
             this->mRenderer = new GEngine::Renderers::PingPongRenderer(this->_state._win_width, this->_state._win_height, true, true);
-
-            this->effect = new GEngine::Effects::Post::ShakeEffect(this->mRenderer->getSourceFB(), this->mRenderer->getDestinationFB(), 10*128, 0.005);
-
             g_engine_init = true;
         }
         void Window::__loop(void) {
@@ -180,7 +176,6 @@ glfw_init:
                     // TODO: Check for correctness of the location.
                     this->HandleEvents();
                     this->tick();
-                    this->effect->tick();
                     accumulatedTime -= deltaUpdateInterval;
                     nLoops++;
                 }
@@ -191,7 +186,6 @@ glfw_init:
                 this->mRenderer->getSourceFB()->unbind();
 
                 GLCall(glClear(GL_COLOR_BUFFER_BIT));
-                this->effect->render();
                 this->mRenderer->render();
                 glfwSwapBuffers(this->_window);
 
@@ -297,7 +291,5 @@ glfw_init:
                                    }
             }
         }
-#endif
-
     }  // namespace Window
 }  // namespace GEngine

@@ -31,7 +31,6 @@ namespace GEngine {
          * @brief This window Class is used for Desktop
          *
          */
-#if defined(__DESKTOP__)
         class Window : public GEngine::Window::WindowBase {
             public:
                 /**
@@ -57,8 +56,6 @@ namespace GEngine {
 
                 // GLFW Events Funcs
             public:
-                // TODO: REMOVE AFTER TESTING
-                GEngine::Effects::Post::ShakeEffect* effect = nullptr;
                 /**
                  * @brief Function called when a key event is fired.
                  *
@@ -138,7 +135,6 @@ namespace GEngine {
             win->OnResize(width, height);
         }
 
-#endif
     }  // namespace Window
 }  // namespace GEngine
 #endif
