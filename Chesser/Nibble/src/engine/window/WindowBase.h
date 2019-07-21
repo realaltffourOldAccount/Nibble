@@ -16,6 +16,7 @@
 
 #include <engine/Timer.h>
 #include <engine/renderers/pingpong/PingPongRenderer.h>
+#include <engine/effects/post/PostEffectEngine.h>
 #include <engine/events/events.h>
 #include <engine/input/Input.h>
 #include <engine/mvp/MVP.h>
@@ -129,11 +130,39 @@ namespace GEngine {
                  */
                 virtual void init(void) = 0;
 
+                /**
+                 * @brief Returns the PostEffectEngine Handle.
+                 *
+                 * @returns The Handle.
+                 */
+                auto GetPostEffectEngine(void) {
+                    return this->mPEffects;
+                }
+
+                /**
+                 * @breif Adds A PostEffect.
+                 *
+                 * @param effect The Effect to be added.
+                 */
+                void AddPostEffect(GEngine::Effects::Post::PostEffect* effect) {
+                    this->mPEffects->AddEffect(effect);
+                }
+
+                /**
+                 * @brief Removes A Post Effect.
+                 *
+                 * @param index The index of the effect to be removed.
+                 */
+                void RemovePostEffect(int index) {
+                    this->mPEffects->RemoveEffect(index);
+                }
+
             protected:
                 WindowBase(void);
                 ~WindowBase(void);
 
                 GEngine::Renderers::PingPongRenderer* mRenderer = nullptr;
+                GEngine::Effects::Post::PostEffectEngine* mPEffects = nullptr;
 
                 WindowState _state;
                 MVP* _mvp = nullptr;

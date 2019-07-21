@@ -23,8 +23,6 @@
 #include <engine/window/WindowBase.h>
 #include <engine/renderers/pingpong/PingPongRenderer.h>
 
-#include <engine/effects/post/shake/ShakeEffect.h>
-
 namespace GEngine {
     namespace Window {
         /**

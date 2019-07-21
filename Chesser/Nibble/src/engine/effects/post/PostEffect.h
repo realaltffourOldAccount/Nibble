@@ -2,10 +2,13 @@
  * @file PostEffect.h
  * @author Ayham Mamoun (ayhamaboualfadl@gmail.com)
  * @brief Contains the definition of a post effect.
- * @version 0.1
+ * @version 0.2
  * @date 2019-06-26
  *
  */
+
+#ifndef EFFECTS_POST_EFFECT_H
+#define EFFECTS_POST_EFFECT_H
 
 #include "common.h"
 
@@ -107,3 +110,5 @@ namespace GEngine {
         }  // namespace Post
     }  // namespace Effects
 }  // namespace GEngine
+
+#endif

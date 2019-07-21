@@ -94,6 +94,7 @@ glfw_init:
             g_opengl_init = true;
 
             this->mRenderer = new GEngine::Renderers::PingPongRenderer(this->_state._win_width, this->_state._win_height, true, true);
+            this->mPEffects = new GEngine::Effects::Post::PostEffectEngine();
             g_engine_init = true;
         }
         void Window::__loop(void) {
@@ -176,6 +177,7 @@ glfw_init:
                     // TODO: Check for correctness of the location.
                     this->HandleEvents();
                     this->tick();
+                    this->mPEffects->tick();
                     accumulatedTime -= deltaUpdateInterval;
                     nLoops++;
                 }
@@ -186,6 +188,7 @@ glfw_init:
                 this->mRenderer->getSourceFB()->unbind();
 
                 GLCall(glClear(GL_COLOR_BUFFER_BIT));
+                this->mPEffects->render();
                 this->mRenderer->render();
                 glfwSwapBuffers(this->_window);
 
