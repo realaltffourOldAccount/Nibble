@@ -15,7 +15,5 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-add_subdirectory("Chesser/")
+add_subdirectory("Nibble/")
 
-file (COPY "Chesser/Nibble/src/engine/glsl" DESTINATION "bin/")
-file (COPY "assets" DESTINATION "bin/")
